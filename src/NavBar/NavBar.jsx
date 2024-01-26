@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from "styled-components"
 import {AiFillShopping} from "react-icons/ai"
 import { MdOutlineShoppingCart } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 const NavBar = () =>{
   const[menu, setMenu] = useState("shop")  
@@ -12,14 +13,26 @@ const NavBar = () =>{
         <p>SHOPPER</p>
     </NavLogo>   
     <ul>
+     <Link to="/">
      <li onClick={()=>{setMenu("shop")}}>Shop{menu === "shop"? <hr/> : <></> }</li>  
+     </Link>
+     <Link to="/men">
      <li onClick={()=>{setMenu("men")}}>Men {menu === "men"? <hr/> : <></> } </li> 
+     </Link>
+     <Link to="/women">
      <li onClick={()=>{setMenu("women")}}>Women {menu === "women"? <hr/> : <></> }</li> 
+     </Link>
+     <Link to="/kids">
      <li onClick={()=>{setMenu("kids")}}>Kids {menu === "kids"? <hr/> : <></> }</li>  
+     </Link>
     </ul> 
     <Cart>
+    <Link to="/login">
     <button>Login</button>
+    </Link>
+    <Link to="/cart">
     <MdOutlineShoppingCart/>
+    </Link>
     <CartCounter>
         0
     </CartCounter>
@@ -40,6 +53,7 @@ ul {
     gap: 50px;
 } 
 li {
+    
     list-style: none;
     color: #626262;
     font-size: 20px;
@@ -73,6 +87,7 @@ svg {
     font-size: 38px;
     color: orange;
 }
+
 `
 const Cart = styled.div`
 display: flex;
