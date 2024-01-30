@@ -3,9 +3,11 @@ import styled from "styled-components"
 import {AiFillShopping} from "react-icons/ai"
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { Link } from 'react-router-dom';
+import {motion} from "framer-motion"
+import { useLocation } from "react-router-dom"
 
 const NavBar = () =>{
-  const[menu, setMenu] = useState("shop")  
+  const { pathname } = useLocation();
   return (
     <StyledNav>
     <NavLogo>    
@@ -13,18 +15,44 @@ const NavBar = () =>{
         <p>SHOPPER</p>
     </NavLogo>   
     <ul>
+     
+     <li>
      <Link to="/">
-     <li onClick={()=>{setMenu("shop")}}>Shop{menu === "shop"? <hr/> : <></> }</li>  
-     </Link>
+        Shop
+        <Line
+            transition={{ duration: 0.75 }}
+            initial={{ width: "0%" }}
+            animate={{ width: pathname === "/" ? "100%" : "0%" }}
+          />
+        </Link>
+        </li>  
+        <li>
      <Link to="/men">
-     <li onClick={()=>{setMenu("men")}}>Men {menu === "men"? <hr/> : <></> } </li> 
+     Men
+     <Line
+         transition={{ duration: 0.75 }}
+            initial={{ width: "0%" }}
+            animate={{ width: pathname === "/men" ? "100%" : "0%" }}
+          />     
      </Link>
-     <Link to="/women">
-     <li onClick={()=>{setMenu("women")}}>Women {menu === "women"? <hr/> : <></> }</li> 
-     </Link>
-     <Link to="/kids">
-     <li onClick={()=>{setMenu("kids")}}>Kids {menu === "kids"? <hr/> : <></> }</li>  
-     </Link>
+     </li> 
+     <li>
+     <Link to="/women">Women</Link> 
+     <Line
+            transition={{ duration: 0.75 }}
+            initial={{ width: "0%" }}
+            animate={{ width: pathname === "/women" ? "100%" : "0%" }}
+          />
+
+     </li>
+     <li>
+     <Link to="/kids">Kids</Link>
+     <Line
+            transition={{ duration: 0.75 }}
+            initial={{ width: "0%" }}
+            animate={{ width: pathname === "/kids" ? "100%" : "0%" }}
+          />
+     </li> 
     </ul> 
     <Cart>
     <Link to="/login">
@@ -47,32 +75,32 @@ const StyledNav = styled.div`
 justify-content: space-around;
  padding: 16px;
  box-shadow: 0 1px 3px -2px black;
+ a {
+    text-decoration: none;
+ }
 ul {
     display: flex;
     align-items: center;
     gap: 50px;
+    list-style: none;   
 } 
 li {
-    
-    list-style: none;
-    color: #626262;
-    font-size: 20px;
-    font-weight: 500;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-    cursor: pointer;
+ position: relative;   
 }
-hr {
-    border: none;
-    width: 80%;
-    height: 3px;
-    border-radius: 10px;
-    background: #ff4141;
-}
+
+
 `
+const Line = styled(motion.div)`
+  height: 0.3rem;
+  background: #23d997;
+  width: 0%;
+  position: absolute;
+  bottom: -80%;
+  left: 60%;
+  @media (max-width: 1300px) {
+    left: 0%;
+  }
+`;
 const NavLogo = styled.div`
 display: flex;
 align-items: center;
