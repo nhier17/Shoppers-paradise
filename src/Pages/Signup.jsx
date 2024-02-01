@@ -21,7 +21,7 @@ const Signup = () => {
     const submitHandler = async (e) =>{
         e.preventDefault();
       try {
-        const response = await axios.post('http://localhost:5000/api/v1/auth/register', formData)
+        const response = await axios.post('https://shoppers-paradise17.onrender.com/api/v1/auth/register', formData)
         console.log('suceess', response.data)
       } catch (error) {
         console.log("Error signing up",error.message)
