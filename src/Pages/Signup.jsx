@@ -1,26 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from "styled-components"
 import { MdEmail } from 'react-icons/md'
 import { FaLock, FaUser } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
+import axios from "axios"
+
 
 const Signup = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        password: ''
+})
+ const InputHandler = (e) => {
+    setFormData({ ...formData,
+        [e.target.name]: e.target.value})
+ }
+ 
+    const navigate = useNavigate();
+    const submitHandler = async (e) =>{
+        e.preventDefault();
+      try {
+        const response = await axios.post('http://localhost:5000/api/v1/auth/register', formData)
+        console.log('suceess', response.data)
+      } catch (error) {
+        console.log("Error signing up",error.message)
+      }
+    }
+
     return (
         <Container>
           <div>
-            <form action="">
+            <form action="" onSubmit={submitHandler}>
             <h1>Register</h1>
             <Contents>
               <FaUser/>
-              <input type="text" placeholder='name' />
+              <input onChange={InputHandler}type="text" placeholder='name' name='name' />
               </Contents> 
              <Contents>
               <MdEmail/>
-              <input type="email" placeholder='email' />
+              <input onChange={InputHandler} type="email" placeholder='email'  name='email'/>
               </Contents> 
               <Contents>
                 <FaLock/>
-                <input type="password" placeholder='password' />
+                <input onChange={InputHandler} name='password' type="password" placeholder='password' />
               </Contents>
               <button>Sign Up</button>
               <p>already have an account?

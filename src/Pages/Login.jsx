@@ -1,24 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { MdEmail } from "react-icons/md";
 import { FaLock } from "react-icons/fa";
 import styled from "styled-components"
+import { Link,useNavigate } from 'react-router-dom';
+import axios from "axios"
 
 const Login = () => {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: '',
+    password: "",
+  })
+  const InputHandler = (e) => {
+    setFormData({...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+    
+
+    const submitHandler = async (e) =>{
+      e.preventDefault();
+    
+     try {
+      const response = await axios.post('http://localhost:5000/api/v1/auth/login', formData)
+      console.log("suceess",response.data)
+     } catch (error) {
+      console.log("Error loging in", error.message)
+     }
+     navigate('/')
+  }
   return (
   <Container>
     <div>
-      <form action="">
+      <form action="" onSubmit={submitHandler}>
         <h1>Sign In</h1>
        <Contents>
         <MdEmail/>
-        <input type="email" placeholder='email' />
+        <input onChange={InputHandler} name='email' type="email" placeholder='email'  />
         </Contents> 
         <Contents>
           <FaLock/>
-          <input type="password" placeholder='password' />
+          <input onChange={InputHandler} name='password' type="password" placeholder='password' />
         </Contents>
         <p>Forgot your password?</p>
         <button>Log In</button>
+        <p>Don't have an account? <Link to="/register">Sign up</Link></p>
       </form>
     </div>
   </Container>
@@ -58,7 +84,10 @@ margin-top: 5rem;
     padding: 0 40px;
     height: 100%;  
     }
-   
+   P{
+    margin-top: 1rem;
+    font-size: 1rem;
+   }
  
 `
 
