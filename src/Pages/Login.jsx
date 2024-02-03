@@ -22,7 +22,7 @@ const Login = () => {
       e.preventDefault();
     
      try {
-      const response = await axios.post('http://localhost:5000/api/v1/auth/login', formData)
+      const response = await axios.post('https://shoppers-paradise17.onrender.com/api/v1/auth/login', formData)
       console.log("suceess",response.data)
      } catch (error) {
       console.log("Error loging in", error.message)
