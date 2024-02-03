@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from "styled-components"
 import {AiFillShopping} from "react-icons/ai"
 import { MdOutlineShoppingCart } from "react-icons/md";

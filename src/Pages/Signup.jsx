@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from "styled-components"
 import { MdEmail } from 'react-icons/md'
 import { FaLock, FaUser } from 'react-icons/fa'
-import { Link,useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from "axios"
 
 
@@ -17,7 +17,7 @@ const Signup = () => {
         [e.target.name]: e.target.value})
  }
  
-    const navigate = useNavigate();
+    
     const submitHandler = async (e) =>{
         e.preventDefault();
       try {

@@ -1,6 +1,6 @@
-import React,{ useState, useEffect } from 'react'
+import React from 'react'
 import Hero from '../Hero/Hero'
-import axios from "axios"
+
 
  const Shop = () => {
    // const [data, setData] = useState()
