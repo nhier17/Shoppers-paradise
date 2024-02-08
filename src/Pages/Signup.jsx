@@ -21,7 +21,7 @@ const Signup = () => {
     const submitHandler = async (e) =>{
         e.preventDefault();
       try {
-        const response = await axios.post('https://shoppers-paradise17.onrender.com/api/v1/auth/register', formData)
+        const response = await axios.post('https://shoppers-paradise17.onrender.com/api/auth/register', formData)
         console.log('suceess', response.data)
       } catch (error) {
         console.log("Error signing up",error.message)
@@ -45,7 +45,7 @@ const Signup = () => {
                 <FaLock/>
                 <input onChange={InputHandler} name='password' type="password" placeholder='password' />
               </Contents>
-              <button>Sign Up</button>
+              <button type='submit'>Sign Up</button>
               <p>already have an account?
                  <Link to='/login'>
               Log in

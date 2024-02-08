@@ -1,5 +1,7 @@
 import React from 'react'
 import Hero from '../Hero/Hero'
+import Popular from '../Components/Popular'
+
 
 
  const Shop = () => {
@@ -15,7 +17,7 @@ import Hero from '../Hero/Hero'
   return (
     <div>
         <Hero/>
-        
+        <Popular/>
     </div>
   )
 }
