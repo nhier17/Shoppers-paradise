@@ -22,6 +22,7 @@ import NewsLetter from '../Components/NewsLetter'
         <Offers/>
         <NewCollections/>
         <NewsLetter/>
+        
     </div>
   )
 }
