@@ -5,7 +5,7 @@ import { Routes, Route  } from "react-router-dom"
 
 import Signup from "./Pages/Signup"
 import Login from "./Pages/Login"
-import Home from "./Pages/Home"
+import Pages from "./Pages/Pages"
 import Footer from "./Components/Footer"
 
 function App() {
@@ -14,10 +14,11 @@ function App() {
       
       <NavBar/>
       <GlobalStyles/>
+      <Pages/>
       <Routes>
-      <Route path="/register" element={<Signup/>} />
-      <Route path="/login" element={<Login/>} />
-      <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        
       </Routes>
       <Footer/>
     </div>

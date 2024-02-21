@@ -12,7 +12,7 @@ const NavBar = () =>{
     <StyledNav>
     <NavLogo>    
         <AiFillShopping/>
-        <p>SHOPPER</p>
+        <p>SHOPPERS PARADISE</p>
     </NavLogo>   
     <ul>
      
@@ -72,7 +72,7 @@ const NavBar = () =>{
 
 const StyledNav = styled.div`
  display: flex;
-justify-content: space-around;
+justify-content: space-between;
  padding: 16px;
  box-shadow: 0 1px 3px -2px black;
  a {
@@ -81,12 +81,16 @@ justify-content: space-around;
 ul {
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 3rem;
     list-style: none;   
 } 
 li {
  position: relative;   
 }
+@media (max-width: 768px) {
+  justify-content: center;
+}
+
 
 
 `
@@ -97,7 +101,7 @@ const Line = styled(motion.div)`
   position: absolute;
   bottom: -80%;
   left: 60%;
-  @media (max-width: 1300px) {
+  @media (max-width: 768px) {
     left: 0%;
   }
 `;
@@ -106,9 +110,12 @@ display: flex;
 align-items: center;
 gap: 10px;   
 p {
-   font-size: 38px;
+   font-size: 20px;
    color: #171717;
    font-weight: 600;
+   @media (max-width: 768px) {
+    display: none;
+   }
 
 } 
 svg {
