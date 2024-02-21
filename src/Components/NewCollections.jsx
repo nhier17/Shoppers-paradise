@@ -28,7 +28,7 @@ const Container = styled.div`
    flex-direction: column;
    align-items: center;
    gap: 10px;
-   height: 60vh;
+   margin-bottom: 100px;
 `
 const Collections = styled.div`
  display: grid;

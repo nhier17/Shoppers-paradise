@@ -3,7 +3,7 @@ import Hero from '../Hero/Hero'
 import Popular from '../Components/Popular'
 import Offers from '../Components/Offers'
 import NewCollections from '../Components/NewCollections'
-
+import NewsLetter from '../Components/NewsLetter'
 
  const Shop = () => {
    // const [data, setData] = useState()
@@ -21,6 +21,7 @@ import NewCollections from '../Components/NewCollections'
         <Popular/>
         <Offers/>
         <NewCollections/>
+        <NewsLetter/>
     </div>
   )
 }
