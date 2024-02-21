@@ -1,6 +1,7 @@
 import React from 'react'
 import Hero from '../Hero/Hero'
 import Popular from '../Components/Popular'
+import Offers from '../Components/Offers'
 
 
 
@@ -18,6 +19,7 @@ import Popular from '../Components/Popular'
     <div>
         <Hero/>
         <Popular/>
+        <Offers/>
     </div>
   )
 }
