@@ -1,12 +1,13 @@
 import React from 'react'
 import new_collections from "../Util"
 import Items from "./Items"
+import styled from "styled-components"
 
 const NewCollections = () => {
   return (
-    <div>
+    <Container>
        <h1>NEW COLLECTIONS</h1> 
-       <div className="collections">
+       <Collections>
         {new_collections.map((item) => (
            <Items
            key={item.id}
@@ -18,9 +19,22 @@ const NewCollections = () => {
            /> 
         ))}
 
-       </div>
-    </div>
+       </Collections>
+    </Container>
   )
 }
+const Container = styled.div`
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 10px;
+   height: 60vh;
+`
+const Collections = styled.div`
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);  
+ gap: 10px; 
+ margin-top: 50px;
+`
 
 export default NewCollections
