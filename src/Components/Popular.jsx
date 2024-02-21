@@ -10,7 +10,7 @@ const Popular = () => {
     
     const getDetails = async () => {
         const response = await axios.get(`https://shoppers-paradise17.onrender.com/api/products?&category=women`)
-        console.log(response.data)
+      
         setPopular(response.data)
         
     }
