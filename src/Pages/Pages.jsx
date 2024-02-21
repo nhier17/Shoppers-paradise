@@ -18,7 +18,7 @@ function Pages(){
         <Route path="/women" element={<ShopCategory image={women} category="women" />} />
         <Route path="/kids" element={<ShopCategory image={kids} category="kids" />} />
         <Route path="/product" element={<Product />}>
-          <Route path=":id" element={<Product />} />
+          <Route path="/product/:id" element={<Product />} />
         </Route>
         <Route path="/cart" element={<Cart />} />
       </Routes>

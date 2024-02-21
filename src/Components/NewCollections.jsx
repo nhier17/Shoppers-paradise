@@ -32,8 +32,8 @@ const Container = styled.div`
 `
 const Collections = styled.div`
   display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(20rem,1fr));
-    grid-gap: 3rem;
+    grid-template-columns: repeat(auto-fit,minmax(15rem,1fr));
+    grid-gap: 1rem;
  `
 
 export default NewCollections

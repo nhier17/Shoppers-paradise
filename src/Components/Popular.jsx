@@ -4,6 +4,7 @@ import Items from './Items'
 import styled from "styled-components"
 
 
+
 const Popular = () => {
     const [popular, setPopular] = useState([])
     
@@ -21,6 +22,7 @@ const Popular = () => {
       <h1>Popular in Women</h1>  
       <PItems>
         {popular.products?.map((item) => (
+          
             <Items 
             key={item.id}
             id={item.id}
@@ -29,6 +31,7 @@ const Popular = () => {
             new_price={item.new_price}
             old_price={item.old_price}
             />
+          
         ))}
       </PItems>
     </PopularProducts>
@@ -47,8 +50,8 @@ h1 {
 `
 const PItems = styled.div`
  display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(20rem,1fr));
-    grid-gap: 3rem;
+    grid-template-columns: repeat(auto-fit,minmax(15rem,1fr));
+    grid-gap: 1rem;
     
 `
 export default Popular
