@@ -24,17 +24,16 @@ const NewCollections = () => {
   )
 }
 const Container = styled.div`
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   gap: 10px;
+
    margin-bottom: 100px;
+   h1 {
+    padding-left: 3rem;
+   }
 `
 const Collections = styled.div`
- display: grid;
- grid-template-columns: repeat(3, 1fr);  
- gap: 10px; 
- margin-top: 50px;
-`
+  display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(20rem,1fr));
+    grid-gap: 3rem;
+ `
 
 export default NewCollections

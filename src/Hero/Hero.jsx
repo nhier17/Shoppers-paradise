@@ -32,6 +32,10 @@ const StyledHero = styled.div`
 height: 100vh;
 background: linear-gradient(180deg, #fde1ff, #e1ffea22 60%);
 display: flex;
+@media (max-width: 768px) {
+    flex-direction: column;
+    margin-bottom: 20rem;
+  }
 `
 const Left = styled.div`
 flex: 1;
@@ -43,20 +47,34 @@ padding-left: 180px;
 line-height:   1.1; 
 h2 {
    color: #090909;
-    font-size: 26px;
+    font-size: 19px;
     font-weight: 600;
 }
 p {
     color: #171717;
-    font-size: 100px;
+    font-size: 60px;
     font-weight: 700;
 }
+@media (max-width: 768px) {
+    padding-left: 20px;
+    align-items: center;
+    text-align: center;
+ 
+  }
+
 `
 const Right = styled.div`
  flex: 1;
  display: flex;
  justify-content: center;
- align-items: center;   
+ align-items: center; 
+ img {
+  width: 100%;
+ }  
+ 
+ @media (max-width: 768px) {
+    margin-bottom: 20px;
+  }
 `
 const Icons = styled.div`
   display: flex;
@@ -80,5 +98,9 @@ color: white;
 font-size: 22px;
 font-weight: 500;
 cursor: pointer;
+
+@media (max-width: 768px) {
+    margin-bottom: 20px;
+  }
 `
 export default Hero

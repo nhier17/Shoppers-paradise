@@ -28,6 +28,11 @@ const Container = styled.div`
  padding: 0px 140px;
  margin-bottom: 150px;
  background: linear-gradient(180deg, #fde1ff 0%, #e1ffea22 60%); 
+
+ @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+  }
 `
 const OffersLeft = styled.div`
   display: flex;

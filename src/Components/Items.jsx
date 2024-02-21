@@ -5,7 +5,9 @@ const Items = ({name,image, new_price, old_price}) => {
   return (
     <Item>
       <img src={image} alt="product" />
+      <div>
       <p>{name}</p>
+      </div>
       <ItemPrices>
       <NewPrice>
         {new_price}
@@ -19,39 +21,44 @@ const Items = ({name,image, new_price, old_price}) => {
 }
 
 const Item = styled.div`
-  width: 350px;
-  p {
-    margin: 6px 0px;
-  }
+padding-left: 3rem;
+ cursor: pointer;
+p {
+  max-width: 223px;
+  
+}
   img {
     display: block;
-    width: 100%;
-    height: 60dvh;
-    object-fit: cover;
-   margin-top: 1rem;
-   margin-bottom: 1rem;
+    border-radius: 1rem;
+   width: 223.5px;
+   height: 223.5px;
+   object-fit: cover;
+ 
     transition: transform 450ms;
-    }
     &:hover{
 transform: scale(1.08);
+transition: 0.6s;
 opacity: 1;
   }
-  &:hover {
-    transform: scale(1.08);
-    transition: 0.6s;
-  }
+    }
+  
+
 `
 const ItemPrices = styled.div`
   display: flex;
-  gap: 30px;
+  gap: 10px;
+  
+  
 `
 const NewPrice = styled.div`
  color: #374151;
  font-size: 18px; 
+ 
  `
  const OldPrice = styled.div`
   color: #8c8c8c;
   font-size: 18px;
   text-decoration: line-through;
  `
+
 export default Items

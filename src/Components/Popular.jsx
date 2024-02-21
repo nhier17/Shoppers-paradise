@@ -36,15 +36,19 @@ const Popular = () => {
 }
 
 const PopularProducts = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    height: 90vh;
+  
+h1 {
+  padding-left: 3rem;
+}
+    @media (max-width: 768px) {
+    height: auto;
+    
+  }
 `
 const PItems = styled.div`
-    display: flex; 
-    gap: 30px;
-  
+ display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(20rem,1fr));
+    grid-gap: 3rem;
+    
 `
 export default Popular
