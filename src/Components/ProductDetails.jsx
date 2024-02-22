@@ -1,7 +1,8 @@
 import React from 'react'
-import { CiStar } from "react-icons/ci";
-import { FaStarHalfAlt } from "react-icons/fa";
+import { FaStar,FaStarHalf } from "react-icons/fa";
+
 import styled  from "styled-components"
+import {Link } from "react-router-dom"
 
 const ProductDetails = ({product}) => {
   
@@ -20,56 +21,68 @@ const ProductDetails = ({product}) => {
           </DisplayMain> 
       </Details>
     
-       <div className="right">
+       <DisplayRight>
        <h1>{product.name}</h1>
-       <div className="contents">
-       <CiStar />
-       <CiStar />
-       <CiStar />
-       <CiStar />
-       <FaStarHalfAlt />
+       <Description>
+        <FaStar/>
+        <FaStar/>
+        <FaStar/>
+        <FaStar/>
+       <FaStarHalf />
        <p>(122)</p>
-       </div>
-       <div className="prices">
-        <div className="old">
+       </Description>
+       <Prices>
+        <OldPrice>
           KSh {product.old_price}
-        </div>
-        <div className="new">
+        </OldPrice>
+        <NewPrice>
           KSh {product.new_price}
-        </div>
-       </div>
+        </NewPrice>
+       </Prices>
        <div className="description">
        Ready for pickup between 22 February & 23 February when you order within next 2hrs 33mins
        </div>
-       <div className="size">
+       <Sizes>
         <h1>Select Size</h1>
-        <div className="sizes">
+        <Contents>
           <div>S</div>
           <div>M</div>
           <div>L</div>
           <div>XL</div>
           <div>XXL</div>
-        </div>
-       </div>
+        </Contents>
+       </Sizes>
+      <Link to="/cart">
        <button>ADD TO CART</button>
-       <p>Cate</p>
-       </div>
+       </Link>
+        </DisplayRight>
        </Container>
   )
 }
 const Container = styled.div`
  display: flex;
- marging: 0px 170px; 
+ button {
+  padding: 20px 40px;
+  width: 200px;
+  font-size: 16px;
+  font-weight: 600;
+  background: #E07E1B;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  outline: none;  
+  cursor: pointer;
+ }
 `
 const Details = styled.div`
 display: flex;
-gap: 17px;
+gap: 1rem;
 
 `
 const List = styled.div`
-  displays: flex;
+  display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
   img {
     height: 163px;
     border-radius: 1rem;
@@ -83,5 +96,65 @@ img {
   border-radius: 1rem;
 }
 `
+const DisplayRight = styled.div`
+margin: 0px auto;
+display: flex;
+flex-direction: column;
+h1 {
+  color: #090909;
+  font-size: 19px;
+  font-weight: 600;
+}
 
+`
+
+const Description = styled.div`
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 10px;
+svg {
+  color: #F6B01E;
+  font-size: 19px;
+  gap: 5px;
+  
+}
+`
+const Prices = styled.div`
+ display: flex;
+ margin: 20px 0px;
+ gap: 30px;
+ font-size: 24px; 
+ justify-content: flex-start;
+ align-items: center;
+`
+const OldPrice = styled.div`
+color: #818181;
+text-decoration: line-through;
+font-size: 14px;
+`
+const NewPrice = styled.div`
+font-weight: 600;
+font-size: 20px;
+`
+const Sizes = styled.div`
+h1 {
+  margin-top: 55px;
+  color: #656565;
+  font-size: 20px;
+  font-weight: 600;
+}
+`
+const Contents = styled.div`
+  display: flex;
+  margin: 20px 0px;
+  gap: 20px;
+  div {
+    padding: 18px 24px;
+    background: #fbfbfb;
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+`
 export default ProductDetails
