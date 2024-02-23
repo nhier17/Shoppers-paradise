@@ -13,10 +13,10 @@ const Items = ({name,image, new_price, old_price,id}) => {
       </div>
       <ItemPrices>
       <NewPrice>
-        {new_price}
+       Ksh {new_price}
         </NewPrice>
       <OldPrice>
-        {old_price}    
+       Ksh {old_price}    
       </OldPrice>
       </ItemPrices>
     </Item>

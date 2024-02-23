@@ -11,15 +11,16 @@ import Footer from "./Components/Footer"
 function App() {
   return (
     <div className="App">
-      
+       <GlobalStyles/>
+       
       <NavBar/>
-      <GlobalStyles/>
-      <Pages/>
+      
       <Routes>
         <Route path="/register" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/*" element={<Pages />} />
+         </Routes>
         
-      </Routes>
       <Footer/>
     </div>
   );

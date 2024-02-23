@@ -15,8 +15,7 @@ const Product = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getProducts()
-      console.log(data)
-      const selectedProduct = data.products.find((p) => p.id === Number(params.id));
+      const selectedProduct = data.find((p) => p.id === Number(params.id));
       setProduct(selectedProduct)
       
     }

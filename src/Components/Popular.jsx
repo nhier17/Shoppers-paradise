@@ -11,7 +11,7 @@ const Popular = () => {
     const getDetails = async () => {
         const response = await axios.get(`https://shoppers-paradise17.onrender.com/api/products?&category=women`)
       
-        setPopular(response.data)
+        setPopular(response.data.products)
         
     }
     useEffect(()=>{
@@ -21,7 +21,7 @@ const Popular = () => {
     <PopularProducts>
       <h1>Popular in Women</h1>  
       <PItems>
-        {popular.products?.map((item) => (
+        {popular.map((item) => (
           
             <Items 
             key={item.id}

@@ -3,12 +3,16 @@ import axios from 'axios'
 import Items from "./Items"
 import styled from "styled-components"
 
-const RelatedProducts = () => {
+const RelatedProducts = ({productId}) => {
     const [related, setRelated] = useState([])
     
     const getDetails = async () => {
-        const response = await axios.get(`https://shoppers-paradise17.onrender.com/api/products`)
+        try {
+        const response = await axios.get(`https://shoppers-paradise17.onrender.com/api/products/`)
         setRelated(response.data.products)
+        } catch (error) {
+            console.log(error)
+        }
     }
     useEffect(() => {
         getDetails()

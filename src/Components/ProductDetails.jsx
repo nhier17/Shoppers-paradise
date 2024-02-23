@@ -1,11 +1,12 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { FaStar,FaStarHalf } from "react-icons/fa";
 
 import styled  from "styled-components"
 import {Link } from "react-router-dom"
+import {ShopContext} from "../Context/ShopContext"
 
 const ProductDetails = ({product}) => {
-  
+  const {addToCart} = useContext(ShopContext)
   return (
     <Container>
        
@@ -52,9 +53,9 @@ const ProductDetails = ({product}) => {
           <div>XXL</div>
         </Contents>
        </Sizes>
-      <Link to="/cart">
-       <button>ADD TO CART</button>
-       </Link>
+      
+       <button onClick={() => {addToCart(product.id)}}>ADD TO CART</button>
+      
         </DisplayRight>
        </Container>
   )
