@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from "styled-components"
 import {AiFillShopping} from "react-icons/ai"
 import { MdOutlineShoppingCart } from "react-icons/md";
-import { Link } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
 import {motion} from "framer-motion"
-import { useLocation } from "react-router-dom"
+import { ShopContext } from "../Context/ShopContext"
+
+
 
 const NavBar = () =>{
   const { pathname } = useLocation();
+  const {getTotalCartItems} = useContext(ShopContext)
   return (
     <StyledNav>
     <NavLogo>    
@@ -62,7 +65,7 @@ const NavBar = () =>{
     <MdOutlineShoppingCart/>
     </Link>
     <CartCounter>
-        0
+        {getTotalCartItems()}
     </CartCounter>
     </Cart>
     </StyledNav>

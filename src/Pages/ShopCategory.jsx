@@ -10,7 +10,7 @@ import styled from "styled-components"
 const ShopCategory = ({image,category}) => {
   const {getProducts} = useContext(ShopContext)
   const [products, setProducts] = useState([])
-console.log(products)
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await getProducts()

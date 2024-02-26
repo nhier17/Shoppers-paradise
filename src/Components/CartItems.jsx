@@ -5,9 +5,10 @@ import styled from "styled-components"
 
 
 const CartItems = () => {
-  const { getProducts, cartItem, removeFromCart } = useContext(ShopContext);
+  const { getProducts, cartItem, removeFromCart, totalCartItems } = useContext(ShopContext);
   const [cartProducts, setCartProducts] = useState([]);
-
+  const [totalPrice, setTotalPrice] = useState(0)
+// add products to cart
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -20,6 +21,16 @@ const CartItems = () => {
 
     fetchProducts();
   }, [getProducts]);
+  // getting total price of products in cart
+
+  useEffect(() => {
+    const calculateTotalPrice = async () => {
+      const total = await totalCartItems()
+      setTotalPrice(total)
+    }
+    calculateTotalPrice()
+  }, [totalCartItems]);
+
 
  
 
@@ -59,7 +70,7 @@ const CartItems = () => {
             <div>
                 <TotalItems>
                     <p>Subtotal</p>
-                    <p>KSh {cartProducts.reduce((a, b) => a + b.new_price * cartItem[b.id], 0)}</p>
+                    <p>KSh{totalPrice}</p>
                 </TotalItems>
                 <hr />
                 <TotalItems>
@@ -69,7 +80,7 @@ const CartItems = () => {
                 <hr />
                 <TotalItems>
                     <h3>Total</h3>
-                    <h3>KSH {0}</h3>
+                    <h3>KSH {totalPrice}</h3>
                 </TotalItems>
             </div>
             <button>CHECKOUT</button>
