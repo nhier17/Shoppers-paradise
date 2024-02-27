@@ -29,12 +29,13 @@ const Hero = () => {
   )
 }
 const StyledHero = styled.div`
-height: 100vh;
+
 background: linear-gradient(180deg, #fde1ff, #e1ffea22 60%);
 display: flex;
 @media (max-width: 768px) {
-    flex-direction: column;
-    margin-bottom: 20rem;
+   margin-bottom: 1rem;
+   margin-top: 1rem;
+   
   }
 `
 const Left = styled.div`
@@ -56,10 +57,15 @@ p {
     font-weight: 700;
 }
 @media (max-width: 768px) {
-    padding-left: 20px;
-    align-items: center;
-    text-align: center;
+    padding-left: 1rem;
  
+    h2 {
+      font-size: 19px;
+      margin-top: 1rem;
+    }
+    p {
+      font-size: 30px;
+    }
   }
 
 `
@@ -68,12 +74,13 @@ const Right = styled.div`
  display: flex;
  justify-content: center;
  align-items: center; 
- img {
-  width: 100%;
- }  
+  
  
  @media (max-width: 768px) {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    img {
+  width: 250px;
+ } 
   }
 `
 const Icons = styled.div`
@@ -91,16 +98,18 @@ align-items: center;
 gap: 15px;
 width: 250px;
 height: 70px;
-border-radius: 75px;
+border-radius: 20px;
 margin-top: 4rem;
 background: #FF9900;
 color: white;
+border: none;
 font-size: 22px;
-font-weight: 500;
 cursor: pointer;
 
 @media (max-width: 768px) {
     margin-bottom: 20px;
+    width: 100%;
+    font-size: 19px;
   }
 `
 export default Hero

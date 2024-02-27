@@ -22,9 +22,9 @@ const Container = styled.div`
    justify-content: center;
    margin:  auto;
    padding: 0px 140px;
-   margin-bottom: 150px;
+   margin-bottom: 2rem;
    background: linear-gradient(180deg, #fde1ff 0%, #e1ffea22 60%);
-   gap: 30px;
+   gap: 10px;
    h1 {
     color: #090909;
     font-size: 22px;
@@ -37,15 +37,14 @@ const Container = styled.div`
    }
    form {
     display: flex;
-    
     align-items: center;
     justify-content: center;
     gap: 20px;
     width: 730px;
     height: 70px;
     input {
-      color: #616161;
-      background: linear-gradient(35deg, #e9e4e4,#7e7979);
+     color: #616161;
+     background: linear-gradient(35deg, #e9e4e4,#7e7979);
      border: none;
      margin: 8px 0;
      padding: 1rem 3rem;
@@ -58,12 +57,23 @@ const Container = styled.div`
      height: 50px;
      background: #FF9900;
      font-size: 16px;
-     border-radius: 80px;
+     border-radius: 10px;
+     padding: 1rem;
      cursor: pointer;
-     background: black;
      color: white;
     }
    }
+  @media (max-width: 768px) {
+   padding: 0px 20px;
+   padding-left: 1rem;
+   margin-left: 1rem;
+   width: 90%;
+     }
+     form {
+      width: 50%;
+     }
+     
+
 `
 
 export default NewsLetter

@@ -160,8 +160,7 @@ flex: 1;
  margin-right: 100px;
  gap: 40px;
  button {
-    width: 262px;
-    height: 58px;
+    padding: 1rem;
     border: none;
     font-size: 18px;
     background: #E07E1B;

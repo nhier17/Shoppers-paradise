@@ -60,10 +60,11 @@ const ProductDetails = ({product}) => {
   )
 }
 const Container = styled.div`
+margin-top: 2rem;
+padding: 2rem;
  display: flex;
  button {
-  padding: 20px 40px;
-  width: 200px;
+  padding: 1rem;
   font-size: 16px;
   font-weight: 600;
   background: #E07E1B;
@@ -72,6 +73,10 @@ const Container = styled.div`
   border-radius: 8px;
   outline: none;  
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    
+  }
  }
 `
 const Details = styled.div`
@@ -100,6 +105,7 @@ const DisplayRight = styled.div`
 margin: 0px auto;
 display: flex;
 flex-direction: column;
+align-items: center;
 h1 {
   color: #090909;
   font-size: 19px;

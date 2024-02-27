@@ -4,6 +4,7 @@ const GlobalStyles = createGlobalStyle`
         margin: 0;
         padding:0;
         box-sizing: border-box;
+        
     }
     html{
         &::-webkit-scrollbar{
@@ -21,6 +22,17 @@ const GlobalStyles = createGlobalStyle`
         overflow-x: hidden;
         height:auto;
         width: auto;
+        padding: 3rem;
+        background: black;
+        p{
+        color: white;
+        }
+        h1, h2, h3, h4{
+            color: white
+        }
+        @media (max-width: 768px) {
+            padding: 1rem;
+        }
     }
 `
 export default GlobalStyles

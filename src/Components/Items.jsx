@@ -30,6 +30,13 @@ const truncatedName = truncate(name,20)
 const Item = styled.div`
 padding-left: 3rem;
  cursor: pointer;
+ 
+ transition: transform 450ms;
+    &:hover{
+transform: scale(1.08);
+transition: 0.6s;
+opacity: 1;
+  }
 p {
   max-width: 223px;
   
@@ -41,12 +48,6 @@ p {
    height: 223.5px;
    object-fit: cover;
  
-    transition: transform 450ms;
-    &:hover{
-transform: scale(1.08);
-transition: 0.6s;
-opacity: 1;
-  }
     }
   
 
@@ -58,13 +59,13 @@ const ItemPrices = styled.div`
   
 `
 const NewPrice = styled.div`
- color: #374151;
- font-size: 18px; 
+ color: white;
+ font-size: 14px; 
  
  `
  const OldPrice = styled.div`
-  color: #8c8c8c;
-  font-size: 18px;
+  color: grey;
+  font-size: 14px;
   text-decoration: line-through;
  `
 

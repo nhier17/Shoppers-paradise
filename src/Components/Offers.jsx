@@ -21,16 +21,23 @@ const Offers = () => {
 }
 
 const Container = styled.div`
- width: 65%;
+ width: 100%;
  height: 60vh;
  display: flex;
  padding-left: 1rem;
  margin-left: 2rem;
  padding: 0px 1rem;
- margin-bottom: 150px;
+ margin-bottom: 2rem;
  margin-top: 1rem;
  background: linear-gradient(180deg, #fde1ff 0%, #e1ffea22 60%); 
-
+@media (max-width: 768px) {
+  margin-left: 1rem;
+  padding-left:1rem;
+  img {
+    width: 250px;
+    
+  }
+}
 
 `
 const OffersLeft = styled.div`

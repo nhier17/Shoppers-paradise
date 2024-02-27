@@ -39,9 +39,12 @@ const Popular = () => {
 }
 
 const PopularProducts = styled.div`
+  margin-top: 2rem;
   
 h1 {
   padding-left: 3rem;
+  margin-bottom: 2rem;
+  font-size: 19px;
 }
     @media (max-width: 768px) {
     height: auto;
@@ -54,11 +57,16 @@ const PItems = styled.div`
     grid-gap: 1rem;
     @media (max-width: 768px) {
       display: flex;
-      gap: 1rem;
+      gap: 0.5rem;
       overflow: scroll;
 scrollbar-color: black;
 &::-webkit-scrollbar{
     display: none;
+}
+img {
+  width: 145px;
+  height: 193px;
+  object-fit: cover;
 }
     }
     

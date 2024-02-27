@@ -24,16 +24,28 @@ const NewCollections = () => {
   )
 }
 const Container = styled.div`
-
-   margin-bottom: 100px;
+margin-top: 5rem;
+margin-bottom: 5rem;
    h1 {
+      margin-bottom: 2rem;
     padding-left: 3rem;
+    font-size: 19px;
    }
 `
 const Collections = styled.div`
   display: grid;
     grid-template-columns: repeat(auto-fit,minmax(15rem,1fr));
     grid-gap: 1rem;
+    @media (max-width: 768px) {
+      display: flex;
+      gap: 0.5rem;
+      overflow: scroll;
+scrollbar-color: black;
+&::-webkit-scrollbar{
+    display: none;
+}
+    }
+    
  `
 
 export default NewCollections

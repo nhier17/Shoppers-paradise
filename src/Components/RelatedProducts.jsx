@@ -38,7 +38,7 @@ const RelatedProducts = ({productId, category}) => {
   )
 }
 const Container = styled.div`
-  box-sizing: border-box;
+padding: 2rem;
  height: 90vh;
  p {
   color: #171717;
@@ -58,6 +58,7 @@ const Contents = styled.div`
  margin-top: 50px;
  display: flex;
  overflow: scroll;
+ width: 70%;
  gap: 1rem;
  &::-webkit-scrollbar{
     display: none;
