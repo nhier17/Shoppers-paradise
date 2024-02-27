@@ -85,7 +85,7 @@ const StyledNav = styled.div`
   top: 0;
   z-index: 70;
   background: white;
-  box-shadow: 0 4px 4px -4px rgba(0, 0, 0, .12);
+  box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.12);
  a {
     text-decoration: none;
  }
@@ -137,11 +137,11 @@ svg {
 const Cart = styled.div`
 display: flex;
 align-items: center; 
-gap: 45px;
+gap: 20px;
 
 svg {
-    font-size: 38px;
-    
+    font-size: 30px;
+    color: black;
 }
 `
 const CartCounter = styled.div`

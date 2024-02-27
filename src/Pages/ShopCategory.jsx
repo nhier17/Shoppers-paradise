@@ -55,24 +55,25 @@ const ShopCategory = ({image,category}) => {
   )
 }
 const Container = styled.div`
- 
+   margin: 0 auto;
+  padding: 0 20px;
+  max-width: 1200px;
 `
 const Banner = styled.div`
   img {
     display: block;
     margin: 30px auto;
-    width: 82%;
+    width: 100%;
     }
 `
 const Sort = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0px 170px;
+   display: flex;
+   justify-content: space-between;
+  margin: 10px 0;
   p {
     font-size: 14px;
     color: #8c8c8c;
-    margin: 0px 10px;
+    margin-bottom: 5px;
   }
   span {
    
@@ -98,19 +99,21 @@ scrollbar-color: black;
 &::-webkit-scrollbar{
     display: none;
 }
+}
 `
 const LoadMore = styled.div`
 display: flex;
-justify-content: center;
-align-items: center;
-margin: 150px auto;
-width: 233px;
-height: 69px;
-border-radius: 75px;
-background: #ededed;
-color: #787878;
-font-size: 19px;
-font-weight: 600;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  width: 100%;
+  max-width: 300px;
+  height: 50px;
+  border-radius: 25px;
+  background: #ededed;
+  color: #787878;
+  font-size: 16px;
+  font-weight: 600;
 `
 
 export default ShopCategory

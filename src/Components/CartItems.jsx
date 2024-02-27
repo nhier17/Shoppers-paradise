@@ -116,13 +116,16 @@ const Container = styled.div`
 `
 const Details = styled.div`
  display: grid;
- grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 1fr; 
+ grid-template-columns: repeat(6, 1fr); 
  align-items: center;  
- gap: 75px;
+ gap: 20px;
  padding: 20px 0px;
  color: #454545;
  font-size: 18px;
  font-weight: 600;
+ @media (max-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `
 const Format = styled(Details)`
  font-size: 14px;
@@ -151,23 +154,30 @@ const Format = styled(Details)`
 const Description = styled.div`
  display: flex;
  align-items: center;
+ flex-direction: column;
  margin: 100px 0px;   
+ @media (max-width: 768px) {
+    margin: 50px 0;
+  }
 `
 const Summary = styled.div`
 flex: 1;
  display: flex; 
  flex-direction: column;
- margin-right: 100px;
- gap: 40px;
+ gap: 20px;
  button {
     padding: 1rem;
     border: none;
     font-size: 18px;
-    background: #E07E1B;
+    background: #e07e1b;
     color: white;
     border-radius: 8px;
     cursor: pointer;
- }
+  }
+
+  @media (max-width: 768px) {
+    margin-right: 0;
+  }
 `
 const TotalItems = styled.div`
 display: flex;
@@ -176,21 +186,25 @@ padding: 15px 0px;
 `
 const PromoCode = styled.div`
 flex: 1;
-
+font-size: 16px;
+  color: #555
  font-size: 16px;
  p {
     color: #555;
  }
-
+ @media (max-width: 768px) {
+    margin-top: 20px;
+  }
 `
 const PromoBox = styled.div`
-display: flex;
-width: 504px;
-height: 58px;
-margin-top: 15px;
-padding-left: 20px;
-background: #eaeaea;
-input {
+ display: flex;
+  width: 504px;
+  height: 58px;
+  margin-top: 15px;
+  padding-left: 20px;
+  background: #eaeaea;
+
+  input {
     width: 330px;
     height: 50px;
     border: none;
@@ -198,8 +212,9 @@ input {
     font-size: 16px;
     border-radius: 8px;
     background: transparent;
-}
-button {
+  }
+
+  button {
     width: 170px;
     height: 58px;
     font-size: 16px;
@@ -208,6 +223,10 @@ button {
     cursor: pointer;
     background: black;
     color: white;
-}
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 export default CartItems;

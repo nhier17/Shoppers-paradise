@@ -65,20 +65,23 @@ padding: 2rem;
  display: flex;
  
  button {
-  padding: 1rem;
-  font-size: 16px;
-  font-weight: 600;
-  background: #E07E1B;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  outline: none;  
-  cursor: pointer;
+  margin-top: 1rem;
+    padding: 1rem;
+    font-size: 16px;
+    font-weight: 600;
+    background: #e07e1b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
   }
   div {
     color: white;
   }
-  
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 const Details = styled.div`
 display: flex;
@@ -104,7 +107,7 @@ img {
 
 `
 const DisplayRight = styled.div`
-margin: 0px auto;
+margin: 1rem auto;
 display: flex;
 flex-direction: column;
 align-items: center;

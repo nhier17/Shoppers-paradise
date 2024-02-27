@@ -71,6 +71,7 @@ const Container = styled.div`
      }
      form {
       width: 50%;
+      padding-left: 1rem;
      }
      
 

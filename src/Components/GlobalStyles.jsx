@@ -22,7 +22,7 @@ const GlobalStyles = createGlobalStyle`
         overflow-x: hidden;
         height:auto;
         width: auto;
-        padding: 3rem;
+        
         background: black;
         p{
         color: white;

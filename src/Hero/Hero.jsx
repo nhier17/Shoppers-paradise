@@ -74,13 +74,20 @@ const Right = styled.div`
  display: flex;
  justify-content: center;
  align-items: center; 
+ img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+  }
+
   
  
- @media (max-width: 768px) {
+  @media (max-width: 768px) {
     margin-bottom: 10px;
+
     img {
-  width: 250px;
- } 
+      width: 100%;
+    }
   }
 `
 const Icons = styled.div`
@@ -92,21 +99,21 @@ const Icons = styled.div`
   }
 `
 const Latest = styled.button`
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 15px;
-width: 250px;
-height: 70px;
-border-radius: 20px;
-margin-top: 4rem;
-background: #FF9900;
-color: white;
-border: none;
-font-size: 22px;
-cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  width: 250px;
+  height: 70px;
+  border-radius: 20px;
+  margin-top: 4rem;
+  background: #ff9900;
+  color: white;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
 
-@media (max-width: 768px) {
+  @media (max-width: 768px) {
     margin-bottom: 20px;
     width: 100%;
     font-size: 19px;
