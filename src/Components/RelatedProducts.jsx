@@ -3,23 +3,25 @@ import axios from 'axios'
 import Items from "./Items"
 import styled from "styled-components"
 
-const RelatedProducts = ({productId}) => {
+const RelatedProducts = ({productId, category}) => {
     const [related, setRelated] = useState([])
     
     const getDetails = async () => {
         try {
-        const response = await axios.get(`https://shoppers-paradise17.onrender.com/api/products/`)
+        const response = await axios.get(`https://shoppers-paradise17.onrender.com/api/products?&category=${category}`)
         setRelated(response.data.products)
+        console.log(response.data)
         } catch (error) {
             console.log(error)
         }
     }
     useEffect(() => {
         getDetails()
-    }, [])
+    }, [productId, category])
   return (
     <Container>
-        <h1>Related Products</h1>
+        <p>You may also like</p>
+        <hr />
         <Contents>
            {related.map((item) => (
             <Items
@@ -36,14 +38,12 @@ const RelatedProducts = ({productId}) => {
   )
 }
 const Container = styled.div`
- display: flex;
- flex-direction: column;
- gap: 10px;
- align-items: center;  
+  box-sizing: border-box;
  height: 90vh;
- h1 {
+ p {
   color: #171717;
-  font-size: 26px;
+  font-size: 1rem;
+  padding: 1rem;
   font-weight: 600;  
  }
  hr {
@@ -57,7 +57,10 @@ const Container = styled.div`
 const Contents = styled.div`
  margin-top: 50px;
  display: flex;
- gap: 30px
-
+ overflow: scroll;
+ gap: 1rem;
+ &::-webkit-scrollbar{
+    display: none;
+}
 `
 export default RelatedProducts

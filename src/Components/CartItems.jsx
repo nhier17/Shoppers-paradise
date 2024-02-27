@@ -4,6 +4,7 @@ import { RiCloseCircleLine } from 'react-icons/ri';
 import styled from "styled-components"
 
 
+
 const CartItems = () => {
   const { getProducts, cartItem, removeFromCart, totalCartItems } = useContext(ShopContext);
   const [cartProducts, setCartProducts] = useState([]);
@@ -31,10 +32,7 @@ const CartItems = () => {
     calculateTotalPrice()
   }, [totalCartItems]);
 
-
- 
-
-  return (
+   return (
     <Container>
       <Details>
         <p>Products</p>
@@ -103,7 +101,18 @@ const Container = styled.div`
     height: 3px;
     background: #e2e2e2;
     border: 0;
+    height: 3px;
  }
+ @media (max-width: 1200px) {
+    margin: 100px 50px;
+  }
+
+  @media (max-width: 768px) {
+    margin: 50px;
+  }
+
+
+ 
 `
 const Details = styled.div`
  display: grid;

@@ -61,6 +61,12 @@ margin-top: 5rem;
     width: 768px;
     max-width: 100%;
     min-height: 480px;
+
+    @media (max-width: 768px) {
+    width: 100%;
+    
+    margin: 2rem 0;
+  }
     button{
     background-color: #512da8;
     color: #fff;
@@ -83,10 +89,16 @@ margin-top: 5rem;
     flex-direction: column;
     padding: 0 40px;
     height: 100%;  
+    @media (max-width: 768px) {
+      margin-top: 2rem;
+    }
     }
    P{
     margin-top: 1rem;
     font-size: 1rem;
+    @media (max-width: 768px) {
+      margin-top: 0.5rem;
+    }
    }
  
 `

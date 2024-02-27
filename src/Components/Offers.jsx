@@ -24,15 +24,14 @@ const Container = styled.div`
  width: 65%;
  height: 60vh;
  display: flex;
- margin: auto;
- padding: 0px 140px;
+ padding-left: 1rem;
+ margin-left: 2rem;
+ padding: 0px 1rem;
  margin-bottom: 150px;
+ margin-top: 1rem;
  background: linear-gradient(180deg, #fde1ff 0%, #e1ffea22 60%); 
 
- @media (max-width: 768px) {
-    flex-direction: column;
-    height: auto;
-  }
+
 `
 const OffersLeft = styled.div`
   display: flex;
@@ -50,10 +49,10 @@ const OffersLeft = styled.div`
     font-weight: 600;
    }
    button {
-    width: 282px;
+    width: 200px;
     height: 70px;
     border-radius: 20px;
-    background: #ff4141;
+    background: #FF9900;
     color: white;
     font-size: 18px;
     font-weight: 600;

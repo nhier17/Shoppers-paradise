@@ -3,13 +3,17 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 
 const Items = ({name,image, new_price, old_price,id}) => {
+  const truncate = (str,n) => {
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+}
+const truncatedName = truncate(name,20)
   return (
     <Item>
       <Link to={`/product/${id}`} onClick={window.scrollTo(0,0)}>
       <img src={image} alt="product" />
       </Link>
       <div>
-      <p>{name}</p>
+      <p>{truncatedName}</p>
       </div>
       <ItemPrices>
       <NewPrice>

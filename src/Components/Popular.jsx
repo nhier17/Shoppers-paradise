@@ -52,6 +52,15 @@ const PItems = styled.div`
  display: grid;
     grid-template-columns: repeat(auto-fit,minmax(15rem,1fr));
     grid-gap: 1rem;
+    @media (max-width: 768px) {
+      display: flex;
+      gap: 1rem;
+      overflow: scroll;
+scrollbar-color: black;
+&::-webkit-scrollbar{
+    display: none;
+}
+    }
     
 `
 export default Popular

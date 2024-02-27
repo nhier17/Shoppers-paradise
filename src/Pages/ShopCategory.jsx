@@ -41,6 +41,7 @@ const ShopCategory = ({image,category}) => {
           image={product.image}
           new_price={product.new_price}
           old_price={product.old_price}  
+          
           />
         } else {
           return null
@@ -89,6 +90,14 @@ display: grid;
 grid-template-columns: repeat(auto-fit,minmax(15rem,1fr));
 grid-gap: 2rem;
 margin-top: 1rem;
+@media (max-width: 768px) {
+      display: flex;
+      gap: 1rem;
+      overflow: scroll;
+scrollbar-color: black;
+&::-webkit-scrollbar{
+    display: none;
+}
 `
 const LoadMore = styled.div`
 display: flex;

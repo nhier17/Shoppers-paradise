@@ -56,7 +56,7 @@ const Container = styled.div`
     button {
      width: 180px;
      height: 50px;
-     
+     background: #FF9900;
      font-size: 16px;
      border-radius: 80px;
      cursor: pointer;

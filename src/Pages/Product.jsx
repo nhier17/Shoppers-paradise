@@ -9,6 +9,7 @@ import RelatedProducts from "../Components/RelatedProducts"
 const Product = () => {
   const {getProducts} = useContext(ShopContext)
   const [product, setProduct] = useState({})
+  const [category, setCategory] = useState("")
   
   const params = useParams()
 
@@ -16,7 +17,11 @@ const Product = () => {
     const fetchData = async () => {
       const data = await getProducts()
       const selectedProduct = data.find((p) => p.id === Number(params.id));
-      setProduct(selectedProduct)
+      if (selectedProduct) {
+        setProduct(selectedProduct)
+        setCategory(selectedProduct.category)
+      }
+      
       
     }
     fetchData()
@@ -25,7 +30,7 @@ const Product = () => {
   return (
     <div>
       <ProductDetails product={product}/>
-      <RelatedProducts/>
+      <RelatedProducts category={category} productId={params.id}/>
     </div>
   )
 }

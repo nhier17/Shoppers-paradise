@@ -5,6 +5,7 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { Link,useLocation } from 'react-router-dom';
 import {motion} from "framer-motion"
 import { ShopContext } from "../Context/ShopContext"
+import { FaUser } from 'react-icons/fa'
 
 
 
@@ -59,7 +60,7 @@ const NavBar = () =>{
     </ul> 
     <Cart>
     <Link to="/login">
-    <button>Login</button>
+    <FaUser />
     </Link>
     <Link to="/cart">
     <MdOutlineShoppingCart/>
@@ -74,29 +75,35 @@ const NavBar = () =>{
 }
 
 const StyledNav = styled.div`
- display: flex;
-justify-content: space-between;
- padding: 16px;
- box-shadow: 0 1px 3px -2px black;
+  min-height: 10vh;
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 70;
+  background: white;
+  box-shadow: 0 4px 4px -4px rgba(0, 0, 0, .12);
  a {
     text-decoration: none;
  }
 ul {
     display: flex;
     align-items: center;
-    gap: 3rem;
+    gap: 1rem;
     list-style: none;   
 } 
 li {
+  padding-left: 1rem;
  position: relative;   
 }
 @media (max-width: 768px) {
   justify-content: center;
 }
-
-
-
 `
+
 const Line = styled(motion.div)`
   height: 0.3rem;
   background: #23d997;
@@ -131,22 +138,10 @@ const Cart = styled.div`
 display: flex;
 align-items: center; 
 gap: 45px;
-button {
-    width: 157px;
-    height: 58px;
-    border-radius: 75px;
-    outline: none;
-    border: 1px solid #7a7a7a;
-    color: #515151;
-    font-size: 20px;
-    background: white;
-    cursor: pointer;
-    &:active {
-        background: #b91c1c;
-    }
-}
+
 svg {
     font-size: 38px;
+    
 }
 `
 const CartCounter = styled.div`
@@ -159,7 +154,7 @@ const CartCounter = styled.div`
     margin-left: -55px;
     border-radius: 11px;
     font-size: 14px;
-    background: red;
+    background: #FF9900;
     color: white;
 `
 
