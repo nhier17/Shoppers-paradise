@@ -63,6 +63,7 @@ const Container = styled.div`
 margin-top: 2rem;
 padding: 2rem;
  display: flex;
+ 
  button {
   padding: 1rem;
   font-size: 16px;
@@ -73,11 +74,11 @@ padding: 2rem;
   border-radius: 8px;
   outline: none;  
   cursor: pointer;
-
-  @media (max-width: 768px) {
-    
   }
- }
+  div {
+    color: white;
+  }
+  
 `
 const Details = styled.div`
 display: flex;
@@ -99,7 +100,8 @@ img {
   height: 700px;
   object-fit: cover;
   border-radius: 1rem;
-}
+ }
+
 `
 const DisplayRight = styled.div`
 margin: 0px auto;
@@ -107,7 +109,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 h1 {
-  color: #090909;
+  color: white;
   font-size: 19px;
   font-weight: 600;
 }
@@ -141,7 +143,8 @@ font-size: 14px;
 `
 const NewPrice = styled.div`
 font-weight: 600;
-font-size: 20px;
+font-size: 18px;
+color: white;
 `
 const Sizes = styled.div`
 h1 {
@@ -156,6 +159,7 @@ const Contents = styled.div`
   margin: 20px 0px;
   gap: 20px;
   div {
+    color: grey;
     padding: 18px 24px;
     background: #fbfbfb;
     border: 1px solid #ebebeb;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect,useCallback } from 'react'
 import axios from 'axios'
 import Items from "./Items"
 import styled from "styled-components"
@@ -6,18 +6,20 @@ import styled from "styled-components"
 const RelatedProducts = ({productId, category}) => {
     const [related, setRelated] = useState([])
     
-    const getDetails = async () => {
+    const getDetails = useCallback(async () => {
         try {
-        const response = await axios.get(`https://shoppers-paradise17.onrender.com/api/products?&category=${category}`)
-        setRelated(response.data.products)
-        console.log(response.data)
-        } catch (error) {
-            console.log(error)
+          const response = await axios.get(`https://shoppers-paradise17.onrender.com/api/products?&category=${category}`);
+          setRelated(response.data.products);
+           } catch (error) {
+          console.log(error);
         }
-    }
-    useEffect(() => {
-        getDetails()
-    }, [productId, category])
+      }, [category]);
+    
+      useEffect(() => {
+        getDetails();
+      }, [getDetails]);
+    
+ 
   return (
     <Container>
         <p>You may also like</p>
@@ -41,7 +43,7 @@ const Container = styled.div`
 padding: 2rem;
  height: 90vh;
  p {
-  color: #171717;
+  color: white;
   font-size: 1rem;
   padding: 1rem;
   font-weight: 600;  
