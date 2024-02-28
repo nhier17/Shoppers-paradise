@@ -18,11 +18,10 @@ const GlobalStyles = createGlobalStyle`
   }
     }
     body {
-        font-family: 'Poppins',sans-serif;
         overflow-x: hidden;
         height:auto;
         width: auto;
-        
+        font-family: "Roboto",sans-serif;
         background: black;
         p{
         color: white;

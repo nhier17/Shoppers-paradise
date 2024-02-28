@@ -1,9 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext,useState } from 'react'
 import styled from "styled-components"
-import {AiFillShopping} from "react-icons/ai"
+import { CiMenuBurger } from "react-icons/ci";
 import { MdOutlineShoppingCart } from "react-icons/md";
+
 import { Link,useLocation } from 'react-router-dom';
-import {motion} from "framer-motion"
+import {motion,AnimatePresence } from "framer-motion"
 import { ShopContext } from "../Context/ShopContext"
 import { FaUser } from 'react-icons/fa'
 
@@ -12,12 +13,51 @@ import { FaUser } from 'react-icons/fa'
 const NavBar = () =>{
   const { pathname } = useLocation();
   const {getTotalCartItems} = useContext(ShopContext)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  //toggle menu
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
+
   return (
     <StyledNav>
     <NavLogo>    
-        <AiFillShopping/>
+    <CiMenuBurger onClick={toggleMenu} />
         <p>SHOPPERS PARADISE</p>
     </NavLogo>   
+    <AnimatePresence>
+        {isMenuOpen && (
+          <MobileMenu
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+          >
+            <ul>
+              <li>
+                <Link to="/" onClick={toggleMenu}>
+                  Shop
+                </Link>
+              </li>
+              <li>
+                <Link to="/men" onClick={toggleMenu}>
+                  Men
+                </Link>
+              </li>
+              <li>
+                <Link to="/women" onClick={toggleMenu}>
+                  Women
+                </Link>
+              </li>
+              <li>
+                <Link to="/kids" onClick={toggleMenu}>
+                  Kids
+                </Link>
+              </li>
+            </ul>
+          </MobileMenu>
+        )}
+      </AnimatePresence>
     <ul>
      
      <li>
@@ -97,15 +137,47 @@ ul {
     list-style: none;   
     margin: 0;
     padding: 0;
+    
 } 
 li {
   padding-left: 1rem;
  position: relative;   
 }
 @media (max-width: 768px) {
-  justify-content: center;
+  justify-content: space-between;
+  ul {
+    display: none;
+  }
 }
 `
+const MobileMenu = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: white;
+  z-index: 69;
+cursor: pointer;
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+    padding-top: 2rem;
+
+    li {
+      padding: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+      font-size: 1.2rem;
+    }
+  }
+`;
 
 const Line = styled(motion.div)`
   height: 0.3rem;
@@ -128,6 +200,7 @@ p {
    font-size: 20px;
    color: #171717;
    font-weight: 600;
+   font-family: "Montserrat", "Helvetica";
    @media (max-width: 768px) {
     display: none;
    }
@@ -135,7 +208,12 @@ p {
 } 
 svg {
     font-size: 38px;
-    color: orange;
+    color: black;
+    cursor: pointer;
+    display: none;
+    @media(max-width: 768px) {
+      display: initial;
+}
 }
 
 `
@@ -147,6 +225,7 @@ gap: 20px;
 svg {
     font-size: 30px;
     color: black;
+    display: initial;
 }
 `
 const CartCounter = styled.div`
