@@ -85,6 +85,7 @@ const Contents = styled.div`
 padding: 10px 20px;
 border-radius: 40px;
 border: 1px solid #888; 
+color: white;
 `
 const Products = styled.div`
 display: grid;
@@ -92,13 +93,14 @@ grid-template-columns: repeat(auto-fit,minmax(15rem,1fr));
 grid-gap: 2rem;
 margin-top: 1rem;
 @media (max-width: 768px) {
-      display: flex;
-      gap: 1rem;
-      overflow: scroll;
-scrollbar-color: black;
+display: flex;
+gap: 0.5rem;
+overflow: scroll;
 &::-webkit-scrollbar{
     display: none;
+  
 }
+
 }
 `
 const LoadMore = styled.div`

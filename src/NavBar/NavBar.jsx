@@ -86,6 +86,7 @@ const StyledNav = styled.div`
   z-index: 70;
   background: white;
   box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.12);
+  
  a {
     text-decoration: none;
  }
@@ -94,6 +95,8 @@ ul {
     align-items: center;
     gap: 1rem;
     list-style: none;   
+    margin: 0;
+    padding: 0;
 } 
 li {
   padding-left: 1rem;
@@ -110,9 +113,11 @@ const Line = styled(motion.div)`
   width: 0%;
   position: absolute;
   bottom: -80%;
-  left: 60%;
+  left: 50%;
+  transform: translateX(-50%);
   @media (max-width: 768px) {
     left: 0%;
+    transform: translateX(0%);
   }
 `;
 const NavLogo = styled.div`

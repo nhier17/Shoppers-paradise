@@ -86,6 +86,11 @@ padding: 2rem;
 const Details = styled.div`
 display: flex;
 gap: 1rem;
+@media (max-width: 768px) {
+  flex-direction: row;
+  align-items: center;
+  
+}
 
 `
 const List = styled.div`
@@ -95,7 +100,21 @@ const List = styled.div`
   img {
     height: 163px;
     border-radius: 1rem;
+    @media (max-width: 768px) {
+      height: 150px;
+      width: 100%;
+      object-fit: contain;
+      
+    }
   }
+  @media (max-width: 768px) {
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    scroll-snap-type: x mandatory; /* Snap to the images */
+  }
+  
 `
 const DisplayMain = styled.div`
 img {
@@ -103,6 +122,12 @@ img {
   height: 700px;
   object-fit: cover;
   border-radius: 1rem;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
  }
 
 `

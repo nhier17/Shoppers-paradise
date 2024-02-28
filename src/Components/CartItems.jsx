@@ -125,6 +125,7 @@ const Details = styled.div`
  font-weight: 600;
  @media (max-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
+    font-size: 16px;
   }
 `
 const Format = styled(Details)`
@@ -149,6 +150,12 @@ const Format = styled(Details)`
     border-radius: 8px;
     cursor: pointer;
  }
+ @media (max-width: 768px) {
+    font-size: 14px;
+    svg {
+      margin: 0px 10px;
+    }
+  }
 
 `
 const Description = styled.div`
@@ -177,6 +184,9 @@ flex: 1;
 
   @media (max-width: 768px) {
     margin-right: 0;
+    button {
+      font-size: 14px;
+    }
   }
 `
 const TotalItems = styled.div`
@@ -191,6 +201,7 @@ font-size: 16px;
  font-size: 16px;
  p {
     color: #555;
+    font-size: 14px;
  }
  @media (max-width: 768px) {
     margin-top: 20px;
@@ -198,6 +209,7 @@ font-size: 16px;
 `
 const PromoBox = styled.div`
  display: flex;
+ justify-content: space-between;
   width: 504px;
   height: 58px;
   margin-top: 15px;
@@ -205,19 +217,19 @@ const PromoBox = styled.div`
   background: #eaeaea;
 
   input {
-    width: 330px;
+    width: 70%;
     height: 50px;
     border: none;
     outline: none;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 8px;
     background: transparent;
   }
 
   button {
-    width: 170px;
+    width: 30%;
     height: 58px;
-    font-size: 16px;
+    font-size: 14px;
     border: none;
     border-radius: 80px;
     cursor: pointer;
@@ -226,7 +238,17 @@ const PromoBox = styled.div`
   }
 
   @media (max-width: 768px) {
-    width: 100%;
+  width: 100%;
+  height: auto;
+
+    input {
+      width: 40%;
+      
+    }
+
+    button {
+      width: 40%;
+    }
   }
 `
 export default CartItems;
