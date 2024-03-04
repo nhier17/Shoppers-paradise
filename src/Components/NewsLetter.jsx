@@ -62,6 +62,9 @@ const Container = styled.div`
      cursor: pointer;
      color: white;
     }
+    @media (max-width: 768px) {
+      display: block;
+    }
    }
   @media (max-width: 768px) {
    padding: 0px 20px;

@@ -58,27 +58,26 @@ const Signup = () => {
       const Container = styled.div`
       margin: auto;
       margin-top: 5rem;
-         background-color: #fff;
-          border-radius: 30px;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-          position: relative;
-          overflow: hidden;
-          width: 768px;
-          max-width: 100%;
-          min-height: 480px;
-          button{
-          background-color: #512da8;
-          color: #fff;
-          font-size: 12px;
-          padding: 10px 45px;
-          border: 1px solid transparent;
-          border-radius: 8px;
-          font-weight: 600;
-          letter-spacing: 0.5px;
-          text-transform: uppercase;
-          margin-top: 10px;
-          width: 50%;
-          cursor: pointer;
+      background-color: #fff;
+      border-radius: 30px;
+      position: relative;
+      overflow: hidden;
+      width: 768px;
+      max-width: 100%;
+      min-height: 480px;
+      button{
+      background-color: #512da8;
+      color: #fff;
+      font-size: 12px;
+      padding: 10px 45px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-top: 10px;
+      width: 50%;
+      cursor: pointer;
           }
           form {
             margin-top: 5rem;
@@ -89,9 +88,27 @@ const Signup = () => {
           flex-direction: column;
           padding: 0 40px;
           height: 100%;  
+          @media (max-width: 768px) {
+            margin-top: 2rem;
+            background: black;
+          }
+          }
+          h1 {
+            color: black;
+            @media (max-width: 768px) {
+              color: white;
+            }
+  
           }
           p {
             margin-top: 1rem;
+            color: black;
+            @media (max-width: 768px) {
+              color: white;
+            }
+          }
+          @media (max-width: 768px) {
+            background: black;
           }
         `
       

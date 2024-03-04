@@ -66,11 +66,16 @@ margin-top: 5rem;
     min-height: 480px;
     h1 {
       color: black;
+      @media (max-width: 768px) {
+        color: #fff;
+      }
+      
     }
 
     @media (max-width: 768px) {
     width: 100%;
     margin: 2rem auto;
+    background: black;
   }
     button{
     background-color: #512da8;
@@ -100,14 +105,17 @@ margin-top: 5rem;
     height: 100%;  
     @media (max-width: 768px) {
       margin-top: 2rem;
+      background-color: black;
+      color: #fff;
     }
     }
    P{
     margin-top: 1rem;
     font-size: 1rem;
+    color: black;
     @media (max-width: 768px) {
       margin-top: 0.5rem;
-      color: black;
+      color: #fff;
     }
    }
  

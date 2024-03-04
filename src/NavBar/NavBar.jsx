@@ -15,7 +15,8 @@ const NavBar = () =>{
   const { pathname } = useLocation();
   const {getTotalCartItems} = useContext(ShopContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-   
+  //check if user is logged in
+  const [isLoggedin, setIsLoggedin] = useState(true) 
  
   //toggle menu
   const toggleMenu = () => {
@@ -106,12 +107,19 @@ const NavBar = () =>{
      </li> 
     </ul> 
     <Cart>
+      {isLoggedin ? (
+        <>
     <Link to="/login">
     <FaUser />
     </Link>
+    </>
+      ) : (
+    
     <Link to="/logout">
-    <Logout />
+    <Logout setIsLoggedin={setIsLoggedin}/>
     </Link>
+    
+    )}
      <Link to="/cart">
     <MdOutlineShoppingCart/>
     </Link>
@@ -251,5 +259,6 @@ const CartCounter = styled.div`
     background: #FF9900;
     color: white;
 `
+
 
 export default NavBar
