@@ -11,13 +11,13 @@ const ProductDetails = ({product}) => {
        
       <Details>
          <List>
-          <img src={product.image} alt={product.name} />
-          <img src={product.image} alt={product.name} />
-          <img src={product.image} alt={product.name} />
-          <img src={product.image} alt={product.name} />
+          <img crossOrigin="anonymous" src={product.image} alt={product.name} />
+          <img crossOrigin="anonymous" src={product.image} alt={product.name} />
+          <img crossOrigin="anonymous" src={product.image} alt={product.name} />
+          <img crossOrigin="anonymous" src={product.image} alt={product.name} />
           </List>
          <DisplayMain>
-          <img src={product.image} alt={product.name}/>
+          <img crossOrigin="anonymous" src={product.image} alt={product.name}/>
           </DisplayMain> 
       </Details>
     

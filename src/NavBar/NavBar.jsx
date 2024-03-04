@@ -1,9 +1,9 @@
 import React, { useContext,useState } from 'react'
 import styled from "styled-components"
 import { CiMenuBurger } from "react-icons/ci";
-import { MdOutlineShoppingCart } from "react-icons/md";
+import { MdOutlineShoppingCart,MdClose } from "react-icons/md";
 
-import { Link,useLocation } from 'react-router-dom';
+import { Link,useLocation,useNavigate } from 'react-router-dom';
 import {motion,AnimatePresence } from "framer-motion"
 import { ShopContext } from "../Context/ShopContext"
 import { FaUser } from 'react-icons/fa'
@@ -14,16 +14,28 @@ const NavBar = () =>{
   const { pathname } = useLocation();
   const {getTotalCartItems} = useContext(ShopContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
+   
+  const navigate = useNavigate()
+  
   //toggle menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
+  //logout user
+  const logOutHandler = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+    navigate('/login')
+  }
 
   return (
     <StyledNav>
-    <NavLogo>    
+    <NavLogo>   
+      {isMenuOpen ? ( 
+        <MdClose onClick={toggleMenu} />
+      ) : (
     <CiMenuBurger onClick={toggleMenu} />
+    )}
         <p>SHOPPERS PARADISE</p>
     </NavLogo>   
     <AnimatePresence>
@@ -102,6 +114,9 @@ const NavBar = () =>{
     <Link to="/login">
     <FaUser />
     </Link>
+    <Link to="logout" onClick={logOutHandler}>
+    Logout
+    </Link>
     <Link to="/cart">
     <MdOutlineShoppingCart/>
     </Link>
@@ -147,6 +162,7 @@ li {
   justify-content: space-between;
   ul {
     display: none;
+    z-index: 68;
   }
 }
 `
@@ -157,17 +173,16 @@ const MobileMenu = styled(motion.div)`
   width: 40%;
   height: 100%;
   background: white;
-  z-index: 69;
 cursor: pointer;
+z-index: -1;
+transition: transform 0.3s ease-in-out;
   ul {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+     gap: 1rem;
     list-style: none;
-    padding-top: 2rem;
-
-    li {
+    padding-top: 5rem;
+     li {
       padding: 1rem;
     }
 

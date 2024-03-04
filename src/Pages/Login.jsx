@@ -22,12 +22,17 @@ const Login = () => {
       e.preventDefault();
     
      try {
-      const response = await axios.post('https://shoppers-paradise17.onrender.com/api/v1/auth/login', formData)
-      console.log("suceess",response.data)
+      const response = await axios.post('https://shoppers-paradise17.onrender.com/api/auth/login', formData)
+      alert("suceess",response.data)
+      if (response.data.success) {
+        return navigate('/')
+      } else {
+        alert("Incorect password.")
+      }
      } catch (error) {
       console.log("Error loging in", error.message)
      }
-     navigate('/')
+    
   }
   return (
   <Container>
@@ -51,7 +56,7 @@ const Login = () => {
   )
 }
 const Container = styled.div`
-margin-left: 3rem;
+margin: auto;
 margin-top: 5rem;
    background-color: #fff;
     border-radius: 30px;
@@ -61,11 +66,13 @@ margin-top: 5rem;
     width: 768px;
     max-width: 100%;
     min-height: 480px;
+    h1 {
+      color: black;
+    }
 
     @media (max-width: 768px) {
     width: 100%;
-    
-    margin: 2rem 0;
+    margin: 2rem auto;
   }
     button{
     background-color: #512da8;
@@ -79,6 +86,10 @@ margin-top: 5rem;
     text-transform: uppercase;
     margin-top: 10px;
     cursor: pointer;
+    @media (max-width: 768px) {
+    font-size: 10px;
+    padding: 8px 30px;
+  }
     }
     form {
       margin-top: 5rem;
@@ -98,6 +109,7 @@ margin-top: 5rem;
     font-size: 1rem;
     @media (max-width: 768px) {
       margin-top: 0.5rem;
+      color: black;
     }
    }
  
@@ -105,13 +117,14 @@ margin-top: 5rem;
 
 const Contents = styled.div`
 position: relative;
-width: 50%;
+width: 80%;
+margin: 1rem 0;
   input {
       color: black;
      background: linear-gradient(35deg, #e9e4e4,#7e7979);
     border: none;
     margin: 8px 0;
-    padding: 1rem 3rem;
+    padding: 1rem 2rem;
     font-size: 13px;
     border-radius: 8px;
     width: 100%;

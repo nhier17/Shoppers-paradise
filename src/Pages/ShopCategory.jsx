@@ -89,8 +89,8 @@ color: white;
 `
 const Products = styled.div`
 display: grid;
-grid-template-columns: repeat(auto-fit,minmax(15rem,1fr));
-grid-gap: 2rem;
+grid-template-columns: repeat(auto-fit,minmax(10rem,1fr));
+grid-gap: 4rem;
 margin-top: 1rem;
 @media (max-width: 768px) {
 display: flex;

@@ -10,7 +10,6 @@ const Popular = () => {
     
     const getDetails = async () => {
         const response = await axios.get(`https://shoppers-paradise17.onrender.com/api/products?&category=women`)
-      
         setPopular(response.data.products)
         
     }
@@ -53,8 +52,8 @@ h1 {
 `
 const PItems = styled.div`
  display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(15rem,1fr));
-    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit,minmax(10rem,1fr));
+    grid-gap: 3rem;
     @media (max-width: 768px) {
       display: flex;
       gap: 0.5rem;

@@ -31,6 +31,7 @@ const GlobalStyles = createGlobalStyle`
         }
         @media (max-width: 768px) {
             padding: 1rem;
+        
         }
     }
 `

@@ -7,11 +7,13 @@ import Cart from './Cart';
 import men from '../Images/banner_men.png';
 import women from '../Images/banner_women.png';
 import kids from '../Images/banner_kids.png';
+import { AnimatePresence } from "framer-motion"
 
 function Pages(){
   const location = useLocation();
   return (
     <div>
+      <AnimatePresence mode="wait">
       <Routes  location={location} key={location.pathname}>
         <Route path="/" element={<Shop />} />
         <Route path="/men" element={<ShopCategory image={men} category="men" />} />
@@ -22,6 +24,7 @@ function Pages(){
         </Route>
         <Route path="/cart" element={<Cart />} />
       </Routes>
+      </AnimatePresence>
     </div>
   );
 };

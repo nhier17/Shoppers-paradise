@@ -49,7 +49,7 @@ const CartItems = () => {
           return (
             <div key={e.id}>
               <Format>
-                <img src={e.image} alt={e.name} />
+                <img crossOrigin="anonymous" src={e.image} alt={e.name} />
                 <p>{e.name}</p>
                 <p>KSh {e.new_price}</p>
                 <button>{cartItem[e.id]}</button>

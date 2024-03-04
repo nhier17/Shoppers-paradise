@@ -22,7 +22,7 @@ const Signup = () => {
         e.preventDefault();
       try {
         const response = await axios.post('https://shoppers-paradise17.onrender.com/api/auth/register', formData)
-        console.log('suceess', response.data)
+        alert('suceess', response.data)
       } catch (error) {
         console.log("Error signing up",error.message)
       }
@@ -56,7 +56,7 @@ const Signup = () => {
         )
       }
       const Container = styled.div`
-      margin-left: 3rem;
+      margin: auto;
       margin-top: 5rem;
          background-color: #fff;
           border-radius: 30px;

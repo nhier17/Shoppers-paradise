@@ -10,7 +10,7 @@ const truncatedName = truncate(name,20)
   return (
     <Item>
       <Link to={`/product/${id}`} onClick={window.scrollTo(0,0)}>
-      <img src={image} alt="product" />
+      <img crossOrigin="anonymous" src={image} alt="product" />
       </Link>
       <div>
       <p>{truncatedName}</p>
