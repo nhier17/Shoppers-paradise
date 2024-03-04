@@ -23,14 +23,13 @@ const Login = () => {
     
      try {
       const response = await axios.post('https://shoppers-paradise17.onrender.com/api/auth/login', formData)
-      alert("suceess",response.data)
-      if (response.data.success) {
-        return navigate('/')
-      } else {
-        alert("Incorect password.")
-      }
+        if (response.data) {
+        const userName = response.data.user.name
+         navigate('/')
+         alert(`Welcome, ${userName}`)
+      } 
      } catch (error) {
-      console.log("Error loging in", error.message)
+      alert("Error loging in", error.message)
      }
     
   }
@@ -47,8 +46,8 @@ const Login = () => {
           <FaLock/>
           <input onChange={InputHandler} name='password' type="password" placeholder='password' />
         </Contents>
-        <p>Forgot your password?</p>
-        <button>Log In</button>
+       <button type="submit">Log In</button>
+       <p>Forgot your password?</p>
         <p>Don't have an account? <Link to="/register">Sign up</Link></p>
       </form>
     </div>
@@ -58,9 +57,8 @@ const Login = () => {
 const Container = styled.div`
 margin: auto;
 margin-top: 5rem;
-   background-color: #fff;
+   background: #fff;
     border-radius: 30px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
     position: relative;
     overflow: hidden;
     width: 768px;

@@ -3,10 +3,11 @@ import styled from "styled-components"
 import { CiMenuBurger } from "react-icons/ci";
 import { MdOutlineShoppingCart,MdClose } from "react-icons/md";
 
-import { Link,useLocation,useNavigate } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
 import {motion,AnimatePresence } from "framer-motion"
 import { ShopContext } from "../Context/ShopContext"
 import { FaUser } from 'react-icons/fa'
+import Logout from "../Components/Logout"
 
 
 
@@ -15,18 +16,12 @@ const NavBar = () =>{
   const {getTotalCartItems} = useContext(ShopContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
    
-  const navigate = useNavigate()
-  
+ 
   //toggle menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
-  //logout user
-  const logOutHandler = () => {
-    localStorage.removeItem('token')
-    localStorage.removeItem('user')
-    navigate('/login')
-  }
+  
 
   return (
     <StyledNav>
@@ -114,10 +109,10 @@ const NavBar = () =>{
     <Link to="/login">
     <FaUser />
     </Link>
-    <Link to="logout" onClick={logOutHandler}>
-    Logout
+    <Link to="/logout">
+    <Logout />
     </Link>
-    <Link to="/cart">
+     <Link to="/cart">
     <MdOutlineShoppingCart/>
     </Link>
     <CartCounter>

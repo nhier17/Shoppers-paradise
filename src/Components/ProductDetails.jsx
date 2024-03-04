@@ -40,7 +40,7 @@ const ProductDetails = ({product}) => {
         </NewPrice>
        </Prices>
        <div className="description">
-       Ready for pickup between 22 February & 23 February when you order within next 2hrs 33mins
+       Ready for pickup between  22 February & 23 February when you order within next 2hrs 33mins
        </div>
        <Sizes>
         <h1>Select Size</h1>
