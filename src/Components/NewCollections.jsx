@@ -34,8 +34,8 @@ margin-bottom: 5rem;
 `
 const Collections = styled.div`
   display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(15rem,1fr));
-    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit,minmax(10rem,1fr));
+    grid-gap: 4rem;
     @media (max-width: 768px) {
       display: flex;
       gap: 0.5rem;

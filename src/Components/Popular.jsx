@@ -53,7 +53,7 @@ h1 {
 const PItems = styled.div`
  display: grid;
     grid-template-columns: repeat(auto-fit,minmax(10rem,1fr));
-    grid-gap: 3rem;
+    grid-gap: 4rem;
     @media (max-width: 768px) {
       display: flex;
       gap: 0.5rem;
