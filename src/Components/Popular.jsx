@@ -47,7 +47,7 @@ h1 {
 }
     @media (max-width: 768px) {
     height: auto;
-    
+    padding-left: 0rem;
   }
 `
 const PItems = styled.div`

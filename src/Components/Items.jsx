@@ -50,7 +50,9 @@ p {
  
     }
   
-
+@media (max-width: 768px) {
+  padding-left: 1rem;
+}
 `
 const ItemPrices = styled.div`
   display: flex;
