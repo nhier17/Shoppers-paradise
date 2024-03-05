@@ -22,7 +22,7 @@ const ProductDetails = ({product}) => {
       </Details>
     
        <DisplayRight>
-       <h1>{product.name}</h1>
+       <h3>{product.name}</h3>
        <Description>
         <FaStar/>
         <FaStar/>
@@ -39,9 +39,9 @@ const ProductDetails = ({product}) => {
           KSh {product.new_price}
         </NewPrice>
        </Prices>
-       <div className="description">
+       <p>
        Ready for pickup between  22 February & 23 February when you order within next 2hrs 33mins
-       </div>
+       </p>
        <Sizes>
         <h1>Select Size</h1>
         <Contents>
@@ -111,8 +111,8 @@ const List = styled.div`
     flex-direction: row;
     gap: 5px;
     align-items: center;
-    overflow-x: auto; /* Enable horizontal scrolling */
-    scroll-snap-type: x mandatory; /* Snap to the images */
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory; 
   }
   
 `
@@ -140,6 +140,12 @@ h1 {
   color: white;
   font-size: 19px;
   font-weight: 600;
+}
+@media (max-width: 768px) {
+  p{
+    font-size: 16px;
+    max-width: 35vw;
+  }
 }
 
 `
@@ -193,6 +199,12 @@ const Contents = styled.div`
     border: 1px solid #ebebeb;
     border-radius: 3px;
     cursor: pointer;
+  }
+  @media (max-width: 768px) {
+    gap: 10px;
+    div {
+      padding: 9px 12px;
+    }
   }
 `
 export default ProductDetails

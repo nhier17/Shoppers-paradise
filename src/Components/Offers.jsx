@@ -21,9 +21,11 @@ const Offers = () => {
 }
 
 const Container = styled.div`
- width: 100%;
+ width: 65%%;
  height: 60vh;
  display: flex;
+ align-items: center;
+ justify-content: center;
  padding-left: 1rem;
  margin-left: 2rem;
  padding: 0px 1rem;
@@ -32,9 +34,9 @@ const Container = styled.div`
  background: linear-gradient(180deg, #fde1ff 0%, #e1ffea22 60%); 
 @media (max-width: 768px) {
   margin-left: 1rem;
-  padding-left:1rem;
+  height: auto;
   img {
-    width: 250px;
+    width: 100%;
     
   }
 }

@@ -19,8 +19,6 @@ const GlobalStyles = createGlobalStyle`
     }
     body {
         overflow-x: hidden;
-        height:auto;
-        width: auto;
         font-family: "Roboto",sans-serif;
         background: black;
         p{
