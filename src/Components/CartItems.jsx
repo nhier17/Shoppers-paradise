@@ -141,6 +141,7 @@ const Format = styled(Details)`
     font-size: 17px;
     margin: 0px 40px;
     cursor: pointer;
+    color: #fff;
  }
  button {
     width: 64px;
@@ -149,6 +150,7 @@ const Format = styled(Details)`
     background: #E07E1B;
     border-radius: 8px;
     cursor: pointer;
+    color: #fff;
  }
  @media (max-width: 768px) {
     font-size: 14px;
@@ -200,7 +202,7 @@ font-size: 16px;
   color: #555
  font-size: 16px;
  p {
-    color: #555;
+    color: #fff;
     font-size: 14px;
  }
  @media (max-width: 768px) {

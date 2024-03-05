@@ -183,7 +183,7 @@ color: white;
 const Sizes = styled.div`
 h1 {
   margin-top: 55px;
-  color: #656565;
+  color: #fff;
   font-size: 20px;
   font-weight: 600;
 }
