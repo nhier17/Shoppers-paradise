@@ -46,7 +46,6 @@ const Container = styled.div`
      color: #616161;
      background: linear-gradient(35deg, #e9e4e4,#7e7979);
      border: none;
-     margin: 8px 0;
      padding: 1rem 3rem;
      font-size: 16px;
      border-radius: 8px;
@@ -62,19 +61,17 @@ const Container = styled.div`
      cursor: pointer;
      color: white;
     }
-    @media (max-width: 768px) {
-      display: block;
-    }
-   }
+     }
   @media (max-width: 768px) {
    padding: 0px 20px;
    padding-left: 1rem;
-   margin-left: 1rem;
+   
    width: 90%;
      }
      form {
-      width: 50%;
-      padding-left: 1rem;
+     padding-left: 1rem;
+      display: block;
+      width: 100%;
      }
      
 
