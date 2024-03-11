@@ -1,10 +1,15 @@
-# Getting Started with Create React App
+# Shoppers Paradise
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description 
+This is the front-end part of my cutting edge e-commerce application. It's a React app designed to provide a visually appealing and intuitive experience for shoppers
 
-## Available Scripts
+## Dependencies
+    react-router-dom
+    styled-components
+    axios
+    framer-motiom
 
-In the project directory, you can run:
+## Setup Instructions
 
 ### `npm start`
 
@@ -14,57 +19,49 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+## BDD
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### API
+The application utilizes the API provided by the back-end of Shoppers Paradise for seamless communication and data retrieval.
 
-### `npm run build`
+### Output
+#### Authentication
+       Users can log in or sign up.
+       A user is on the authentication page.
+       They provide valid credentials and click the submit button.
+       The user is authenticated and gains access to their account.
+#### Products
+      Products are displayed in different categories (men, kids, women).
+     The user navigates to the product section.
+     They select a category.
+     The products in the chosen category are displayed.
+     Adding a product to the cart.
+     The user is viewing a product.
+    They click the "Add to Cart" button.
+     The selected product is added to the user's shopping cart.
+     The user can view selected products in the cart icon
+     
+### Future Improvements
+     - Implement a user feedback system.
+     - Integrate a variety of products into the app
+    - Enhance the checkout process for a smoother user experience.
+    - Integrate additional payment plans for increased flexibility.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Deployment 
+Deployment was achieved through netlify which is the essential platform for the delivery of exceptional and dynamic web experiences, without limitations. There are two ways of deploying your app on netlify; you can either do it manually by drag and drop method or connect with your github repo. I used the latter as it ensures continuous deployment and changes made are implemented.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Author: Abraham Nhier
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Contact Information
+        Email: abrahamnhier97@gmail.com
+        Phone: +254716903151
 
-### `npm run eject`
+### Technology Used
+    1. React.js
+    2. JavaScript
+    3. HTML
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Framework used
+    Git
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
