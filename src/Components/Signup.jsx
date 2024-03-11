@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import styled from "styled-components"
 import { MdEmail } from 'react-icons/md'
 import { FaLock, FaUser } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import axios from "axios"
+import toast from 'react-hot-toast';
 
 
 const Signup = () => {
+  const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -22,16 +24,21 @@ const Signup = () => {
         e.preventDefault();
       try {
         const response = await axios.post('https://shoppers-paradise17.onrender.com/api/auth/register', formData)
-        alert('suceess', response.data)
+        if (response.data) {
+          const userName = response.data.user.name
+           toast.success(`Welcome, ${userName}`)
+           navigate('/')
+           }
+      
       } catch (error) {
-        console.log("Error signing up",error.message)
+        toast.error("Error signing up",error.message)
       }
     }
 
     return (
         <Container>
           <div>
-            <form action="" onSubmit={submitHandler}>
+          <form action="" onSubmit={submitHandler}>
             <h1>Register</h1>
             <Contents>
               <FaUser/>
@@ -52,6 +59,7 @@ const Signup = () => {
               </Link></p>
             </form>
           </div>
+          
         </Container>
         )
       }

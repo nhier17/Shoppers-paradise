@@ -4,6 +4,7 @@ import { FaLock } from "react-icons/fa";
 import styled from "styled-components"
 import { Link,useNavigate } from 'react-router-dom';
 import axios from "axios"
+import toast from 'react-hot-toast';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,19 +24,22 @@ const Login = () => {
     
      try {
       const response = await axios.post('https://shoppers-paradise17.onrender.com/api/auth/login', formData)
+      console.log(response.data)
         if (response.data) {
         const userName = response.data.user.name
          navigate('/')
-         alert(`Welcome, ${userName}`)
+         toast.success(`Welcome, ${userName}`)
+         
       } 
      } catch (error) {
-      alert("Error loging in", error.message)
+      toast.error("Error loging in", error.message)
+      
      }
     
   }
   return (
   <Container>
-    <div>
+     <div>
       <form action="" onSubmit={submitHandler}>
         <h1>Sign In</h1>
        <Contents>
