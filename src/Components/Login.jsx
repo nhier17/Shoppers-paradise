@@ -4,7 +4,7 @@ import { FaLock } from "react-icons/fa";
 import styled from "styled-components"
 import { Link,useNavigate } from 'react-router-dom';
 import axios from "axios"
-import toast from 'react-hot-toast';
+import { toast }  from 'sonner';
 
 const Login = () => {
   const navigate = useNavigate();

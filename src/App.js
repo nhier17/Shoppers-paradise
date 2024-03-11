@@ -7,7 +7,7 @@ import Signup from "./Components/Signup"
 import Login from "./Components/Login"
 import Pages from "./Pages/Pages"
 import Footer from "./Components/Footer"
-import { Toaster } from "react-hot-toast"
+import { Toaster } from "sonner"
 
 
 
@@ -15,7 +15,7 @@ function App() {
   
   return (
     <div className="App">
-       <Toaster />
+       <Toaster richColors position="top-center"/>
        <GlobalStyles/>
         <NavBar/>
          <Routes>

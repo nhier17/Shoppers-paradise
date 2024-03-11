@@ -4,21 +4,51 @@ import { MdEmail } from 'react-icons/md'
 import { FaLock, FaUser } from 'react-icons/fa'
 import { Link,useNavigate } from 'react-router-dom'
 import axios from "axios"
-import toast from 'react-hot-toast';
+import { toast } from 'sonner';
+//password strength checker
+import zxcvbn from "zxcvbn";
 
 
 const Signup = () => {
   const navigate = useNavigate();
+  
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         password: ''
 })
+const [passwordStrength, setPasswordStrength] = useState(0)
+
  const InputHandler = (e) => {
     setFormData({ ...formData,
         [e.target.name]: e.target.value})
+        if (e.target.name === 'password') {
+          const strongPassword = zxcvbn(e.target.value).score;
+          setPasswordStrength(strongPassword)
+        }
  }
- 
+//get password strength color
+const passwordStrengthColor = () => {
+  if (passwordStrength === undefined) {
+    return 'black'
+  }
+  switch (passwordStrength) {
+    case 0:
+      return 'red';
+    case 1:
+      return 'orange';
+    case 2:
+      return 'yellow';
+    case 3:
+      return 'green';
+    case 4:
+      return 'darkgreen';
+    default:
+      return 'black';
+  }
+}
+
+
     
     const submitHandler = async (e) =>{
         e.preventDefault();
@@ -31,7 +61,8 @@ const Signup = () => {
            }
       
       } catch (error) {
-        toast.error("Error signing up",error.message)
+        toast.error(error.response.data.msg)
+        
       }
     }
 
@@ -52,6 +83,24 @@ const Signup = () => {
                 <FaLock/>
                 <input onChange={InputHandler} name='password' type="password" placeholder='password' />
               </Contents>
+              <PasswordBar 
+              passwordstrength={passwordStrength}
+              color={passwordStrengthColor()}
+              />
+              {formData.password && (
+            <>
+              {passwordStrength >= 3 && (
+                <PasswordStrengthMessage color={passwordStrengthColor()}>
+                  Password Strength: Strong
+                </PasswordStrengthMessage>
+              )}
+              {passwordStrength < 3 && (
+                <PasswordStrengthMessage color={passwordStrengthColor()}>
+                  Password Strength: Weak
+                </PasswordStrengthMessage>
+              )}
+            </>
+          )}
               <button type='submit'>Sign Up</button>
               <p>already have an account?
                  <Link to='/login'>
@@ -142,5 +191,16 @@ const Signup = () => {
           color: black; 
           }
       `
+      const PasswordBar = styled.div`
+        height: 8px;
+        width: ${(props) => props.passwordstrength * 25}%; 
+        background-color: ${(props) => props.color || 'black'};
+        margin-bottom: 10px;
+      `
+      const PasswordStrengthMessage = styled.div`
+      color: ${(props) => props.color || 'black'};
+      margin-top: 10px;
+      font-size: 12px;
+    `;
 
 export default Signup
