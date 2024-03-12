@@ -2,6 +2,7 @@ import React, { useContext,useState, useEffect } from 'react';
 import { ShopContext } from '../Context/ShopContext';
 import { RiCloseCircleLine } from 'react-icons/ri';
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 
 
@@ -9,6 +10,7 @@ const CartItems = () => {
   const { getProducts, cartItem, removeFromCart, totalCartItems } = useContext(ShopContext);
   const [cartProducts, setCartProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0)
+  let image_url = "https://shoppers-paradise17.onrender.com"
 // add products to cart
   useEffect(() => {
     const fetchProducts = async () => {
@@ -49,7 +51,7 @@ const CartItems = () => {
           return (
             <div key={e.id}>
               <Format>
-                <img crossOrigin="anonymous" src={e.image} alt={e.name} />
+                <img crossOrigin="anonymous" src={image_url+e.image} alt={e.name} />
                 <p>{e.name}</p>
                 <p>KSh {e.new_price}</p>
                 <button>{cartItem[e.id]}</button>
@@ -81,7 +83,9 @@ const CartItems = () => {
                     <h3>KSH {totalPrice}</h3>
                 </TotalItems>
             </div>
-            <button>CHECKOUT</button>
+            <Link to="/checkout">
+              <button>CHECKOUT</button>
+              </Link>
         </Summary>
         <PromoCode>
            <p>Enter your promo code</p> 

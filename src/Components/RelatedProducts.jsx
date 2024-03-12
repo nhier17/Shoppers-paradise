@@ -5,6 +5,7 @@ import styled from "styled-components"
 
 const RelatedProducts = ({productId, category}) => {
     const [related, setRelated] = useState([])
+    let image_url = "https://shoppers-paradise17.onrender.com"
     
     const getDetails = useCallback(async () => {
         try {
@@ -30,7 +31,7 @@ const RelatedProducts = ({productId, category}) => {
             key={item.id}
             id={item.id}
             name={item.name}
-            image={item.image}
+            image={image_url+item.image}
             new_price={item.new_price}
             old_price={item.old_price}
             />

@@ -8,6 +8,9 @@ import men from '../Images/banner_men.png';
 import women from '../Images/banner_women.png';
 import kids from '../Images/banner_kids.png';
 import { AnimatePresence } from "framer-motion"
+import Checkout from "../Components/Checkout"
+import Success from "../Components/Success";
+import CancelPayment from "../Components/CancelPayment";
 
 function Pages(){
   const location = useLocation();
@@ -23,6 +26,9 @@ function Pages(){
           <Route path="/product/:id" element={<Product />} />
         </Route>
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
+         <Route path="/success" element={<Success />} />
+         <Route path="/cancel" element={<CancelPayment />} /> 
       </Routes>
       </AnimatePresence>
     </div>

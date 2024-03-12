@@ -7,6 +7,7 @@ import styled from "styled-components"
 
 const Popular = () => {
     const [popular, setPopular] = useState([])
+    let image_url = "https://shoppers-paradise17.onrender.com"
     
     const getDetails = async () => {
         const response = await axios.get(`https://shoppers-paradise17.onrender.com/api/products?&category=women`)
@@ -26,7 +27,7 @@ const Popular = () => {
             key={item.id}
             id={item.id}
             name={item.name}
-            image={item.image}
+            image={image_url+item.image}
             new_price={item.new_price}
             old_price={item.old_price}
             />

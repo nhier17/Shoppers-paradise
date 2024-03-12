@@ -1,5 +1,6 @@
 import React, { createContext,useState,useEffect } from 'react';
 import axios from 'axios';
+import { toast } from "sonner"
 
 
 export const ShopContext = createContext(null)
@@ -36,10 +37,12 @@ const [cartItem, setCartItem] = useState({});
 // add items to cart
     const addToCart = (itemId) => {
         setCartItem((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+        toast.success('Item added successfully')
     }
 // remove items from cart
     const removeFromCart = (itemId) => {
         setCartItem((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+        toast.success('Item removed successfully')
     }
 // get total of cart items
     const totalCartItems = async () => {

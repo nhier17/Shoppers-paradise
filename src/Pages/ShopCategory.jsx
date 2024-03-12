@@ -10,6 +10,7 @@ import styled from "styled-components"
 const ShopCategory = ({image,category}) => {
   const {getProducts} = useContext(ShopContext)
   const [products, setProducts] = useState([])
+  let image_url = "https://shoppers-paradise17.onrender.com"
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +39,7 @@ const ShopCategory = ({image,category}) => {
           key={product.id}
           id={product.id}
           name={product.name}
-          image={product.image}
+          image={image_url+product.image}
           new_price={product.new_price}
           old_price={product.old_price}  
           

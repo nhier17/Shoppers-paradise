@@ -6,18 +6,19 @@ import {ShopContext} from "../Context/ShopContext"
 
 const ProductDetails = ({product}) => {
   const {addToCart} = useContext(ShopContext)
+  let image_url ="https://shoppers-paradise17.onrender.com"
   return (
     <Container>
        
       <Details>
          <List>
-          <img crossOrigin="anonymous" src={product.image} alt={product.name} />
-          <img crossOrigin="anonymous" src={product.image} alt={product.name} />
-          <img crossOrigin="anonymous" src={product.image} alt={product.name} />
-          <img crossOrigin="anonymous" src={product.image} alt={product.name} />
+          <img crossOrigin="anonymous" src={image_url+product.image} alt={product.name} />
+          <img crossOrigin="anonymous" src={image_url+product.image} alt={product.name} />
+          <img crossOrigin="anonymous" src={image_url+product.image} alt={product.name} />
+          <img crossOrigin="anonymous" src={image_url+product.image} alt={product.name} />
           </List>
          <DisplayMain>
-          <img crossOrigin="anonymous" src={product.image} alt={product.name}/>
+          <img crossOrigin="anonymous" src={image_url+product.image} alt={product.name}/>
           </DisplayMain> 
       </Details>
     
