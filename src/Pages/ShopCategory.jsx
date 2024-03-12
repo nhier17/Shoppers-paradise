@@ -97,10 +97,14 @@ margin-top: 1rem;
 
 display: flex;
 gap: 0.5rem;
-overflow: scroll;
+overflow-x: scroll;
+overflow-y: hidden;
 &::-webkit-scrollbar{
     display: none;
   
+}
+img {
+  overflow: hidden;
 }
 
 }

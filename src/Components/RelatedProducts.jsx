@@ -60,11 +60,15 @@ padding: 2rem;
 const Contents = styled.div`
  margin-top: 50px;
  display: flex;
- overflow: scroll;
- width: 70%;
+ overflow-x: scroll;
+ overflow-y: hidden;
+ width: 100%;
  gap: 1rem;
  &::-webkit-scrollbar{
     display: none;
+}
+img {
+  overflow: hidden;
 }
 `
 export default RelatedProducts

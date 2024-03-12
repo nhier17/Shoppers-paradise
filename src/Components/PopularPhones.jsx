@@ -57,7 +57,8 @@ const PopularPhones = () => {
         @media (max-width: 768px) {
           display: flex;
           gap: 0.5rem;
-          overflow: scroll;
+          overflow-x: scroll;
+          overflow-y: hidden;
     scrollbar-color: black;
     &::-webkit-scrollbar{
         display: none;
@@ -66,6 +67,7 @@ const PopularPhones = () => {
       width: 145px;
       height: 193px;
       object-fit: cover;
+      overflow: hidden;
     }
         }
         

@@ -53,20 +53,19 @@ h1 {
 `
 const PItems = styled.div`
  display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(10rem,1fr));
-    grid-gap: 4rem;
-    @media (max-width: 768px) {
-      display: flex;
-      gap: 0.5rem;
-      overflow: scroll;
+grid-template-columns: repeat(auto-fit,minmax(10rem,1fr));
+grid-gap: 4rem;
+@media (max-width: 768px) {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
 scrollbar-color: black;
 &::-webkit-scrollbar{
     display: none;
 }
 img {
-  width: 145px;
-  height: 193px;
-  object-fit: cover;
+  overflow: hidden;
 }
     }
     
