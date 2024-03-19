@@ -11,7 +11,7 @@ import {
 
 
 const PaymentDetails = () => {
-  const { cartItem, totalPrice } = useContext(ShopContext)
+  const { cartItem, totalPrice, setCartItem } = useContext(ShopContext)
      const stripe = useStripe();
     const elements = useElements();
     const [loading, setLoading] = useState(false);
@@ -34,7 +34,7 @@ const paymentHandler = async (e) => {
     try {
       const response = await axios.post("http://localhost:5000/api/payments/create-payment-intent",{
         amount: totalPrice, 
-        currency: 'usd', 
+        currency: 'ksh', 
         items: cartItemsArr
         
       });
@@ -49,6 +49,14 @@ const paymentHandler = async (e) => {
       throw new Error(error.message);
       }
       console.log('Payment successful');
+      // reset cart items to 0 after successful payment
+      setCartItem(prevCartItem => {
+        const resetCart = {};
+        Object.keys(prevCartItem).forEach(key => {
+          resetCart[key] = 0
+        });
+        return resetCart;
+      })
     } catch (error) {
       console.error("Error during payment",error.message);
       setError(error.message);
