@@ -61,7 +61,7 @@ const ItemPrices = styled.div`
   
 `
 const NewPrice = styled.div`
- color: white;
+ 
  font-size: 14px; 
  
  `

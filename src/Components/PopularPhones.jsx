@@ -10,7 +10,7 @@ const PopularPhones = () => {
     const getPhones = async () => {
         const response = await axios.get(`https://shoppers-paradise17.onrender.com/api/products?&category=smartphones`)
         setPopular(response.data.products)
-        console.log(response.data.products)
+      
     }
     useEffect(()=>{
         getPhones()
@@ -23,8 +23,8 @@ const PopularPhones = () => {
             {popular.map((item) => (
               
                 <Items 
-                key={item.id}
-                id={item.id}
+                key={item._id}
+                id={item._id}
                 name={item.name}
                 image={image_url+item.image}
                 new_price={item.new_price}

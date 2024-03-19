@@ -2,14 +2,16 @@ import React, { useContext,useState, useEffect } from 'react';
 import { ShopContext } from '../Context/ShopContext';
 import { RiCloseCircleLine } from 'react-icons/ri';
 import styled from "styled-components"
-import { Link } from "react-router-dom"
-
+import { Link,useNavigate } from "react-router-dom"
+import axios from "axios"
 
 
 const CartItems = () => {
   const { getProducts, cartItem, removeFromCart, totalCartItems } = useContext(ShopContext);
   const [cartProducts, setCartProducts] = useState([]);
+  
   const [totalPrice, setTotalPrice] = useState(0)
+  const navigate = useNavigate()
   let image_url = "https://shoppers-paradise17.onrender.com"
 // add products to cart
   useEffect(() => {
@@ -34,6 +36,21 @@ const CartItems = () => {
     calculateTotalPrice()
   }, [totalCartItems]);
 
+  //handle checkout
+  const handleCheckout = async () => {
+    try {
+      const itemIds = Object.keys(cartItem).map(id => String(id));
+      
+      const response = await axios.post("http://localhost:5000/api/payments/create-payment-intent", {
+        items: itemIds.filter(id => cartItem[id] > 0)
+      });
+      const { data } = response
+      navigate(`/checkout?orderId=${data._id}`)
+    } catch (error) {
+      console.error("Error creating order",error)
+    }
+  }
+
    return (
     <Container>
       <Details>
@@ -47,16 +64,16 @@ const CartItems = () => {
       <hr />
       {cartProducts.map((e) => {
             
-        if (cartItem[e.id] > 0) {
+        if (cartItem[e._id] > 0) {
           return (
-            <div key={e.id}>
+            <div key={e._id}>
               <Format>
                 <img crossOrigin="anonymous" src={image_url+e.image} alt={e.name} />
                 <p>{e.name}</p>
                 <p>KSh {e.new_price}</p>
-                <button>{cartItem[e.id]}</button>
-                <p>KSh {e.new_price * cartItem[e.id]}</p>
-                <RiCloseCircleLine onClick={() => removeFromCart(e.id)} />
+                <button>{cartItem[e._id]}</button>
+                <p>KSh {e.new_price * cartItem[e._id]}</p>
+                <RiCloseCircleLine onClick={() => removeFromCart(e._id)} />
               </Format>
               <hr />
             </div>
@@ -75,7 +92,7 @@ const CartItems = () => {
                 <hr />
                 <TotalItems>
                     <p>Shipping fee</p>
-                    <p>Free</p>
+                    <p>0</p>
                 </TotalItems>
                 <hr />
                 <TotalItems>
@@ -84,7 +101,7 @@ const CartItems = () => {
                 </TotalItems>
             </div>
             <Link to="/checkout">
-              <button>CHECKOUT</button>
+              <button onClick={handleCheckout}>CHECKOUT</button>
               </Link>
         </Summary>
         <PromoCode>
@@ -145,8 +162,7 @@ const Format = styled(Details)`
     font-size: 17px;
     margin: 0px 40px;
     cursor: pointer;
-    color: #fff;
- }
+     }
  button {
     width: 64px;
     height: 50px;

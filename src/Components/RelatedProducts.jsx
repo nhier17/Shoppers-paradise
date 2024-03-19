@@ -44,7 +44,7 @@ const Container = styled.div`
 padding: 2rem;
  height: 90vh;
  p {
-  color: white;
+  
   font-size: 1rem;
   padding: 1rem;
   font-weight: 600;  

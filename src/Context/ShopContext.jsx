@@ -1,4 +1,4 @@
-import React, { createContext,useState,useEffect } from 'react';
+import React, { createContext,useState,useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { toast } from "sonner"
 
@@ -6,11 +6,11 @@ import { toast } from "sonner"
 export const ShopContext = createContext(null)
 const ShopContextProvider = (props) => {
 const [cartItem, setCartItem] = useState({});
-    
+const [totalPrice, setTotalPrice] = useState(0)
+ 
 // get all products
     const getProducts = async () => {
         const response = await axios.get(`https://shoppers-paradise17.onrender.com/api/products`);
-        
         return response.data.products;
         
     }
@@ -20,9 +20,9 @@ const [cartItem, setCartItem] = useState({});
             try {
               const products = await getProducts();
               let cart = {};
-              for (let i = 0; i < products.length; i++) {
-                cart[i] = 0;
-              }
+              for (const product of products) {
+                cart[product._id] = 0;
+            }
               
               setCartItem(cart);
             } catch (error) {
@@ -45,18 +45,18 @@ const [cartItem, setCartItem] = useState({});
         toast.success('Item removed successfully')
     }
 // get total of cart items
-    const totalCartItems = async () => {
+    const totalCartItems = useCallback(async () => {
         let total = 0;
         const products = await getProducts()
-        for (const item in cartItem) {
-            if (cartItem[item] > 0) {
-               let itemInfo = products.find((p) => p.id === Number(item)) 
-               total += itemInfo.new_price * cartItem[item]
+        for (const itemId in cartItem) {
+            if (cartItem[itemId] > 0) {
+               let itemInfo = products.find((p) => p._id === String(itemId)) 
+               total += itemInfo.new_price * cartItem[itemId]
             }
             
         }
         return total;
-    }
+    }, [cartItem])
 
     //complete add to cart functionality
     const getTotalCartItems = () => {
@@ -69,8 +69,17 @@ const [cartItem, setCartItem] = useState({});
     }
     return totalItems;
 }
+//calculate total price
+useEffect(() => {
+    const calculateTotalPrice = async () => {
+      const total = await totalCartItems()
+      setTotalPrice(total)
+    }
+    calculateTotalPrice()
+  }, [totalCartItems]);
 
-    const contextValue = { getProducts, cartItem, addToCart, removeFromCart,totalCartItems,getTotalCartItems };
+
+    const contextValue = { getProducts, cartItem, addToCart, removeFromCart,totalCartItems,getTotalCartItems,totalPrice };
     
     return (
         <ShopContext.Provider value={contextValue}>

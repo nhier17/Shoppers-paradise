@@ -8,7 +8,7 @@ const ProductDetails = ({product}) => {
   const {addToCart} = useContext(ShopContext)
   let image_url ="https://shoppers-paradise17.onrender.com"
   return (
-    <Container>
+    <Container key={product._id}>
        
       <Details>
          <List>
@@ -54,7 +54,7 @@ const ProductDetails = ({product}) => {
         </Contents>
        </Sizes>
       
-       <button onClick={() => {addToCart(product.id)}}>ADD TO CART</button>
+       <button onClick={() => {addToCart(product._id)}}>ADD TO CART</button>
       
         </DisplayRight>
        </Container>
@@ -77,9 +77,7 @@ padding: 2rem;
     outline: none;
     cursor: pointer;
   }
-  div {
-    color: white;
-  }
+
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -138,7 +136,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 h1 {
-  color: white;
+  
   font-size: 19px;
   font-weight: 600;
 }
@@ -179,12 +177,11 @@ font-size: 14px;
 const NewPrice = styled.div`
 font-weight: 600;
 font-size: 18px;
-color: white;
+
 `
 const Sizes = styled.div`
 h1 {
   margin-top: 55px;
-  color: #fff;
   font-size: 20px;
   font-weight: 600;
 }

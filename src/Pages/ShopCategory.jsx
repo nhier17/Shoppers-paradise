@@ -36,8 +36,8 @@ const ShopCategory = ({image,category}) => {
       {products?.map((product) => {
         if (category === product.category) {
           return <Items 
-          key={product.id}
-          id={product.id}
+          key={product._id}
+          id={product._id}
           name={product.name}
           image={image_url+product.image}
           new_price={product.new_price}

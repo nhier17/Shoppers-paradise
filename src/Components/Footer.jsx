@@ -67,7 +67,6 @@ const FooterLinks = styled.ul`
     display: flex;
     gap: 50px;
     list-style: none;
-    color: white;
     font-size: 18px;
     li {
       cursor: pointer;           

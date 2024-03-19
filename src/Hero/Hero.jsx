@@ -43,13 +43,11 @@ padding-left: 180px;
 line-height:   1.1; 
 
 p {
-    color: white;;
+    
     font-size: 60px;
     font-weight: 700;
 }
-span {
-  color: white;
-}
+
 @media (max-width: 768px) {
     padding-left: 1rem;
    p {

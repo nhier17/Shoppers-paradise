@@ -16,7 +16,8 @@ const Product = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getProducts()
-      const selectedProduct = data.find((p) => p.id === Number(params.id));
+      const selectedProduct = data.find((p) => p._id === String(params.id));
+      
       if (selectedProduct) {
         setProduct(selectedProduct)
         setCategory(selectedProduct.category)

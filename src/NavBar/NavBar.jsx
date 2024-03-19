@@ -178,7 +178,7 @@ const MobileMenu = styled(motion.div)`
   background: white;
 cursor: pointer;
 z-index: -1;
-transition: transform 0.3s ease-in-out;
+
   ul {
     display: flex;
     flex-direction: column;

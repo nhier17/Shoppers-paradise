@@ -20,13 +20,8 @@ const GlobalStyles = createGlobalStyle`
     body {
         overflow-x: hidden;
         font-family: "Roboto",sans-serif;
-        background: black;
-        p{
-        color: white;
-        }
-        h1, h2, h3, h4{
-            color: white
-        }
+        user-select: none;
+      
         @media (max-width: 768px) {
             padding: 1rem;
         

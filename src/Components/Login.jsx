@@ -24,9 +24,8 @@ const Login = () => {
     
      try {
       const response = await axios.post('https://shoppers-paradise17.onrender.com/api/auth/login', formData)
-      console.log(response.data)
         if (response.data) {
-        const userName = response.data.user.name
+          const userName = response.data.user.name
          navigate('/')
          toast.success(`Welcome, ${userName}`)
          
