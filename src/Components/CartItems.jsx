@@ -41,7 +41,7 @@ const CartItems = () => {
     try {
       const itemIds = Object.keys(cartItem).map(id => String(id));
       
-      const response = await axios.post("http://localhost:5000/api/payments/create-payment-intent", {
+      const response = await axios.post("https://shoppers-paradise17.onrender.com/api/payments/create-payment-intent", {
         items: itemIds.filter(id => cartItem[id] > 0)
       });
       const { data } = response

@@ -34,7 +34,7 @@ const paymentHandler = async (e) => {
        return;
     }
     try {
-      const response = await axios.post("http://localhost:5000/api/payments/create-payment-intent",{
+      const response = await axios.post("https://shoppers-paradise17.onrender.com/api/payments/create-payment-intent",{
         amount: totalPrice, 
         currency: 'ksh', 
         items: cartItemsArr

@@ -50,7 +50,7 @@ const StyledLink = styled(Link)`
     text-decoration: none;
     background-color: #2cdc26;
     color: #fff;
-    padding: 0.8rem 2rem;
+    padding: 0.8rem 1rem;
     border-radius: 5px;
     font-size: 1.2rem;
     transition: background-color 0.3s ease;
