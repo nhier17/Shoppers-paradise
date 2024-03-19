@@ -2,6 +2,7 @@ import React,{ useState, useContext } from 'react'
 import axios from 'axios';
 import styled from "styled-components"
 import { ShopContext } from '../Context/ShopContext';
+import { useNavigate } from "react-router-dom"
 //stripe
 import {
   CardElement,
@@ -11,6 +12,7 @@ import {
 
 
 const PaymentDetails = () => {
+  const navigate = useNavigate()
   const { cartItem, totalPrice, setCartItem } = useContext(ShopContext)
      const stripe = useStripe();
     const elements = useElements();
@@ -57,9 +59,11 @@ const paymentHandler = async (e) => {
         });
         return resetCart;
       })
+      navigate('/success')
     } catch (error) {
       console.error("Error during payment",error.message);
       setError(error.message);
+      navigate('/cancel')
     } finally {
       setLoading(false);
     }
