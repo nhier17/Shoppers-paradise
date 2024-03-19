@@ -1,69 +1,64 @@
-import React from 'react'
+import React from 'react';
 import { MdCancel } from "react-icons/md";
-import { Link } from "react-router-dom"
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-const CancelPayment = () => {
-  return (
-    <Container>
-       <Contents>
-        <span>Something went wrong!</span>
-        <StyledSpan>Please retry again later</StyledSpan>
-        <ImageContainer>
-           <MdCancel /> 
-        </ImageContainer>
-        <StyledContainer>
-            <Link to="/">Back to Home</Link>
-        </StyledContainer>
-        </Contents> 
-    </Container>
-  )
-}
+const Success = () => {
+    return (
+        <Container>
+            <Contents>
+                <Title>Something went wrong!</Title>
+                <Subtitle>Please try again later.</Subtitle>
+                <Image>
+                    <MdCancel /> 
+                </Image>
+              <StyledLink to="/">Continue Shopping</StyledLink>
+            </Contents>
+        </Container>
+    );
+};
 
 const Container = styled.div`
-    display: grid;
-  place-items: center;
-  width: 100%;
-  height: 100%;
-  font-family: 'Raleway', sans-serif;
-  background-color: #F7F7F7;
-  
-  @media (min-width: 768px) {
-    height: 100vh;
-  }
-
-`
-const Contents = styled.div`
-    max-width: 20rem;
     display: flex;
-    flex-direction: column;
-    border-radius: 8px;
-    span {
-        color: #DC2626;
-        font-size: 24px;
-    }
-`
-const StyledSpan= styled.span`
-  color: #EF4444;
-  text-align: center;
-  margin-top: 8px;
-  font-size: 2xl;
-  font-weight: bold;    
-`
-const ImageContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin: auto;
-  margin-top: 12px;
-  width: 96px;
-  svg {
-    font-size: 50px;
-  }
-`
-const StyledContainer = styled.div`
-   margin-top: 10px;
-  margin: auto;
- `
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7f7f7;
+`;
 
-export default CancelPayment
+const Contents = styled.div`
+    text-align: center;
+`;
+
+const Title = styled.h1`
+    color: #DC2626;
+   font-size: 2.5rem;
+    margin-bottom: 1rem;
+`;
+
+const Subtitle = styled.p`
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+`;
+
+const Image = styled.div`
+  font-size: 50px;
+   margin-bottom: 2rem;
+`;
+
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    background-color: #2cdc26;
+    color: #fff;
+    padding: 0.8rem 1rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #23a820;
+    }
+`;
+
+export default Success;
