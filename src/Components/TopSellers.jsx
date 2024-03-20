@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from "axios"
 import styled from "styled-components"
 import Items from './Items'
+import { photoAnim } from "../animations";
+import { motion } from "framer-motion"
 
 const TopSellers = () => {
     const [top, setTop] =  useState([])
@@ -17,7 +19,7 @@ const TopSellers = () => {
     
 
     return (
-        <PopularProducts>
+        <PopularProducts variants={photoAnim}>
           <h1>Trending this week!</h1>  
           <PItems>
             {top.map((item) => (
@@ -37,7 +39,7 @@ const TopSellers = () => {
       )
     }
     
-    const PopularProducts = styled.div`
+    const PopularProducts = styled(motion.div)`
       margin-top: 2rem;
       
     h1 {
