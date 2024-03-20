@@ -20,17 +20,17 @@ const interval = setInterval(() => {
     setCurrentSlideIndex((prevIndex) =>
     prevIndex === slides.length -1 ? 0 : prevIndex + 1
 );
-}, 7000);
+}, 5000);
 return () => clearInterval(interval)
     },[slides.length]);
   return (
     <Container>
         <ContentWrapper>
         <StyledBanner>
-        <h1>All the assets you need in one place</h1>
+        <h1>All the assets you need in one place!!</h1>
         </StyledBanner>
 <Description>
-        <p>Shop clothes,phones, accessories and more from independent sellers around the world</p>
+        <p>Shop for clothes,phones, accessories and more from independent sellers around the world</p>
         </Description>
         <FormStyle>
     <div>
@@ -42,37 +42,40 @@ return () => clearInterval(interval)
         </ContentWrapper>
         {slides.map((slide, index) => (
                 <BackgroundSlide
-                    key={index}
-                    src={slide}
-                    animate={index === currentSlideIndex ? { opacity: 1 } : { opacity: 0 }}
+                key={index}
+                src={slide}
+                animate={
+                index === currentSlideIndex
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: '100%' }
+                }
+                transition={{ duration: 1 }}
+                  
                 />
             ))}
     </Container>
   )
 }
-const Container = styled(motion.header)`
+const Container = styled(motion.div)`
 height: 60vh;
 position: relative;
+overflow: hidden;
 z-index: 30;
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-transform: matrix(1, 2, -1, 1, 80px, 80px);
 background: opacity 5;
 @media (max-width: 768px) {
   width: 100%;
-  height: auto;
+  height: 50vh;
 }
 
 `
 const StyledBanner = styled(motion.div)`
-
-height: 70px;
-
 h1 {
      font-size: 2rem !important;
-     padding-bottom: 3rem;
+     padding-bottom: 2rem;
      color: white;
 }
 @media (max-width: 768px){
@@ -83,7 +86,7 @@ h1 {
 `
 const Description = styled.p`
 width: 45rem;
-font-size: 14px;
+font-size: 18px;
 line-height: 1.3;
 margin-top: 0rem;
 max-width: 360px;
@@ -115,9 +118,7 @@ svg {
     left: 0%;
     font-size: 24px;
     transform: translate(100%, -50%);
-    color: white;
-    background: #ED4C07;
-}
+    }
 `
 const BackgroundSlide = styled(motion.img)`
   position: absolute;
