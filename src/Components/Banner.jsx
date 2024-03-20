@@ -8,8 +8,8 @@ import slide6 from "../Images/slide6.png"
 
 import { FaSearch } from 'react-icons/fa'
 import styled from "styled-components"
-import {motion, AnimatePresence } from "framer-motion"
-import { photoAnim } from "../animations";
+import {motion } from "framer-motion"
+
 
 const Banner = () => {
     const slides = [slide1, slide2, slide3, slide4, slide7, slide6]
