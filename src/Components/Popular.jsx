@@ -55,6 +55,8 @@ const PItems = styled.div`
  display: grid;
 grid-template-columns: repeat(auto-fit,minmax(10rem,1fr));
 grid-gap: 4rem;
+margin: 0 auto;
+max-width: 960px;
 @media (max-width: 768px) {
   display: flex;
   gap: 0.5rem;
