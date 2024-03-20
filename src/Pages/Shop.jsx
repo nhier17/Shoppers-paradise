@@ -5,6 +5,7 @@ import PopularPhones from '../Components/PopularPhones'
 import Offers from '../Components/Offers'
 import NewCollections from '../Components/NewCollections'
 import NewsLetter from '../Components/NewsLetter'
+import TopSellers from '../Components/TopSellers'
 import {motion} from "framer-motion"
 
  const Shop = () => {
@@ -16,6 +17,7 @@ import {motion} from "framer-motion"
     transition={{duration: 0.75}}
     >
         <Hero/>
+        <TopSellers />
         <PopularPhones/>
         <Popular/>
         <Offers/>
