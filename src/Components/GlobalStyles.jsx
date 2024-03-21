@@ -21,8 +21,7 @@ const GlobalStyles = createGlobalStyle`
         overflow-x: hidden;
         font-family: "Roboto",sans-serif;
         user-select: none;
-      
-        @media (max-width: 768px) {
+         @media (max-width: 768px) {
             padding: 1rem;
         
         }

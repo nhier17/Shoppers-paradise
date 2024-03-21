@@ -147,26 +147,17 @@ const passwordStrengthColor = () => {
           height: 100%;  
           @media (max-width: 768px) {
             margin-top: 2rem;
-            background: black;
           }
           }
           h1 {
             color: black;
-            @media (max-width: 768px) {
-              color: white;
-            }
-  
+            
           }
           p {
             margin-top: 1rem;
             color: black;
-            @media (max-width: 768px) {
-              color: white;
-            }
           }
-          @media (max-width: 768px) {
-            background: black;
-          }
+          
         `
       
       const Contents = styled.div`

@@ -116,6 +116,14 @@ h2 {
     padding-left: 3rem;
     font-size: 19px;
 }
+@media (max-width: 768px) {
+padding: 1rem;
+h2 {
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    
+}
+}
 `
 const Contents = styled.div`
   border: 1px solid #F3F4F6;

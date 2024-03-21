@@ -26,9 +26,10 @@ const Login = () => {
       const response = await axios.post('https://shoppers-paradise17.onrender.com/api/auth/login', formData)
         if (response.data) {
           const userName = response.data.user.name
-         navigate('/')
-         toast.success(`Welcome, ${userName}`)
-         
+          localStorage.setItem('token', userName)
+          navigate('/')
+         toast.success(`Happy shopping, ${userName}`)
+         setFormData({ email: '', password: '' });
       } 
      } catch (error) {
       toast.error(error.response.data.msg)
@@ -69,16 +70,12 @@ margin-top: 5rem;
     min-height: 480px;
     h1 {
       color: black;
-      @media (max-width: 768px) {
-        color: #fff;
-      }
-      
+           
     }
 
     @media (max-width: 768px) {
     width: 100%;
     margin: 2rem auto;
-    background: black;
   }
     button{
     background-color: #512da8;
@@ -108,8 +105,7 @@ margin-top: 5rem;
     height: 100%;  
     @media (max-width: 768px) {
       margin-top: 2rem;
-      background-color: black;
-      color: #fff;
+    
     }
     }
    P{
@@ -118,7 +114,7 @@ margin-top: 5rem;
     color: black;
     @media (max-width: 768px) {
       margin-top: 0.5rem;
-      color: #fff;
+      
     }
    }
  

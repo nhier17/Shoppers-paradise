@@ -1,4 +1,4 @@
-import React, { useContext,useState } from 'react'
+import React, { useContext,useState, useEffect } from 'react'
 import styled from "styled-components"
 import { CiMenuBurger } from "react-icons/ci";
 import { MdOutlineShoppingCart,MdClose } from "react-icons/md";
@@ -16,7 +16,11 @@ const NavBar = () =>{
   const {getTotalCartItems} = useContext(ShopContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   //check if user is logged in
-  const [isLoggedin, setIsLoggedin] = useState(true) 
+  const [isLoggedin, setIsLoggedin] = useState(false) 
+  useEffect(() => {
+    // Check if user is logged in
+    setIsLoggedin(localStorage.getItem('token') ? true : false);
+  }, []);
  
   //toggle menu
   const toggleMenu = () => {
@@ -117,19 +121,20 @@ const NavBar = () =>{
      </li> 
     </ul> 
     <Cart>
-      {isLoggedin ? (
-        <>
-    <Link to="/login">
-    <FaUser />
-    </Link>
-    </>
-      ) : (
-    
-    <Link to="/logout">
-    <Logout setIsLoggedin={setIsLoggedin}/>
-    </Link>
-    
-    )}
+    <UserMenu>
+        <FaUser />
+        <MenuContent>
+          {isLoggedin ? (
+            <Link to="/logout">
+              <Logout />
+            </Link>
+          ) : (
+            <Link to="/login">
+              Log In
+            </Link>
+          )}
+        </MenuContent>
+      </UserMenu>
      <Link to="/cart">
     <MdOutlineShoppingCart/>
     </Link>
@@ -152,7 +157,7 @@ const StyledNav = styled.div`
   position: sticky;
   top: 0;
   z-index: 70;
-  background: white;
+  background: linear-gradient(35deg, #89BEC5, #fff);
   box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.12);
   
  a {
@@ -235,7 +240,7 @@ p {
 
 } 
 svg {
-    font-size: 38px;
+    font-size: 19px;
     color: black;
     cursor: pointer;
     display: none;
@@ -245,6 +250,7 @@ svg {
 }
 
 `
+
 const Cart = styled.div`
 display: flex;
 align-items: center; 
@@ -273,6 +279,50 @@ const StyledLink = styled(Link)`
  text-decoration: none;
 color: black;
 `
+const UserMenu = styled.div`
+  position: relative;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  svg {
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    /* Add responsive styles */
+  }
+`;
+
+const MenuContent = styled.div`
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  display: none;
+
+  a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #f4f4f4;
+    }
+  }
+
+  ${UserMenu}:hover & {
+    display: block;
+  }
+
+`;
 
 
 
