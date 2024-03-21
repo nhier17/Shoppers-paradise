@@ -39,7 +39,8 @@ const Popular = () => {
 }
 
 const PopularProducts = styled.div`
-  margin-top: 2rem;
+  margin-top: 3rem;
+  padding-left: 3rem;
   
 h1 {
   padding-left: 3rem;

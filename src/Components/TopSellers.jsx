@@ -19,7 +19,7 @@ const TopSellers = () => {
 
     return (
         <PopularProducts>
-          <h1>Trending this week!</h1>  
+          <h2>Trending this week!</h2>  
           <PItems>
             {top.map((item) => (
               
@@ -39,8 +39,9 @@ const TopSellers = () => {
     }
     
     const PopularProducts = styled(motion.div)`
-      margin-top: 2rem;
-       h1 {
+      margin-top: 3rem;
+      padding-left: 3rem;  
+       h2 {
       padding-left: 3rem;
       margin-bottom: 2rem;
       font-size: 19px;

@@ -7,6 +7,7 @@ import NewsLetter from '../Components/NewsLetter'
 import TopSellers from '../Components/TopSellers'
 import {motion} from "framer-motion"
 import Banner from '../Components/Banner'
+import Categories from '../Components/Categories'
 
  const Shop = () => {
    return (
@@ -17,6 +18,7 @@ import Banner from '../Components/Banner'
     transition={{duration: 0.75}}
     >
         <Banner/>
+        <Categories />
         <TopSellers />
         <PopularPhones/>
         <Popular/>
