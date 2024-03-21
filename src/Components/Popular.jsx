@@ -10,7 +10,7 @@ const Popular = () => {
     let image_url = "https://shoppers-paradise17.onrender.com"
     
     const getDetails = async () => {
-        const response = await axios.get(`https://shoppers-paradise17.onrender.com/api/products?&category=women`)
+        const response = await axios.get(`https://shoppers-paradise17.onrender.com/api/products?&category=gym`)
         setPopular(response.data.products)
         
     }
@@ -19,7 +19,7 @@ const Popular = () => {
     }, [])
   return (
     <PopularProducts>
-      <h1>Popular in Women</h1>  
+      <h1>Flash Sales</h1>  
       <PItems>
         {popular.map((item) => (
           

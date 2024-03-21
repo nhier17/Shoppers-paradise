@@ -2,6 +2,7 @@ import React from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 //images
 import wm from "../Images/wm.png"
 import mn from "../Images/mn.png"
@@ -50,39 +51,57 @@ const Categories = (props) => {
   autoPlay={props.deviceType !== "mobile" ? true : false}
   >
   <Contents>
+    <Link to="/women">
     <img src={wm} alt="wm" />
+    </Link>
     <p>Women outfit</p>
-  </Contents>
+    </Contents>
   <Contents>
+    <Link to="/men">
     <img src={mn} alt="mn" />
+    </Link>
     <p>Men outfit</p>
-  </Contents>
+     </Contents>
   <Contents>
+    <Link to="/men">
     <img src={ms} alt="ms" />
+    </Link>
     <p>Men shoes</p>
-  </Contents>
+     </Contents>
   <Contents>
+    <Link to="/smartphones">
     <img src={ph} alt="ws" />
+    </Link>
     <p>SmartPhones</p>
   </Contents>
   <Contents>
+    <Link to="/women">
     <img src={ws} alt="ws" />
+    </Link>
     <p>Women shoes</p>
   </Contents>
   <Contents>
+    <Link to="kids">
     <img src={kds} alt="kds" />
+    </Link>
     <p>Kids outfits</p>
   </Contents>
   <Contents>
+    <Link to="/gym">
     <img src={gw} alt="kds" />
+    </Link>
     <p>Gym wear</p>
-  </Contents>
+     </Contents>
   <Contents>
+    <Link to="smartphones">
     <img src={lp} alt="kds" />
+    </Link>
     <p>Computing</p>
   </Contents>
   <Contents>
+    <Link to="/smartphones">
     <img src={ap} alt="kds" />
+    </Link>
     <p>Appliances</p>
   </Contents>
 </Carousel>;
@@ -108,6 +127,7 @@ const Contents = styled.div`
   height: 200px; 
   text-align: center;
   border-radius: 8px;
+  text-decoration: none;
   cursor: pointer;
   transition: transform 450ms;
   &:hover {
