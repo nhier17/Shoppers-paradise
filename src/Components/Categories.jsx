@@ -9,6 +9,9 @@ import ms from "../Images/ms1.png"
 import ws from "../Images/ws.jpeg"
 import kds from "../Images/kds.png"
 import ph from "../Images/ph.png"
+import ap from "../Images/ap.png"
+import gw from "../Images/gw.png"
+import lp from "../Images/lp.png"
 
 const responsive = {
     superLargeDesktop: {
@@ -69,6 +72,18 @@ const Categories = (props) => {
   <Contents>
     <img src={kds} alt="kds" />
     <p>Kids outfits</p>
+  </Contents>
+  <Contents>
+    <img src={gw} alt="kds" />
+    <p>Gym wear</p>
+  </Contents>
+  <Contents>
+    <img src={lp} alt="kds" />
+    <p>Computing</p>
+  </Contents>
+  <Contents>
+    <img src={ap} alt="kds" />
+    <p>Appliances</p>
   </Contents>
 </Carousel>;
         </Container>
