@@ -34,7 +34,7 @@ const NavBar = () =>{
     )}
         <p>SHOPPERS PARADISE</p>
     </NavLogo>   
-    <AnimatePresence>
+    <AnimatePresence mode='wait'>
         {isMenuOpen && (
           <MobileMenu
             initial={{ x: '100%' }}
@@ -62,6 +62,16 @@ const NavBar = () =>{
                   Kids
                 </Link>
               </li>
+              <li>
+                <Link to="/smartphones" onClick={toggleMenu}>
+                  SmartPhones
+                </Link>
+              </li>
+              <li>
+                <Link to="/gym" onClick={toggleMenu}>
+                  Gym wear
+                </Link>
+              </li>
             </ul>
           </MobileMenu>
         )}
@@ -69,27 +79,27 @@ const NavBar = () =>{
     <ul>
      
      <li>
-     <Link to="/">
+     <StyledLink to="/">
         Shop
         <Line
             transition={{ duration: 0.75 }}
             initial={{ width: "0%" }}
             animate={{ width: pathname === "/" ? "100%" : "0%" }}
           />
-        </Link>
+        </StyledLink>
         </li>  
         <li>
-     <Link to="/men">
+     <StyledLink to="/men">
      Men
      <Line
          transition={{ duration: 0.75 }}
             initial={{ width: "0%" }}
             animate={{ width: pathname === "/men" ? "100%" : "0%" }}
           />     
-     </Link>
+     </StyledLink>
      </li> 
      <li>
-     <Link to="/women">Women</Link> 
+     <StyledLink to="/women">Women</StyledLink> 
      <Line
             transition={{ duration: 0.75 }}
             initial={{ width: "0%" }}
@@ -98,7 +108,7 @@ const NavBar = () =>{
 
      </li>
      <li>
-     <Link to="/kids">Kids</Link>
+     <StyledLink to="/kids">Kids</StyledLink>
      <Line
             transition={{ duration: 0.75 }}
             initial={{ width: "0%" }}
@@ -259,6 +269,11 @@ const CartCounter = styled.div`
     background: #FF9900;
     color: white;
 `
+const StyledLink = styled(Link)`
+ text-decoration: none;
+color: black;
+`
+
 
 
 export default NavBar

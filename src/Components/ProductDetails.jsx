@@ -64,10 +64,11 @@ const Container = styled.div`
 margin-top: 2rem;
 padding: 2rem;
  display: flex;
- 
+ justify-content: flex-start;
+  align-items: flex-start;
  button {
   margin-top: 1rem;
-    padding: 1rem;
+    padding: 1rem 3rem;
     font-size: 16px;
     font-weight: 600;
     background: #e07e1b;
@@ -80,6 +81,7 @@ padding: 2rem;
 
   @media (max-width: 768px) {
     flex-direction: column;
+    align-items: flex-start;
   }
 `
 const Details = styled.div`
@@ -87,8 +89,7 @@ display: flex;
 gap: 1rem;
 @media (max-width: 768px) {
   flex-direction: row;
-  align-items: center;
-  
+    
 }
 
 `
@@ -116,11 +117,13 @@ const List = styled.div`
   
 `
 const DisplayMain = styled.div`
+
 img {
   width: 586px;
   height: 700px;
   object-fit: cover;
   border-radius: 1rem;
+  padding-right: 2rem;
   @media (max-width: 768px) {
     width: 100%;
     height: auto;
@@ -134,7 +137,7 @@ const DisplayRight = styled.div`
 margin: 1rem auto;
 display: flex;
 flex-direction: column;
-align-items: center;
+align-items: flex-start;
 h1 {
   
   font-size: 19px;
@@ -143,7 +146,7 @@ h1 {
 @media (max-width: 768px) {
   p{
     font-size: 16px;
-    max-width: 35vw;
+    
   }
 }
 
@@ -151,38 +154,34 @@ h1 {
 
 const Description = styled.div`
 display: flex;
-align-items: center;
 gap: 10px;
 padding: 10px;
 svg {
   color: #F6B01E;
-  font-size: 19px;
-  gap: 5px;
-  
-}
+  font-size: 1.2rem;
+  }
 `
 const Prices = styled.div`
  display: flex;
  margin: 20px 0px;
  gap: 30px;
- font-size: 24px; 
+ font-size: 1rem; 
  justify-content: flex-start;
  align-items: center;
 `
 const OldPrice = styled.div`
 color: #818181;
 text-decoration: line-through;
-font-size: 14px;
+
 `
 const NewPrice = styled.div`
 font-weight: 600;
-font-size: 18px;
 
 `
 const Sizes = styled.div`
+margin-top: 2rem;
 h1 {
-  margin-top: 55px;
-  font-size: 20px;
+  font-size: 1.2rem;
   font-weight: 600;
 }
 `
