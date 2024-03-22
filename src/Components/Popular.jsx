@@ -39,13 +39,16 @@ const Popular = () => {
 }
 
 const PopularProducts = styled.div`
-  margin-top: 3rem;
   padding-left: 3rem;
-  
+  display: flex;
+  flex-direction: column;
+ margin: 0 auto;
+max-width: 960px;
 h1 {
   padding-left: 3rem;
   margin-bottom: 2rem;
   font-size: 19px;
+  margin-top: 2rem;
 }
     @media (max-width: 768px) {
     height: auto;
@@ -57,10 +60,8 @@ h1 {
 `
 const PItems = styled.div`
  display: grid;
-grid-template-columns: repeat(auto-fit,minmax(10rem,1fr));
+grid-template-columns: repeat(auto-fit,minmax(12rem,1fr));
 grid-gap: 4rem;
-margin: 0 auto;
-max-width: 960px;
 @media (max-width: 768px) {
   display: flex;
   gap: 0.5rem;

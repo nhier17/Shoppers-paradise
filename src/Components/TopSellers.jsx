@@ -39,13 +39,16 @@ const TopSellers = () => {
     }
     
     const PopularProducts = styled(motion.div)`
-      margin-top: 3rem;
-      padding-left: 3rem;  
+   padding-left: 3rem;  
+   display: flex;
+  flex-direction: column;
+ margin: 0 auto;
+max-width: 960px;
        h2 {
       padding-left: 3rem;
       margin-bottom: 2rem;
       font-size: 19px;
-     
+     margin-top: 2rem;
     }
         @media (max-width: 768px) {
         height: auto;
@@ -56,8 +59,6 @@ const TopSellers = () => {
      display: grid;
     grid-template-columns: repeat(auto-fit,minmax(10rem,1fr));
     grid-gap: 4rem;
-    max-width: 960px;
-    margin: 0 auto;
     @media (max-width: 768px) {
       display: flex;
       gap: 0.5rem;
