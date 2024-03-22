@@ -52,7 +52,9 @@ margin-top: 7rem;
  align-items: center;
  gap: 50px;
  justify-content: center;
-
+@media (max-width: 768px) {
+    margin-top: 3rem;
+}
 `
 const FooterLogo = styled.div`
     display: flex;

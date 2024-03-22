@@ -1,4 +1,4 @@
-import React, { useContext,useState, useEffect } from 'react'
+import React, { useContext,useState } from 'react'
 import styled from "styled-components"
 import { CiMenuBurger } from "react-icons/ci";
 import { MdOutlineShoppingCart,MdClose } from "react-icons/md";
@@ -7,7 +7,7 @@ import { Link,useLocation } from 'react-router-dom';
 import {motion,AnimatePresence } from "framer-motion"
 import { ShopContext } from "../Context/ShopContext"
 import { FaUser } from 'react-icons/fa'
-import Logout from "../Components/Logout"
+
 
 
 
@@ -15,13 +15,7 @@ const NavBar = () =>{
   const { pathname } = useLocation();
   const {getTotalCartItems} = useContext(ShopContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  //check if user is logged in
-  const [isLoggedin, setIsLoggedin] = useState(false) 
-  useEffect(() => {
-    // Check if user is logged in
-    setIsLoggedin(localStorage.getItem('token') ? true : false);
-  }, []);
- 
+  
   //toggle menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -121,20 +115,9 @@ const NavBar = () =>{
      </li> 
     </ul> 
     <Cart>
-    <UserMenu>
-        <FaUser />
-        <MenuContent>
-          {isLoggedin ? (
-            <Link to="/logout">
-              <Logout />
-            </Link>
-          ) : (
-            <Link to="/login">
-              Log In
-            </Link>
-          )}
-        </MenuContent>
-      </UserMenu>
+      <Link to="/dashboard">
+       <FaUser/>  
+       </Link> 
      <Link to="/cart">
     <MdOutlineShoppingCart/>
     </Link>
@@ -279,50 +262,9 @@ const StyledLink = styled(Link)`
  text-decoration: none;
 color: black;
 `
-const UserMenu = styled.div`
-  position: relative;
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
 
-  svg {
-    margin-right: 0.5rem;
-    font-size: 1.5rem;
-  }
 
-  @media (max-width: 768px) {
-    /* Add responsive styles */
-  }
-`;
 
-const MenuContent = styled.div`
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 0.5rem;
-  display: none;
-
-  a {
-    display: block;
-    padding: 0.5rem 1rem;
-    color: #333;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: #f4f4f4;
-    }
-  }
-
-  ${UserMenu}:hover & {
-    display: block;
-  }
-
-`;
 
 
 
