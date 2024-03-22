@@ -98,6 +98,7 @@ const ContactStyle = styled(motion.div)`
     padding: 2rem;
     font-size: 0.1rem;
     align-items: flex-start;
+    height: 40vh;
   }
 `;
 const Wrapper = styled(motion.div)`
