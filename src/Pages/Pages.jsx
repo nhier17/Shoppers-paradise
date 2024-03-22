@@ -11,6 +11,7 @@ import { AnimatePresence } from "framer-motion"
 import Checkout from "../Components/Checkout"
 import Success from "../Components/Success";
 import CancelPayment from "../Components/CancelPayment";
+import Dashboard from "./Dashboard"
 
 function Pages(){
   const location = useLocation();
@@ -31,6 +32,7 @@ function Pages(){
         <Route path="/checkout" element={<Checkout />} />
          <Route path="/success" element={<Success />} />
          <Route path="/cancel" element={<CancelPayment />} /> 
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       </AnimatePresence>
     </div>
