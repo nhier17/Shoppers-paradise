@@ -3,19 +3,28 @@ import {ShopContext} from "../Context/ShopContext"
 import { IoIosArrowDropdown } from "react-icons/io";
 import Items from "../Components/Items"
 import styled from "styled-components"
-
+import { toast } from "sonner"
 
 
 
 const ShopCategory = ({image,category}) => {
   const {getProducts} = useContext(ShopContext)
   const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(true)
   let image_url = "https://shoppers-paradise17.onrender.com"
 
   useEffect(() => {
+    
     const fetchData = async () => {
-      const data = await getProducts()
-      setProducts(data)
+      try {
+        const data = await getProducts()
+        setProducts(data)
+      } catch (error) {
+        toast.error("error fetching products")
+      } finally {
+        setLoading(false)
+      }
+     
     }
     fetchData()
   } ,[getProducts])
@@ -32,6 +41,10 @@ const ShopCategory = ({image,category}) => {
           Sort by <IoIosArrowDropdown />
         </Contents>
       </Sort>
+      {loading ? (
+        <div><LoadingMessage>Loading...</LoadingMessage></div>
+        ) : (
+  
       <Products>
       {products?.map((product) => {
         if (category === product.category) {
@@ -49,6 +62,7 @@ const ShopCategory = ({image,category}) => {
         }
 })}
       </Products>
+      )}
       <LoadMore>
       Explore More
       </LoadMore>  
@@ -124,5 +138,9 @@ display: flex;
   font-size: 16px;
   font-weight: 600;
 `
-
+const LoadingMessage = styled.div`
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+`;
 export default ShopCategory

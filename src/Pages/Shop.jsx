@@ -2,7 +2,6 @@ import React from 'react'
 import Popular from '../Components/Popular'
 import PopularPhones from '../Components/PopularPhones'
 import Offers from '../Components/Offers'
-import NewCollections from '../Components/NewCollections'
 import NewsLetter from '../Components/NewsLetter'
 import TopSellers from '../Components/TopSellers'
 import {motion} from "framer-motion"
@@ -21,9 +20,8 @@ import Categories from '../Components/Categories'
         <Categories />
         <TopSellers />
         <PopularPhones/>
-        <Popular/>
         <Offers/>
-        <NewCollections/>
+        <Popular/>
         <NewsLetter/>
         
     </motion.div>

@@ -29,9 +29,7 @@ return () => clearInterval(interval)
         <StyledBanner>
         <h1>All the assets you need in one place!!</h1>
         </StyledBanner>
-<Description>
         <p>Shop for clothes,phones, accessories and more from independent sellers around the world</p>
-        </Description>
         <FormStyle>
     <div>
         <FaSearch />
@@ -42,15 +40,15 @@ return () => clearInterval(interval)
         </ContentWrapper>
         {slides.map((slide, index) => (
                 <BackgroundSlide
-                key={index}
-                src={slide}
-                animate={
-                index === currentSlideIndex
-                  ? { opacity: 1, y: 0 }
-                  : { opacity: 0, y: '100%' }
-                }
-                transition={{ duration: 1 }}
-                  
+         key={index}
+         src={slide}
+         animate={
+         index === currentSlideIndex
+           ? { opacity: 1, y: 0 }
+           : { opacity: 0, y: '100%' }
+         }
+         transition={{ duration: 1 }}
+           
                 />
             ))}
     </Container>
@@ -83,17 +81,6 @@ h1 {
         font-size: 1.5rem !important;
     }
 }
-`
-const Description = styled.p`
-width: 45rem;
-font-size: 18px;
-line-height: 1.3;
-margin-top: 0rem;
-max-width: 360px;
-margin-left: 1rem;
-margin-bottom: 1rem;
-font-family: 'Lato',sans-serif;
-color: white;
 `
 const FormStyle = styled.form`
 margin: 0rem 2rem;
@@ -132,6 +119,17 @@ const BackgroundSlide = styled(motion.img)`
 const ContentWrapper = styled.div`
   position: relative;
   z-index: 1;
+  p {
+  width: 45rem;
+font-size: 18px;
+line-height: 1.3;
+margin-top: 0rem;
+max-width: 360px;
+margin-left: 1rem;
+margin-bottom: 1rem;
+font-family: 'Lato',sans-serif;
+color: white;
+  }
   
 `;
 export default Banner

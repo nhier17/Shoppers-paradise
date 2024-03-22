@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
-import { toast }  from 'sonner';
+import { RiLogoutCircleLine } from "react-icons/ri";
 
 const Logout = () => {
     //navigate
@@ -12,14 +12,13 @@ const Logout = () => {
             console.log(response.data)
             localStorage.removeItem('token')
             navigate('/login');
-            toast.sucess('Shop again soon!')
-        } catch (error) {
+            } catch (error) {
             console.error("Error logging out", error.message);
         }
     }
         return (
         <div className="logout">
-            <button onClick={logOutUser}>Logout</button>
+            <RiLogoutCircleLine onClick={logOutUser}/>
         </div>
     )
     }

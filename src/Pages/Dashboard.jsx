@@ -1,11 +1,12 @@
 import React from "react";
-import { RiLogoutCircleLine, RiLockPasswordFill } from "react-icons/ri";
+import {  RiLockPasswordFill } from "react-icons/ri";
 import { CiSettings } from "react-icons/ci";
 import { CiLogin } from "react-icons/ci";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom"
 import store from "../Images/store.png"
+import Logout from "../Components/Logout"
 
 const Dashboard = () => {
   return (
@@ -58,13 +59,11 @@ const Dashboard = () => {
              whileHover={{ scale: 1.1, color: "#ED4C07" }}
              whileTap={{ scale: 0.9 }}
             >
-                <StyledLink to="/logout">
               <div className="icon">
-                <RiLogoutCircleLine />
+                <Logout />
                 <p>Logout</p>
               </div>
-              </StyledLink>
-            </Vcard>
+           </Vcard>
           </Container>
         </Social>
         </Wrapper>

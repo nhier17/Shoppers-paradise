@@ -2,15 +2,24 @@ import React,{ useEffect, useState } from 'react'
 import axios from 'axios'
 import Items from "./Items"
 import styled from "styled-components"
+import { toast } from "sonner"
 
 const PopularPhones = () => {
     const [popular, setPopular] = useState([])
+    const [loading, setLoading] = useState(true)
     let image_url = "https://shoppers-paradise17.onrender.com"
     
     const getPhones = async () => {
+      try {
         const response = await axios.get(`https://shoppers-paradise17.onrender.com/api/products?&category=smartphones`)
         setPopular(response.data.products)
       
+      } catch (error) {
+        toast.error("Error fetching products")
+      } finally {
+        setLoading(false)
+      }
+       
     }
     useEffect(()=>{
         getPhones()
@@ -19,6 +28,10 @@ const PopularPhones = () => {
     return (
         <PopularProducts>
           <h1>SmartPhones</h1>  
+          {loading ? (
+            <LoadingMessage>Loading...</LoadingMessage>
+            ) : (
+  
           <PItems>
             {popular.map((item) => (
               
@@ -33,6 +46,7 @@ const PopularPhones = () => {
               
             ))}
           </PItems>
+          )}
         </PopularProducts>
       )
     }
@@ -79,6 +93,10 @@ const PItems = styled.div`
         }
         
     `
-
+const LoadingMessage = styled.div`
+text-align: center;
+font-size: 18px;
+margin-top: 20px;
+`;
 
 export default PopularPhones

@@ -3,6 +3,7 @@ import axios from 'axios';
 import styled from "styled-components"
 import { ShopContext } from '../Context/ShopContext';
 import { useNavigate } from "react-router-dom"
+import { toast } from "sonner"
 //stripe
 import {
   CardElement,
@@ -50,6 +51,7 @@ const paymentHandler = async (e) => {
       if (error) {
       throw new Error(error.message);
       }
+      toast.success('Payment successful!')
       console.log('Payment successful');
       // reset cart items to 0 after successful payment
       setCartItem(prevCartItem => {
@@ -62,6 +64,7 @@ const paymentHandler = async (e) => {
       navigate('/success')
     } catch (error) {
       console.error("Error during payment",error.message);
+      toast.error('Error during payment!')
       setError(error.message);
       navigate('/cancel')
     } finally {

@@ -3,14 +3,23 @@ import axios from "axios"
 import styled from "styled-components"
 import Items from './Items'
 import { motion } from "framer-motion"
+import { toast } from "sonner"
 
 const TopSellers = () => {
     const [top, setTop] =  useState([])
+    const [loading, setLoading] = useState(true)
     let image_url = "https://shoppers-paradise17.onrender.com"
     
     const getDetails = async () => {
-        const response = await axios.get(`https://shoppers-paradise17.onrender.com/api/products?&category=mixed`)
-        setTop(response.data.products)
+        try {
+         const response = await axios.get(`https://shoppers-paradise17.onrender.com/api/products?&category=mixed`)
+          setTop(response.data.products)  
+        } catch (error) {
+            toast.error("Error fetching data")
+        } finally {
+            setLoading(false)
+        }
+        
     }
     useEffect(() => {
     getDetails()
@@ -20,7 +29,10 @@ const TopSellers = () => {
     return (
         <PopularProducts>
           <h2>Trending this week!</h2>  
-          <PItems>
+          {loading ? (
+            <LoadingMessage>Loading...</LoadingMessage>
+            ) : (
+            <PItems>
             {top.map((item) => (
               
                 <Items 
@@ -34,6 +46,7 @@ const TopSellers = () => {
               
             ))}
           </PItems>
+          )}
         </PopularProducts>
       )
     }
@@ -74,5 +87,9 @@ max-width: 960px;
         }
         
     `
-
+const LoadingMessage = styled.div`
+text-align: center;
+font-size: 18px;
+margin-top: 20px;
+`;
 export default TopSellers
