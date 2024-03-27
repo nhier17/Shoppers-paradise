@@ -4,6 +4,7 @@ import styled from "styled-components"
 import Items from './Items'
 import { motion } from "framer-motion"
 import { toast } from "sonner"
+import { Bars } from "react-loader-spinner"
 
 const TopSellers = () => {
     const [top, setTop] =  useState([])
@@ -30,7 +31,15 @@ const TopSellers = () => {
         <PopularProducts>
           <h2>Trending this week!</h2>  
           {loading ? (
-            <LoadingMessage>Loading...</LoadingMessage>
+            <Bars
+            height="80"
+            width="80"
+            color="#4fa94d"
+            ariaLabel="bars-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+             />
             ) : (
             <PItems>
             {top.map((item) => (
@@ -87,9 +96,5 @@ max-width: 960px;
         }
         
     `
-const LoadingMessage = styled.div`
-text-align: center;
-font-size: 18px;
-margin-top: 20px;
-`;
+
 export default TopSellers

@@ -4,6 +4,7 @@ import { IoIosArrowDropdown } from "react-icons/io";
 import Items from "../Components/Items"
 import styled from "styled-components"
 import { toast } from "sonner"
+import { Bars } from "react-loader-spinner"
 
 
 
@@ -42,7 +43,15 @@ const ShopCategory = ({image,category}) => {
         </Contents>
       </Sort>
       {loading ? (
-        <div><LoadingMessage>Loading...</LoadingMessage></div>
+        <Bars 
+        height="80"
+        width="80"
+        color="#4fa94d"
+        ariaLabel="bars-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+        />
         ) : (
   
       <Products>
@@ -138,9 +147,5 @@ display: flex;
   font-size: 16px;
   font-weight: 600;
 `
-const LoadingMessage = styled.div`
-    text-align: center;
-    font-size: 18px;
-    margin-top: 20px;
-`;
+
 export default ShopCategory

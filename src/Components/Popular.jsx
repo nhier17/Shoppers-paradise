@@ -3,7 +3,7 @@ import axios from "axios"
 import Items from './Items'
 import styled from "styled-components"
 import { toast } from "sonner"
-
+import { Bars } from "react-loader-spinner"
 
 
 const Popular = () => {
@@ -29,7 +29,15 @@ const Popular = () => {
     <PopularProducts>
       <h1>Flash Sales</h1>
       {loading ? ( 
-        <LoadingMessage>Loading...</LoadingMessage>
+        <Bars
+        height="80"
+        width="80"
+        color="#4fa94d"
+        ariaLabel="bars-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+         />
       ) : ( 
       <PItems>
         {popular.map((item) => (
@@ -90,9 +98,5 @@ img {
     }
     
 `
-const LoadingMessage = styled.div`
-    text-align: center;
-    font-size: 18px;
-    margin-top: 20px;
-`;
+
 export default Popular
