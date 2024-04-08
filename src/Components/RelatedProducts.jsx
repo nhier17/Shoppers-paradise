@@ -43,6 +43,7 @@ const RelatedProducts = ({productId, category}) => {
 const Container = styled.div`
 padding: 2rem;
  height: 90vh;
+ overflow: hidden;
  p {
   
   font-size: 1rem;
@@ -60,13 +61,24 @@ padding: 2rem;
 const Contents = styled.div`
  margin-top: 50px;
  display: flex;
- overflow-x: scroll;
- overflow-y: hidden;
  width: 100%;
  gap: 1rem;
- &::-webkit-scrollbar{
-    display: none;
+ white-space: nowrap;
+ -webkit-animation-name: move;
+  -webkit-animation-duration: 15s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+&:hover {
+  -webkit-animation-play-state: paused;
 }
+@keyframes move {
+    0% {
+      transform: translateX(0); 
+    }
+    100% {
+      transform: translateX(-100%); 
+    }
+  }
 img {
   overflow: hidden;
 }
