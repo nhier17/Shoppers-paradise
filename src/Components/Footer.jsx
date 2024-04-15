@@ -39,7 +39,7 @@ const Footer = () => {
             </Icons>
         </SocialIcons>
         <Copyright>
-            <p>Copyright @2024 - All rights reserved</p>
+            <p> &copy; {new Date().getFullYear()} Shoppers paradise</p>
             <hr/>
         </Copyright>
     </Container>
