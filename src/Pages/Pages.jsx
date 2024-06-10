@@ -8,9 +8,7 @@ import men from '../Images/banner_men.png';
 import women from '../Images/banner_women.png';
 import kids from '../Images/banner_kids.png';
 import { AnimatePresence } from "framer-motion"
-import Checkout from "../Components/Checkout"
-import Success from "../Components/Success";
-import CancelPayment from "../Components/CancelPayment";
+import { Checkout, Success, CancelPayment } from "../Components"
 import Dashboard from "./Dashboard"
 
 function Pages(){

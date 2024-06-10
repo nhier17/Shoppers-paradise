@@ -1,12 +1,6 @@
-import React from 'react'
-import Popular from '../Components/Popular'
-import PopularPhones from '../Components/PopularPhones'
-import Offers from '../Components/Offers'
-import NewsLetter from '../Components/NewsLetter'
-import TopSellers from '../Components/TopSellers'
-import {motion} from "framer-motion"
-import Banner from '../Components/Banner'
-import Categories from '../Components/Categories'
+import React from 'react';
+import { Popular, PopularPhones, Offers, NewsLetter, Banner, Categories, TopSellers  } from '../Components';
+import {motion} from "framer-motion";
 
  const Shop = () => {
    return (

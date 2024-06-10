@@ -1,10 +1,10 @@
-import React, {useContext,useState, useEffect} from 'react'
-import {ShopContext} from "../Context/ShopContext"
+import React, {useContext,useState, useEffect} from 'react';
+import {ShopContext} from "../Context/ShopContext";
 import { IoIosArrowDropdown } from "react-icons/io";
-import Items from "../Components/Items"
-import styled from "styled-components"
-import { toast } from "sonner"
-import { Bars } from "react-loader-spinner"
+import { Items } from "../Components";
+import styled from "styled-components";
+import { toast } from "sonner";
+import { Bars } from "react-loader-spinner";
 
 
 

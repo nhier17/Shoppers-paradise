@@ -1,12 +1,12 @@
 import React, { useContext,useState } from 'react'
-import styled from "styled-components"
+import styled from "styled-components";
 import { CiMenuBurger } from "react-icons/ci";
 import { MdOutlineShoppingCart,MdClose } from "react-icons/md";
 
 import { Link,useLocation } from 'react-router-dom';
-import {motion,AnimatePresence } from "framer-motion"
-import { ShopContext } from "../Context/ShopContext"
-import { FaUser } from 'react-icons/fa'
+import {motion,AnimatePresence } from "framer-motion";
+import { ShopContext } from "../Context/ShopContext";
+import { FaUser } from 'react-icons/fa';
 
 
 

@@ -1,8 +1,7 @@
 import React, {useContext} from 'react'
 import { FaStar,FaStarHalf } from "react-icons/fa";
-
-import styled  from "styled-components"
-import {ShopContext} from "../Context/ShopContext"
+import styled  from "styled-components";
+import {ShopContext} from "../Context/ShopContext";
 
 const ProductDetails = ({product}) => {
   const {addToCart} = useContext(ShopContext)

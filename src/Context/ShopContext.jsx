@@ -1,6 +1,6 @@
 import React, { createContext,useState,useEffect, useCallback } from 'react';
 import axios from 'axios';
-import { toast } from "sonner"
+import { toast } from "sonner";
 
 
 export const ShopContext = createContext(null)

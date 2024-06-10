@@ -1,7 +1,7 @@
 import React, { useState, useEffect,useCallback } from 'react'
-import axios from 'axios'
-import Items from "./Items"
-import styled from "styled-components"
+import axios from 'axios';
+import { Items } from ".";
+import styled from "styled-components";
 
 const RelatedProducts = ({productId, category}) => {
     const [related, setRelated] = useState([])

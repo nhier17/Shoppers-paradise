@@ -1,13 +1,8 @@
-import React from "react"
-import NavBar from "./NavBar/NavBar";
-import GlobalStyles from "./Components/GlobalStyles";
-import { Routes, Route  } from "react-router-dom"
-
-import Signup from "./Components/Signup"
-import Login from "./Components/Login"
-import Pages from "./Pages/Pages"
-import Footer from "./Components/Footer"
-import { Toaster } from "sonner"
+import React from "react";
+import { Routes, Route  } from "react-router-dom";
+import { Signup, Login, NavBar, Footer, GlobalStyles } from "./Components";
+import Pages from "./Pages/Pages";
+import { Toaster } from "sonner";
 
 
 

@@ -1,8 +1,7 @@
-import React, {useContext,useState, useEffect} from 'react'
-import { ShopContext } from "../Context/ShopContext"
-import {useParams} from "react-router-dom"
-import ProductDetails from "../Components/ProductDetails"
-import RelatedProducts from "../Components/RelatedProducts"
+import React, {useContext,useState, useEffect} from 'react';
+import { ShopContext } from "../Context/ShopContext";
+import {useParams} from "react-router-dom";
+import { ProductDetails, RelatedProducts } from "../Components";
 
 
 

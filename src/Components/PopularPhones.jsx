@@ -1,9 +1,9 @@
 import React,{ useEffect, useState } from 'react'
-import axios from 'axios'
-import Items from "./Items"
-import styled from "styled-components"
-import { toast } from "sonner"
-import { Bars } from "react-loader-spinner"
+import axios from 'axios';
+import { Items } from ".";
+import styled from "styled-components";
+import { toast } from "sonner";
+import { Bars } from "react-loader-spinner";
 
 const PopularPhones = () => {
     const [popular, setPopular] = useState([])

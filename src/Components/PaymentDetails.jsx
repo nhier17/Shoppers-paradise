@@ -1,9 +1,9 @@
 import React,{ useState, useContext } from 'react'
 import axios from 'axios';
-import styled from "styled-components"
+import styled from "styled-components";
 import { ShopContext } from '../Context/ShopContext';
-import { useNavigate } from "react-router-dom"
-import { toast } from "sonner"
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 //stripe
 import {
   CardElement,

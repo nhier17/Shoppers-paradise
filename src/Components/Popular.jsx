@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios"
-import Items from './Items'
+import { Items } from '.'
 import styled from "styled-components"
 import { toast } from "sonner"
 import { Bars } from "react-loader-spinner"
