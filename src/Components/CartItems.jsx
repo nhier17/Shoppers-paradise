@@ -1,5 +1,5 @@
 import React, { useContext,useState, useEffect } from 'react';
-import { ShopContext } from '../Context/ShopContext';
+import { ShopContext } from '../context/ShopContext';
 import { RiCloseCircleLine } from 'react-icons/ri';
 import styled from "styled-components"
 import { Link,useNavigate } from "react-router-dom"

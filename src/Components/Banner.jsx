@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import slide1 from "../Images/slide1.jpg"
-import slide2 from "../Images/slide2.jpg"
-import slide3 from "../Images/slide3.jpg"
-import slide4 from "../Images/slide4.jpg"
-import slide7 from "../Images/slide7.jpg"
-import slide6 from "../Images/slide6.png"
-
+import { slide1, slide2, slide3, slide4, slide7, slide6 } from "../images"
 import { FaSearch } from 'react-icons/fa'
 import styled from "styled-components"
 import {motion } from "framer-motion"

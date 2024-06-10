@@ -1,7 +1,7 @@
 import React,{ useState, useContext } from 'react'
 import axios from 'axios';
 import styled from "styled-components";
-import { ShopContext } from '../Context/ShopContext';
+import { ShopContext } from '../context/ShopContext';
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 //stripe

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Popular, PopularPhones, Offers, NewsLetter, Banner, Categories, TopSellers  } from '../Components';
+import { Popular, PopularPhones, Offers, NewsLetter, Banner, Categories, TopSellers  } from '../components';
 import {motion} from "framer-motion";
 
  const Shop = () => {

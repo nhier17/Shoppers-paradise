@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route  } from "react-router-dom";
-import { Signup, Login, NavBar, Footer, GlobalStyles } from "./Components";
-import Pages from "./Pages/Pages";
+import { Signup, Login, NavBar, Footer, GlobalStyles } from "./components";
+import Pages from "./pages/Pages";
 import { Toaster } from "sonner";
 
 
@@ -9,7 +9,7 @@ import { Toaster } from "sonner";
 function App() {
   
   return (
-    <div className="App">
+    <div className="">
        <Toaster richColors position="top-center"/>
        <GlobalStyles/>
         <NavBar/>

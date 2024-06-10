@@ -1,5 +1,5 @@
 import React from 'react'
-import exclusive_image from "../Images/exclusive_image.png"
+import exclusive_image from "../images/exclusive_image.png"
 import styled from "styled-components"
 
 

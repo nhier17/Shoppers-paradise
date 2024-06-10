@@ -1,4 +1,4 @@
-import { ph, gw, mn, ws, wm, ap, lp, kds } from './Images'
+import { ph, gw, mn, ws, wm, ap, lp, kds } from './images';
 
 export const categoriesData = [
   {

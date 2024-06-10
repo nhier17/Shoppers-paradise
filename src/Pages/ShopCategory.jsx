@@ -1,7 +1,7 @@
 import React, {useContext,useState, useEffect} from 'react';
-import {ShopContext} from "../Context/ShopContext";
+import { ShopContext } from "../context/ShopContext";
 import { IoIosArrowDropdown } from "react-icons/io";
-import { Items } from "../Components";
+import { Items } from "../components";
 import styled from "styled-components";
 import { toast } from "sonner";
 import { Bars } from "react-loader-spinner";

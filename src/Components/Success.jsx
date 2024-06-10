@@ -1,5 +1,5 @@
 import React from 'react';
-import success from "../Images/success.png";
+import success from "../images/success.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 

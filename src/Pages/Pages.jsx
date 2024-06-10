@@ -4,11 +4,11 @@ import Shop from './Shop';
 import ShopCategory from './ShopCategory';
 import Product from './Product';
 import Cart from './Cart';
-import men from '../Images/banner_men.png';
-import women from '../Images/banner_women.png';
-import kids from '../Images/banner_kids.png';
+import men from '../images/banner_men.png';
+import women from '../images/banner_women.png';
+import kids from '../images/banner_kids.png';
 import { AnimatePresence } from "framer-motion"
-import { Checkout, Success, CancelPayment } from "../Components"
+import { Checkout, Success, CancelPayment } from "../components"
 import Dashboard from "./Dashboard"
 
 function Pages(){
