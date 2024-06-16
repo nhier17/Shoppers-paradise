@@ -1,63 +1,23 @@
 import React from 'react';
-import success from "../images/success.png";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import success from '../images/success.png';
+import { Link } from 'react-router-dom';
 
 const Success = () => {
-    return (
-        <Container>
-            <Contents>
-                <Title>Payment Successful!</Title>
-                <Subtitle>Your order has been successfully placed.</Subtitle>
-                <Image src={success} alt="success" />
-                <StyledLink to="/">Continue Shopping</StyledLink>
-            </Contents>
-        </Container>
-    );
+  return (
+    <div className="container flex justify-center items-center h-screen bg-gray-100">
+      <div className="text-center">
+        <h1 className="text-3xl font-bold text-green-600 mb-4">Payment Successful!</h1>
+        <p className="text-xl text-gray-800 mb-8">Your order has been successfully placed.</p>
+        <img src={success} alt="success" className="w-40 h-auto mb-8" />
+        <Link
+          to="/"
+          className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg text-lg transition duration-300 ease-in-out hover:bg-green-700"
+        >
+          Continue Shopping
+        </Link>
+      </div>
+    </div>
+  );
 };
-
-const Container = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f7f7f7;
-`;
-
-const Contents = styled.div`
-    text-align: center;
-`;
-
-const Title = styled.h1`
-    color: #2cdc26;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-`;
-
-const Subtitle = styled.p`
-    color: #333;
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-`;
-
-const Image = styled.img`
-    width: 150px;
-    height: auto;
-    margin-bottom: 2rem;
-`;
-
-const StyledLink = styled(Link)`
-    text-decoration: none;
-    background-color: #2cdc26;
-    color: #fff;
-    padding: 0.8rem 1rem;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-        background-color: #23a820;
-    }
-`;
 
 export default Success;

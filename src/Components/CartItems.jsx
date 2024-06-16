@@ -1,19 +1,17 @@
-import React, { useContext,useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import { RiCloseCircleLine } from 'react-icons/ri';
-import styled from "styled-components"
-import { Link,useNavigate } from "react-router-dom"
-import axios from "axios"
-
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const CartItems = () => {
   const { getProducts, cartItem, removeFromCart, totalCartItems } = useContext(ShopContext);
   const [cartProducts, setCartProducts] = useState([]);
-  
-  const [totalPrice, setTotalPrice] = useState(0)
-  const navigate = useNavigate()
-  let image_url = "https://shoppers-paradise17.onrender.com"
-// add products to cart
+  const [totalPrice, setTotalPrice] = useState(0);
+  const navigate = useNavigate();
+  let image_url = "https://shoppers-paradise17.onrender.com";
+
+  // add products to cart
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -26,251 +24,105 @@ const CartItems = () => {
 
     fetchProducts();
   }, [getProducts]);
-  // getting total price of products in cart
 
+  // getting total price of products in cart
   useEffect(() => {
     const calculateTotalPrice = async () => {
-      const total = await totalCartItems()
-      setTotalPrice(total)
-    }
-    calculateTotalPrice()
+      const total = await totalCartItems();
+      setTotalPrice(total);
+    };
+    calculateTotalPrice();
   }, [totalCartItems]);
 
-  //handle checkout
+  // handle checkout
   const handleCheckout = async () => {
     try {
       const itemIds = Object.keys(cartItem).map(id => String(id));
-      
       const response = await axios.post("https://shoppers-paradise17.onrender.com/api/payments/create-payment-intent", {
         items: itemIds.filter(id => cartItem[id] > 0)
       });
-      const { data } = response
-      navigate(`/checkout?orderId=${data._id}`)
+      const { data } = response;
+      navigate(`/checkout?orderId=${data._id}`);
     } catch (error) {
-      console.error("Error creating order",error)
+      console.error("Error creating order", error);
     }
-  }
+  };
 
-   return (
-    <Container>
-      <Details>
-        <p>Products</p>
-        <p>Title</p>
-        <p>Price</p>
-        <p>Quantity</p>
-        <p>Total</p>
-        <p>Remove</p>
-      </Details>
-      <hr />
+  return (
+    <div className="container px-4 py-8 mx-auto max-w-3xl shadow-md bg-white">
       {cartProducts.map((e) => {
-            
         if (cartItem[e._id] > 0) {
           return (
-            <div key={e._id}>
-              <Format>
-                <img crossOrigin="anonymous" src={image_url+e.image} alt={e.name} />
-                <p>{e.name}</p>
-                <p>KSh {e.new_price}</p>
-                <button>{cartItem[e._id]}</button>
-                <p>KSh {e.new_price * cartItem[e._id]}</p>
-                <RiCloseCircleLine onClick={() => removeFromCart(e._id)} />
-              </Format>
-              <hr />
+            <div key={e._id} className="flow-root">
+              <ul className="-my-6 divide-y divide-gray-200">
+                <li className="flex py-6">
+              <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+              <img className="h-full w-full object-cover object-center" crossOrigin="anonymous" src={image_url + e.image} alt={e.name} />
+              </div>
+              
+              <div className="ml-4 flex flex-1 flex-col">
+              <div>
+              <div className="flex justify-between text-base font-medium text-gray-900">
+              <p className="max-w-[20rem]">{e.name}</p>
+              <p className="ml-4">KSh {e.new_price * cartItem[e._id]}</p>
+              </div>
+              <div className="flex flex-1 items-end justify-between text-sm">
+              <button className="px-4 py-2 bg-orange-600 text-white rounded-md">{cartItem[e._id]}</button>
+              <div className="flex">
+              <RiCloseCircleLine className="text-2xl cursor-pointer" onClick={() => removeFromCart(e._id)} />
+              </div>
+              </div>
+              </div>
+              </div>
+                </li>
+              </ul>
             </div>
           );
         }
         return null;
       })}
-      <Description>
-        <Summary>
-            <h2>Cart Summary</h2>
-            <div>
-                <TotalItems>
-                    <p>Subtotal</p>
-                    <p>KSh{totalPrice}</p>
-                </TotalItems>
-                <hr />
-                <TotalItems>
-                    <p>Shipping fee</p>
-                    <p>0</p>
-                </TotalItems>
-                <hr />
-                <TotalItems>
-                    <h3>Total</h3>
-                    <h3>KSH {totalPrice}</h3>
-                </TotalItems>
+      <div className="flex flex-col items-center mt-12 space-y-8">
+        <div className="w-full max-w-xl">
+          <h2 className="text-2xl font-bold mb-4">Cart Summary</h2>
+          <div className="space-y-4">
+            <div className="flex justify-between text-lg font-medium">
+              <p>Subtotal</p>
+              <p>KSh {totalPrice}</p>
             </div>
-            <Link to="/checkout">
-              <button onClick={handleCheckout}>CHECKOUT</button>
-              </Link>
-        </Summary>
-        <PromoCode>
-           <p>Enter your promo code</p> 
-           <PromoBox>
-            <input type="text" placeholder="promo code" />
-            <button>Apply</button>
-           </PromoBox>
-        </PromoCode>
-      </Description>
-    </Container>
+            <hr />
+            <div className="flex justify-between text-lg font-medium">
+              <p>Shipping fee</p>
+              <p>0</p>
+            </div>
+            <hr />
+            <div className="flex justify-between text-lg font-semibold">
+              <h3>Total</h3>
+              <h3>KSh {totalPrice}</h3>
+            </div>
+          </div>
+          <Link to="/checkout">
+            <button onClick={handleCheckout} className="w-full mt-4 py-2 bg-orange-600 text-white text-lg font-medium rounded-md hover:bg-orange-700 transition-colors">CHECKOUT</button>
+          </Link>
+        </div>
+        <div className="w-full max-w-xl text-lg font-medium text-gray-700">
+          <p>Enter your promo code</p>
+          <div className="flex mt-2 p-2 bg-gray-200 rounded-md">
+            <input type="text" placeholder="promo code" className="w-3/4 p-2 bg-transparent border-none outline-none" />
+            <button className="w-1/4 p-2 bg-black text-white rounded-md">Apply</button>
+          </div>
+        </div>
+        <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+                <p>
+                  or 
+                  <Link to="/" className="font-medium text-indigo-600 hover:text-indigo-500">
+                    Continue Shopping
+                    <span aria-hidden="true"> &rarr;</span>
+                  </Link>
+                </p>
+              </div>
+      </div>
+    </div>
   );
 };
 
-const Container = styled.div`
- margin: 100px   170px; 
- hr {
-    height: 3px;
-    background: #e2e2e2;
-    border: 0;
-    height: 3px;
- }
- @media (max-width: 1200px) {
-    margin: 100px 50px;
-  }
-
-  @media (max-width: 768px) {
-    margin: 50px;
-  }
-
-
- 
-`
-const Details = styled.div`
- display: grid;
- grid-template-columns: repeat(6, 1fr); 
- align-items: center;  
- gap: 20px;
- padding: 20px 0px;
- color: #454545;
- font-size: 18px;
- font-weight: 600;
- @media (max-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
-    font-size: 16px;
-  }
-`
-const Format = styled(Details)`
- font-size: 14px;
- font-weight: 500;   
- img {
-    
-    height: 62px;
-    border-radius: 10px;
-    object-fit: cover;
- }
- svg {
-    font-size: 17px;
-    margin: 0px 40px;
-    cursor: pointer;
-     }
- button {
-    width: 64px;
-    height: 50px;
-    border: none;
-    background: #E07E1B;
-    border-radius: 8px;
-    cursor: pointer;
-    color: #fff;
- }
- @media (max-width: 768px) {
-    font-size: 14px;
-    svg {
-      margin: 0px 10px;
-    }
-  }
-
-`
-const Description = styled.div`
- display: flex;
- align-items: center;
- flex-direction: column;
- margin: 100px 0px;   
- @media (max-width: 768px) {
-    margin: 50px 0;
-  }
-`
-const Summary = styled.div`
-flex: 1;
- display: flex; 
- flex-direction: column;
- gap: 20px;
- button {
-    padding: 1rem;
-    border: none;
-    font-size: 18px;
-    background: #e07e1b;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-
-  @media (max-width: 768px) {
-    margin-right: 0;
-    button {
-      font-size: 14px;
-    }
-  }
-`
-const TotalItems = styled.div`
-display: flex;
-justify-content: space-between;
-padding: 15px 0px;
-`
-const PromoCode = styled.div`
-flex: 1;
-font-size: 16px;
-  color: #555
- font-size: 16px;
- p {
-    color: #fff;
-    font-size: 14px;
- }
- @media (max-width: 768px) {
-    margin-top: 20px;
-  }
-`
-const PromoBox = styled.div`
- display: flex;
- justify-content: space-between;
-  width: 504px;
-  height: 58px;
-  margin-top: 15px;
-  padding-left: 20px;
-  background: #eaeaea;
-
-  input {
-    width: 70%;
-    height: 50px;
-    border: none;
-    outline: none;
-    font-size: 14px;
-    border-radius: 8px;
-    background: transparent;
-  }
-
-  button {
-    width: 30%;
-    height: 58px;
-    font-size: 14px;
-    border: none;
-    border-radius: 80px;
-    cursor: pointer;
-    background: black;
-    color: white;
-  }
-
-  @media (max-width: 768px) {
-  width: 100%;
-  height: auto;
-
-    input {
-      width: 40%;
-      
-    }
-
-    button {
-      width: 40%;
-    }
-  }
-`
 export default CartItems;

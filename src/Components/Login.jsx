@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { MdEmail } from "react-icons/md";
-import { FaLock } from "react-icons/fa";
-import styled from "styled-components"
+import { FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link,useNavigate } from 'react-router-dom';
 import axios from "axios"
 import { toast }  from 'sonner';
+import ecom from '../images/ecom.jpg'
 
 const Login = () => {
   const navigate = useNavigate();
@@ -37,110 +37,63 @@ const Login = () => {
      }
     
   }
+    //toggle password
+    const togglePasswordVisibility = () => {
+      setFormData((prevState) => ({
+        ...prevState,
+         showPassword:!prevState.showPassword
+      }))
+    }
+
   return (
-  <Container>
-     <div>
-      <form action="" onSubmit={submitHandler}>
-        <h1>Sign In</h1>
-       <Contents>
-        <MdEmail/>
-        <input onChange={InputHandler} name='email' type="email" placeholder='email'  />
-        </Contents> 
-        <Contents>
-          <FaLock/>
-          <input onChange={InputHandler} name='password' type="password" placeholder='password' />
-        </Contents>
-       <button type="submit">Log In</button>
-       <p>Forgot your password?</p>
-        <p>Don't have an account? <Link to="/register">Sign up</Link></p>
-      </form>
-    </div>
-  </Container>
+<div
+ className="container mx-auto mt-10 rounded-lg relative overflow-hidden w-full max-w-screen-md min-h-[480px] px-4 py-8"
+ style={{ 
+  backgroundImage: `url(${ecom})`, 
+  backgroundPosition: 'center', 
+  backgroundSize: 'cover', 
+  backgroundRepeat: 'no-repeat',
+  width: '100%',
+}}
+ >
+    <form className="mt-8 flex items-center justify-center flex-col" onSubmit={submitHandler}>
+     <div className="relative w-full">
+     <MdEmail className="absolute top-[50%] left-0 translate-x-full -translate-y-1/2 text-black" />
+       <input
+        onChange={InputHandler}
+        className="text-black bg-gradient-to-br from-gray-200 to-gray-400 border-none my-2 px-12 py-4 text-sm rounded-lg w-full focus:outline-none"
+         type="email" placeholder="email" name="email" />
+     </div>
+     <div className="relative w-full">
+     <FaLock className="absolute top-[50%] left-0 translate-x-full -translate-y-1/2 text-black" />
+        <input
+        onChange={InputHandler}
+        className="text-black  bg-gradient-to-br from-gray-200 to-gray-400 border-none my-2 px-12 py-4 text-sm rounded-lg w-full focus:outline-none"
+         type={formData.showPassword ? 'text' : 'password'} 
+         placeholder="password"
+         name="password"
+           />
+            <div className="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer"
+             onClick={togglePasswordVisibility}
+              >
+                  {formData.showPassword ? <FaEyeSlash className="text-black text-lg" /> : <FaEye className="text-black text-lg" />}
+              </div>
+     </div>
+     <button
+     className="bg-purple-700 hover:bg-orange-500 border-none my-2 px-12 py-4 text-white text-xs sm:text-sm rounded-lg w-1/2 focus:outline-none font-semibold tracking-wide uppercase cursor-pointer mt-6"
+     type="submit">
+        Login
+        </button>
+     <p className="m-6 text-gray-600">Don't have an account?
+        <Link
+         className="text-blue-500 mx-2"
+         to="/register">
+            Sign up
+        </Link>
+     </p>
+        </form> 
+</div>
   )
 }
-const Container = styled.div`
-margin: auto;
-margin-top: 5rem;
-   background: #fff;
-    border-radius: 30px;
-    position: relative;
-    overflow: hidden;
-    width: 768px;
-    max-width: 100%;
-    min-height: 480px;
-    h1 {
-      color: black;
-           
-    }
 
-    @media (max-width: 768px) {
-    width: 100%;
-    margin: 2rem auto;
-  }
-    button{
-    background-color: #512da8;
-    color: #fff;
-    font-size: 12px;
-    padding: 10px 45px;
-    border: 1px solid transparent;
-    border-radius: 8px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-top: 10px;
-    cursor: pointer;
-    @media (max-width: 768px) {
-    font-size: 10px;
-    padding: 8px 30px;
-  }
-    }
-    form {
-      margin-top: 5rem;
-      background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 40px;
-    height: 100%;  
-    @media (max-width: 768px) {
-      margin-top: 2rem;
-    
-    }
-    }
-   P{
-    margin-top: 1rem;
-    font-size: 1rem;
-    color: black;
-    @media (max-width: 768px) {
-      margin-top: 0.5rem;
-      
-    }
-   }
- 
-`
-
-const Contents = styled.div`
-position: relative;
-width: 80%;
-margin: 1rem 0;
-  input {
-      color: black;
-     background: linear-gradient(35deg, #e9e4e4,#7e7979);
-    border: none;
-    margin: 8px 0;
-    padding: 1rem 2rem;
-    font-size: 13px;
-    border-radius: 8px;
-    width: 100%;
-    outline: none;
-    } 
-    svg {
-      position: absolute;
-    top: 50%;
-    left: 0%;
-    transform: translate(100%, -50%);
-    color: black; 
-    }
-`
 export default Login

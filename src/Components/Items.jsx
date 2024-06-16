@@ -1,74 +1,26 @@
-import React from 'react'
-import styled from "styled-components"
-import { Link } from "react-router-dom"
+import React from 'react';
+import { Link } from "react-router-dom";
 
-const Items = ({name,image, new_price, old_price,id}) => {
-  const truncate = (str,n) => {
+const Items = ({ name, image, new_price, old_price, id }) => {
+  const truncate = (str, n) => {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
-}
-const truncatedName = truncate(name,20)
+  }
+  const truncatedName = truncate(name, 20);
+
   return (
-    <Item>
-      <Link to={`/product/${id}`} onClick={window.scrollTo(0,0)}>
-      <img crossOrigin="anonymous" src={image} alt="product" />
+    <div className="p-4 cursor-pointer transition duration-300 transform hover:scale-105">
+      <Link to={`/product/${id}`} onClick={() => window.scrollTo(0, 0)}>
+        <img crossOrigin="anonymous" src={image} alt="product" className="block rounded-md w-full h-[300px] object-cover" />
       </Link>
       <div>
-      <p>{truncatedName}</p>
+        <p className="max-w-xs">{truncatedName}</p>
       </div>
-      <ItemPrices>
-      <NewPrice>
-       Ksh {new_price}
-        </NewPrice>
-      <OldPrice>
-       Ksh {old_price}    
-      </OldPrice>
-      </ItemPrices>
-    </Item>
-  )
+      <div className="flex gap-4">
+        <div className="font-bold text-xl text-gray-800">Ksh {new_price}</div>
+        <div className="text-gray-500 line-through">Ksh {old_price}</div>
+      </div>
+    </div>
+  );
 }
 
-const Item = styled.div`
-padding-left: 3rem;
- cursor: pointer;
- 
- transition: transform 450ms;
-    &:hover{
-transform: scale(1.08);
-transition: 0.6s;
-opacity: 1;
-  }
-p {
-  max-width: 223px;
-  
-}
-  img {
-    display: block;
-    border-radius: 1rem;
-   width: 223.5px;
-   height: 223.5px;
-   object-fit: cover;
- 
-    }
-  
-@media (max-width: 768px) {
-  padding-left: 1rem;
-}
-`
-const ItemPrices = styled.div`
-  display: flex;
-  gap: 10px;
-  
-  
-`
-const NewPrice = styled.div`
- 
- font-size: 14px; 
- 
- `
- const OldPrice = styled.div`
-  color: grey;
-  font-size: 14px;
-  text-decoration: line-through;
- `
-
-export default Items
+export default Items;

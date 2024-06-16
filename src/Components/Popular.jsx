@@ -1,102 +1,52 @@
-import React, { useState, useEffect } from 'react'
-import axios from "axios"
-import { Items } from '.'
-import styled from "styled-components"
-import { toast } from "sonner"
-import { Bars } from "react-loader-spinner"
-
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
+import { Items } from '.';
+import { toast } from "sonner";
+import { Bars } from "react-loader-spinner";
 
 const Popular = () => {
-    const [popular, setPopular] = useState([])
-    const [loading, setLoading] = useState(true)
-    let image_url = "https://shoppers-paradise17.onrender.com"
-    
+    const [popular, setPopular] = useState([]);
+    const [loading, setLoading] = useState(true);
+    let image_url = "https://shoppers-paradise17.onrender.com";
+
     const getDetails = async () => {
-      try {
-        const response = await axios.get(`https://shoppers-paradise17.onrender.com/api/products?&category=gym`)
-        setPopular(response.data.products)
-      } catch (error) {
-        toast.error("Error fetching data")
-      } finally {
-        setLoading(false)
-      }
-    }
+        try {
+            const response = await axios.get(`https://shoppers-paradise17.onrender.com/api/products?&category=gym`);
+            setPopular(response.data.products);
+        } catch (error) {
+            toast.error("Error fetching data");
+        } finally {
+            setLoading(false);
+        }
+    };
 
-    useEffect(()=>{
-        getDetails()
-    }, [])
-  return (
-    <PopularProducts>
-      <h1>Flash Sales</h1>
-      {loading ? ( 
-        <Bars
-        height="80"
-        width="80"
-        color="#4fa94d"
-        ariaLabel="bars-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
-        visible={true}
-         />
-      ) : ( 
-      <PItems>
-        {popular.map((item) => (
-          
-            <Items 
-            key={item._id}
-            id={item._id}
-            name={item.name}
-            image={image_url+item.image}
-            new_price={item.new_price}
-            old_price={item.old_price}
-            />
-          
-        ))}
-      </PItems>
-      )}
-    </PopularProducts>
-  )
-}
+    useEffect(() => {
+        getDetails();
+    }, []);
 
-const PopularProducts = styled.div`
-  padding-left: 3rem;
-  display: flex;
-  flex-direction: column;
- margin: 0 auto;
-max-width: 960px;
-margin-bottom: 3rem;
-h1 {
-  padding-left: 3rem;
-  margin-bottom: 2rem;
-  font-size: 19px;
-  margin-top: 2rem;
-}
-    @media (max-width: 768px) {
-    height: auto;
-    padding-left: 0rem;
-    h1 {
-      padding-left: 1rem;
-    }
-  }
-`
-const PItems = styled.div`
- display: grid;
-grid-template-columns: repeat(auto-fit,minmax(12rem,1fr));
-grid-gap: 4rem;
-@media (max-width: 768px) {
-  display: flex;
-  gap: 0.5rem;
-  overflow-x: scroll;
-  overflow-y: hidden;
-scrollbar-color: black;
-&::-webkit-scrollbar{
-    display: none;
-}
-img {
-  overflow: hidden;
-}
-    }
-    
-`
+    return (
+        <div className="max-w-6xl mx-auto px-4 py-8">
+            <h1 className="text-2xl font-bold mb-6">Flash Sales</h1>
+            {loading ? (
+                <div className="flex justify-center items-center h-64">
+                    <Bars height="80" width="80" color="#4fa94d" ariaLabel="bars-loading" visible={true} />
+                </div>
+            ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    {popular.map((item) => (
+                        <Items
+                            key={item._id}
+                            id={item._id}
+                            name={item.name}
+                            image={image_url + item.image}
+                            new_price={item.new_price}
+                            old_price={item.old_price}
+                        />
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+};
 
-export default Popular
+export default Popular;

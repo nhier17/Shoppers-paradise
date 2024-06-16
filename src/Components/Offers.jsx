@@ -1,81 +1,22 @@
-import React from 'react'
-import exclusive_image from "../images/exclusive_image.png"
-import styled from "styled-components"
-
-
+import React from 'react';
+import exclusive_image from '../images/exclusive_image.png';
 
 const Offers = () => {
   return (
-    <Container>
-       <OffersLeft>
-        <h1>Exclusive</h1>
-        <h2>Offers for you</h2>
-        <p>ONLY ON BEST SELLERS PRODUCTS</p>
-        <button>Check Now</button>
-        </OffersLeft> 
-        <OffersRight>
-          <img src={exclusive_image} alt="" />  
-        </OffersRight>
-    </Container>
-  )
-}
+    <div className="container px-4 py-8 mx-auto bg-gradient-to-b from-purple-100 to-green-100">
+    <div className="w-full flex items-center justify-center">
+      <div className="flex-1 flex flex-col justify-center">
+        <h1 className="text-gray-900 text-2xl font-semibold">Exclusive</h1>
+        <h2 className="text-gray-900 text-2xl font-semibold">Offers for you</h2>
+        <p className="text-gray-800 text-xl font-semibold">ONLY ON BEST SELLERS PRODUCTS</p>
+        <button className="px-2 py-4 w-48 rounded-xl bg-yellow-500 text-white text-lg font-semibold mt-5">Check Now</button>
+      </div>
+      <div className="flex-1 flex items-center justify-end pt-12">
+        <img src={exclusive_image} alt="Exclusive Offer" className="max-w-full" />
+      </div>
+    </div>
+    </div>
+  );
+};
 
-const Container = styled.div`
- width: 65%%;
- height: 60vh;
- display: flex;
- align-items: center;
- justify-content: center;
- padding-left: 1rem;
- margin-left: 2rem;
- padding: 0px 1rem;
- margin-bottom: 2rem;
- margin-top: 1rem;
- background: linear-gradient(180deg, #fde1ff 0%, #e1ffea22 60%); 
-@media (max-width: 768px) {
-  margin-left: 1rem;
-  height: auto;
-  img {
-    width: 100%;
-    
-  }
-}
-
-`
-const OffersLeft = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-   flex: 1; 
-   h1 {
-    color: #090909;
-    font-size: 26px;
-    font-weight: 600;
-   }
-   p {
-    color: #171717;
-    font-size: 22px;
-    font-weight: 600;
-   }
-   button {
-    width: 200px;
-    height: 70px;
-    border-radius: 20px;
-    background: #FF9900;
-    color: white;
-    font-size: 18px;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
-   }
-`
-const OffersRight = styled.div`
-display: flex;
-flex: 1;
-align-items: center;
-justify-content: flex-end;
-padding-top: 50px;
-`
-
-export default Offers
+export default Offers;

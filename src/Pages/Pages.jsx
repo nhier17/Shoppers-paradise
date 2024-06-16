@@ -4,6 +4,7 @@ import Shop from './Shop';
 import ShopCategory from './ShopCategory';
 import Product from './Product';
 import Cart from './Cart';
+import Orders from './Orders';
 import men from '../images/banner_men.png';
 import women from '../images/banner_women.png';
 import kids from '../images/banner_kids.png';
@@ -31,6 +32,7 @@ function Pages(){
          <Route path="/success" element={<Success />} />
          <Route path="/cancel" element={<CancelPayment />} /> 
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/orders" element={<Orders />} />
       </Routes>
       </AnimatePresence>
     </div>

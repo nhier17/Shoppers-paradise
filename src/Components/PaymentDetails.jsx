@@ -1,213 +1,179 @@
-import React,{ useState, useContext } from 'react'
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import styled from "styled-components";
 import { ShopContext } from '../context/ShopContext';
-import { useNavigate } from "react-router-dom";
-import { toast } from "sonner";
-//stripe
-import {
-  CardElement,
-    useStripe,
-    useElements,
-  } from '@stripe/react-stripe-js';
-
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 const PaymentDetails = () => {
-  const navigate = useNavigate()
-  const { cartItem, totalPrice, setCartItem } = useContext(ShopContext)
-     const stripe = useStripe();
+    const navigate = useNavigate();
+    const { cartItem, totalPrice, setCartItem } = useContext(ShopContext);
+    const stripe = useStripe();
     const elements = useElements();
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null)
+    const [error, setError] = useState(null);
+    const [addressDetails, setAddressDetails] = useState({
+        name: '',
+        email: '',
+        address: '',
+        city: '',
+        state: '',
+        postalCode: '',
+    });
 
-    //convert cartItem object to an array of items
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setAddressDetails({ ...addressDetails, [name]: value });
+    };
+
     const cartItemsArr = Object.keys(cartItem).map(key => ({
-      _id: key,
-      quantity: cartItem[key]
-    }))
+        _id: key,
+        quantity: cartItem[key]
+    }));
 
-//payments handler
-const paymentHandler = async (e) => {
-    e.preventDefault();
+    const paymentHandler = async (e) => {
+        e.preventDefault();
 
-    if (!stripe || !elements) {
-      setError('Stripe has not been initialized yet.');
-       return;
-    }
-    try {
-      const response = await axios.post("https://shoppers-paradise17.onrender.com/api/payments/create-payment-intent",{
-        amount: totalPrice, 
-        currency: 'ksh', 
-        items: cartItemsArr
-        
-      });
-      console.log(response.data);
-      const { clientSecret } = await response.data
-      const { error } = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: elements.getElement('card'),
-        },
-      });
-      if (error) {
-      throw new Error(error.message);
-      }
-      toast.success('Payment successful!')
-      console.log('Payment successful');
-      // reset cart items to 0 after successful payment
-      setCartItem(prevCartItem => {
-        const resetCart = {};
-        Object.keys(prevCartItem).forEach(key => {
-          resetCart[key] = 0
-        });
-        return resetCart;
-      })
-      navigate('/success')
-    } catch (error) {
-      console.error("Error during payment",error.message);
-      toast.error('Error during payment!')
-      setError(error.message);
-      navigate('/cancel')
-    } finally {
-      setLoading(false);
-    }
-  
-}
+        if (!stripe || !elements) {
+            setError('Stripe has not been initialized yet.');
+            return;
+        }
 
-  return (
-    <Container>
-          <form id="payment-form" onSubmit={paymentHandler}>
-            <PaymentElement className="payment-element">
-            <CardElement id="cardElement" />
-            </PaymentElement>
-            <button type="submit" disabled={loading}>
-            <Spinner className={`spinner ${loading ? '' : 'hidden'}`} id="spinner"></Spinner>
-                <span>Pay Now</span>
-            </button>
-            <PaymentMessage id="payment-message" className={`message ${error ? '' : 'hidden'}`}>
-        {error}
-      </PaymentMessage>
-        </form>
-    </Container>
-  )
-}
-const Container = styled.div`
-  font-family:  sans-serif;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  height: 100vh;
-  width: 100vw;
-  form {
-    width: 30vw;
-  min-width: 500px;
-  align-self: center;
-  box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
-    0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
-  border-radius: 7px;
-  padding: 40px;
-  }
-  button {
-   background: #5469d4;
-  font-family: Arial, sans-serif;
-  color: #ffffff;
-  border-radius: 4px;
-  border: 0;
-  padding: 12px 16px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  display: block;
-  transition: all 0.2s ease;
-  box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
-  width: 100%;   
-  } 
-  &:hover {
-    filter: contrast(115%);
-  }
-  &:disabled {
-    opacity: 0.5;
-  cursor: default;
-  }
-  @-webkit-keyframes loading {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-@keyframes loading {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
+        try {
+            setLoading(true);
+            const response = await axios.post("https://shoppers-paradise17.onrender.com/api/payments/create-payment-intent", {
+                amount: totalPrice,
+                currency: 'ksh',
+                items: cartItemsArr,
+                addressDetails
+            });
+            const { clientSecret } = response.data;
+            const { error } = await stripe.confirmCardPayment(clientSecret, {
+                payment_method: {
+                    card: elements.getElement(CardElement),
+                    billing_details: {
+                        name: addressDetails.name,
+                        email: addressDetails.email,
+                        address: {
+                            line1: addressDetails.address,
+                            city: addressDetails.city,
+                            state: addressDetails.state,
+                            postal_code: addressDetails.postalCode,
+                        }
+                    }
+                }
+            });
 
-@media only screen and (max-width: 600px) {
-  form {
-    width: 80vw;
-    min-width: initial;
-  }
-}
-`
-const Spinner = styled.div`
-   color: #ffffff;
-  font-size: 22px;
-  text-indent: -99999px;
-  margin: 0px auto;
-  position: relative;
-  width: 20px;
-  height: 20px;
-  box-shadow: inset 0 0 0 2px;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0); 
-  &:before,
-  &:after {
-    position: absolute;
-  content: "";
-  }
-  &:before {
-    width: 10.4px;
-  height: 20.4px;
-  background: #5469d4;
-  border-radius: 20.4px 0 0 20.4px;
-  top: -0.2px;
-  left: -0.2px;
-  -webkit-transform-origin: 10.4px 10.2px;
-  transform-origin: 10.4px 10.2px;
-  -webkit-animation: loading 2s infinite ease 1.5s;
-  animation: loading 2s infinite ease 1.5s;
-  }
-  &:after {
-    width: 10.4px;
-  height: 10.2px;
-  background: #5469d4;
-  border-radius: 0 10.2px 10.2px 0;
-  top: -0.1px;
-  left: 10.2px;
-  -webkit-transform-origin: 0px 10.2px;
-  transform-origin: 0px 10.2px;
-  -webkit-animation: loading 2s infinite ease;
-  animation: loading 2s infinite ease;
-  }
-`
-const PaymentMessage = styled.div`
-   color: rgb(105, 115, 134);
-  font-size: 16px;
-  line-height: 20px;
-  padding-top: 12px;
-  text-align: center;
-`
-const PaymentElement = styled.div`
- margin-bottom: 24px;
-`
-export default PaymentDetails
+            if (error) {
+                throw new Error(error.message);
+            }
+
+            toast.success('Payment successful!');
+            setCartItem(prevCartItem => {
+                const resetCart = {};
+                Object.keys(prevCartItem).forEach(key => {
+                    resetCart[key] = 0;
+                });
+                return resetCart;
+            });
+            navigate('/success');
+        } catch (error) {
+            console.error("Error during payment", error.message);
+            toast.error('Error during payment!');
+            setError(error.message);
+            navigate('/cancel');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div className="container flex justify-center items-center h-screen w-screen">
+            <form id="payment-form" onSubmit={paymentHandler} className="w-full max-w-lg p-6 shadow-lg rounded-lg bg-white">
+                <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">Name</label>
+                    <input
+                        type="text"
+                        name="name"
+                        value={addressDetails.name}
+                        onChange={handleInputChange}
+                        required
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    />
+                </div>
+                <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email</label>
+                    <input
+                        type="email"
+                        name="email"
+                        value={addressDetails.email}
+                        onChange={handleInputChange}
+                        required
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    />
+                </div>
+                <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="address">Address</label>
+                    <input
+                        type="text"
+                        name="address"
+                        value={addressDetails.address}
+                        onChange={handleInputChange}
+                        required
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    />
+                </div>
+                <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="city">City</label>
+                    <input
+                        type="text"
+                        name="city"
+                        value={addressDetails.city}
+                        onChange={handleInputChange}
+                        required
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    />
+                </div>
+                <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="state">State</label>
+                    <input
+                        type="text"
+                        name="state"
+                        value={addressDetails.state}
+                        onChange={handleInputChange}
+                        required
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    />
+                </div>
+                <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="postalCode">Postal Code</label>
+                    <input
+                        type="text"
+                        name="postalCode"
+                        value={addressDetails.postalCode}
+                        onChange={handleInputChange}
+                        required
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    />
+                </div>
+                <div className="mb-4">
+                    <CardElement id="cardElement" className="p-2 border rounded" />
+                </div>
+                <button
+                    type="submit"
+                    disabled={loading}
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+                >
+                    {loading ? <Spinner /> : <span>Pay Now</span>}
+                </button>
+                {error && <div className="text-red-500 text-sm mt-2 text-center">{error}</div>}
+            </form>
+        </div>
+    );
+};
+
+const Spinner = () => (
+    <div className="w-6 h-6 border-4 border-t-4 border-t-transparent border-blue-500 rounded-full animate-spin"></div>
+);
+
+export default PaymentDetails;

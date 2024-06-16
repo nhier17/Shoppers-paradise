@@ -1,206 +1,75 @@
-import React, {useContext} from 'react'
-import { FaStar,FaStarHalf } from "react-icons/fa";
-import styled  from "styled-components";
-import {ShopContext} from "../context/ShopContext";
+import React, { useContext } from 'react';
+import { FaStar, FaStarHalf } from "react-icons/fa";
+import { ShopContext } from "../context/ShopContext";
 
-const ProductDetails = ({product}) => {
-  const {addToCart} = useContext(ShopContext)
-  let image_url ="https://shoppers-paradise17.onrender.com"
+const ProductDetails = ({ product }) => {
+  const { addToCart } = useContext(ShopContext);
+  let image_url = "https://shoppers-paradise17.onrender.com";
+  
   return (
-    <Container key={product._id}>
-       
-      <Details>
-         <List>
-          <img crossOrigin="anonymous" src={image_url+product.image} alt={product.name} />
-          <img crossOrigin="anonymous" src={image_url+product.image} alt={product.name} />
-          <img crossOrigin="anonymous" src={image_url+product.image} alt={product.name} />
-          <img crossOrigin="anonymous" src={image_url+product.image} alt={product.name} />
-          </List>
-         <DisplayMain>
-          <img crossOrigin="anonymous" src={image_url+product.image} alt={product.name}/>
-          </DisplayMain> 
-      </Details>
-    
-       <DisplayRight>
-       <h3>{product.name}</h3>
-       <Description>
-        <FaStar/>
-        <FaStar/>
-        <FaStar/>
-        <FaStar/>
-       <FaStarHalf />
-       <p>(122)</p>
-       </Description>
-       <Prices>
-        <OldPrice>
-          KSh {product.old_price}
-        </OldPrice>
-        <NewPrice>
-          KSh {product.new_price}
-        </NewPrice>
-       </Prices>
-       <p>
-       {product.description}
-       </p>
-       <Sizes>
-        <h1>Select Size</h1>
-        <Contents>
-          <div>S</div>
-          <div>M</div>
-          <div>L</div>
-          <div>XL</div>
-          <div>XXL</div>
-        </Contents>
-       </Sizes>
-      
-       <button onClick={() => {addToCart(product._id)}}>ADD TO CART</button>
-      
-        </DisplayRight>
-       </Container>
-  )
-}
-const Container = styled.div`
-margin-top: 2rem;
-padding: 2rem;
- display: flex;
- justify-content: flex-start;
-  align-items: flex-start;
- button {
-  margin-top: 1rem;
-    padding: 1rem 3rem;
-    font-size: 16px;
-    font-weight: 600;
-    background: #e07e1b;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    outline: none;
-    cursor: pointer;
-  }
+    <div className="container flex flex-col md:flex-row mt-8 p-8">
+      <div className="flex flex-col md:flex-row gap-4 w-full md:w-1/2">
+        <div className="md:flex hidden flex-col gap-4">
+          <img className="h-40 w-full object-cover rounded-lg" crossOrigin="anonymous" src={`${image_url}${product.image}`} alt={product.name} />
+          <img className="h-40 w-full object-cover rounded-lg" crossOrigin="anonymous" src={`${image_url}${product.image}`} alt={product.name} />
+          <img className="h-40 w-full object-cover rounded-lg" crossOrigin="anonymous" src={`${image_url}${product.image}`} alt={product.name} />
+          <img className="h-40 w-full object-cover rounded-lg" crossOrigin="anonymous" src={`${image_url}${product.image}`} alt={product.name} />
+        </div>
+        <div className="flex-1">
+          <img className="w-full  object-cover rounded-lg" crossOrigin="anonymous" src={`${image_url}${product.image}`} alt={product.name} />
+        </div>
+      </div>
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-`
-const Details = styled.div`
-display: flex;
-gap: 1rem;
-@media (max-width: 768px) {
-  flex-direction: row;
-    
+      <div className="mt-8 md:mt-0 md:ml-8 flex flex-col items-start w-full md:w-1/2">
+        <h3 className="text-2xl font-bold">{product.name}</h3>
+        <div className="flex items-center mt-2 mb-4">
+          <FaStar className="text-yellow-500" />
+          <FaStar className="text-yellow-500" />
+          <FaStar className="text-yellow-500" />
+          <FaStar className="text-yellow-500" />
+          <FaStarHalf className="text-yellow-500" />
+          <p className="ml-2 text-gray-600">(122)</p>
+        </div>
+        <div className="flex items-center space-x-4 text-lg mb-4">
+          <span className="line-through text-gray-500">KSh {product.old_price}</span>
+          <span className="font-bold text-gray-800">KSh {product.new_price}</span>
+        </div>
+        <p className="text-gray-700 mb-4">
+          {product.description}
+        </p>
+        <div className="mt-4 w-full">
+          <h1 className="text-lg font-semibold">Select Size</h1>
+          <div className="flex gap-4 mt-2">
+            <div className="px-4 py-2 bg-gray-200 rounded cursor-pointer">S</div>
+            <div className="px-4 py-2 bg-gray-200 rounded cursor-pointer">M</div>
+            <div className="px-4 py-2 bg-gray-200 rounded cursor-pointer">L</div>
+            <div className="px-4 py-2 bg-gray-200 rounded cursor-pointer">XL</div>
+            <div className="px-4 py-2 bg-gray-200 rounded cursor-pointer">XXL</div>
+          </div>
+        </div>
+        <div className="mt-2">
+              <div className="text-base font-medium text-gray-900 mt-2">Pick a color</div>
+         <div className="mt-4 flex items-center space-x-3">
+                <label aria-label="White" className="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 ring-gray-400 focus:outline-none">
+                  <input type="radio" name="color-choice" value="White" className="sr-only" />
+                  <span aria-hidden="true" className="h-8 w-8 rounded-full border border-black border-opacity-10 bg-white"></span>
+                </label>
+                <label aria-label="Gray" className="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 ring-gray-400 focus:outline-none">
+                  <input type="radio" name="color-choice" value="Gray" className="sr-only" />
+                  <span aria-hidden="true" className="h-8 w-8 rounded-full border border-black border-opacity-10 bg-gray-200"></span>
+                </label>
+                <label aria-label="Black" className="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 ring-gray-900 focus:outline-none">
+                  <input type="radio" name="color-choice" value="Black" className="sr-only" />
+                  <span aria-hidden="true" className="h-8 w-8 rounded-full border border-black border-opacity-10 bg-gray-900"></span>
+                </label>
+              </div>
+            </div>
+        <button onClick={() => { addToCart(product._id) }} className="mt-4 py-2 px-6 bg-orange-500 text-white rounded hover:bg-orange-600 transition duration-300">
+          ADD TO CART
+        </button>
+      </div>
+    </div>
+  );
 }
 
-`
-const List = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  img {
-    height: 163px;
-    border-radius: 1rem;
-    @media (max-width: 768px) {
-      height: 150px;
-      width: 100%;
-      object-fit: contain;
-      
-    }
-  }
-  @media (max-width: 768px) {
-    flex-direction: row;
-    gap: 5px;
-    align-items: center;
-    overflow-x: auto; 
-    scroll-snap-type: x mandatory; 
-  }
-  
-`
-const DisplayMain = styled.div`
-
-img {
-  width: 586px;
-  height: 700px;
-  object-fit: cover;
-  border-radius: 1rem;
-  padding-right: 2rem;
-  @media (max-width: 768px) {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-  }
- }
-
-`
-const DisplayRight = styled.div`
-margin: 1rem auto;
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-h1 {
-  
-  font-size: 19px;
-  font-weight: 600;
-}
-@media (max-width: 768px) {
-  p{
-    font-size: 16px;
-    
-  }
-}
-
-`
-
-const Description = styled.div`
-display: flex;
-gap: 10px;
-padding: 10px;
-svg {
-  color: #F6B01E;
-  font-size: 1.2rem;
-  }
-`
-const Prices = styled.div`
- display: flex;
- margin: 20px 0px;
- gap: 30px;
- font-size: 1rem; 
- justify-content: flex-start;
- align-items: center;
-`
-const OldPrice = styled.div`
-color: #818181;
-text-decoration: line-through;
-
-`
-const NewPrice = styled.div`
-font-weight: 600;
-
-`
-const Sizes = styled.div`
-margin-top: 2rem;
-h1 {
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-`
-const Contents = styled.div`
-  display: flex;
-  margin: 20px 0px;
-  gap: 20px;
-  div {
-    color: grey;
-    padding: 18px 24px;
-    background: #fbfbfb;
-    border: 1px solid #ebebeb;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  @media (max-width: 768px) {
-    gap: 10px;
-    div {
-      padding: 9px 12px;
-    }
-  }
-`
-export default ProductDetails
+export default ProductDetails;

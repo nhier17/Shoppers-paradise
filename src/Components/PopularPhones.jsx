@@ -1,7 +1,6 @@
 import React,{ useEffect, useState } from 'react'
 import axios from 'axios';
 import { Items } from ".";
-import styled from "styled-components";
 import { toast } from "sonner";
 import { Bars } from "react-loader-spinner";
 
@@ -27,81 +26,28 @@ const PopularPhones = () => {
     }, [])
 
     return (
-        <PopularProducts>
-          <h1>SmartPhones</h1>  
-          {loading ? (
-            <Bars
-            height="80"
-            width="80"
-            color="#4fa94d"
-            ariaLabel="bars-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-             />
-            ) : (
-  
-          <PItems>
-            {popular.map((item) => (
-              
-                <Items 
-                key={item._id}
-                id={item._id}
-                name={item.name}
-                image={image_url+item.image}
-                new_price={item.new_price}
-                old_price={item.old_price}
-                />
-              
-            ))}
-          </PItems>
-          )}
-        </PopularProducts>
+      <div className="container max-w-6xl mx-auto px-4 py-8">
+      <h1 className="text-2xl font-bold mb-6">Popular Phones</h1>
+      {loading ? (
+          <div className="flex justify-center items-center h-64">
+              <Bars height="80" width="80" color="#4fa94d" ariaLabel="bars-loading" visible={true} />
+          </div>
+      ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+              {popular.map((item) => (
+                  <Items
+                      key={item._id}
+                      id={item._id}
+                      name={item.name}
+                      image={image_url + item.image}
+                      new_price={item.new_price}
+                      old_price={item.old_price}
+                  />
+              ))}
+          </div>
+      )}
+  </div>
       )
     }
-
-const PopularProducts = styled.div`
- padding-left: 3rem;
-  display: flex;
-  flex-direction: column;
- margin: 0 auto;
-max-width: 960px;
-h1 {
-  padding-left: 3rem;
-  margin-bottom: 2rem;
-  font-size: 19px;
-  margin-top: 2rem;
-}
-    @media (max-width: 768px) {
-    height: auto;
-    padding-left: 0rem;
-    h1 {
-      padding-left: 1rem;
-    }
-  }
-`
-const PItems = styled.div`
- display: grid;
- grid-template-columns: repeat(auto-fit,minmax(10rem,1fr));
- grid-gap: 4rem;
- @media (max-width: 768px) {
-    display: flex;
-    gap: 0.5rem;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    scrollbar-color: black;
-    &::-webkit-scrollbar{
-        display: none;
-    }
-    img {
-      width: 145px;
-      height: 193px;
-      object-fit: cover;
-      overflow: hidden;
-    }
-        }
-        
-    `
-
 
 export default PopularPhones

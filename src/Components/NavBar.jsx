@@ -1,10 +1,9 @@
 import React, { useContext,useState } from 'react'
-import styled from "styled-components";
 import { CiMenuBurger } from "react-icons/ci";
 import { MdOutlineShoppingCart,MdClose } from "react-icons/md";
 
 import { Link,useLocation } from 'react-router-dom';
-import {motion,AnimatePresence } from "framer-motion";
+import {motion } from "framer-motion";
 import { ShopContext } from "../context/ShopContext";
 import { FaUser } from 'react-icons/fa';
 
@@ -12,259 +11,87 @@ import { FaUser } from 'react-icons/fa';
 
 
 const NavBar = () =>{
-  const { pathname } = useLocation();
   const {getTotalCartItems} = useContext(ShopContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   
   //toggle menu
-  const toggleMenu = () => {
+  const closeMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
   
 
   return (
-    <StyledNav>
-    <NavLogo>   
-      {isMenuOpen ? ( 
-        <MdClose onClick={toggleMenu} />
-      ) : (
-    <CiMenuBurger onClick={toggleMenu} />
-    )}
-        <p>SHOPPERS PARADISE</p>
-    </NavLogo>   
-    <AnimatePresence mode='wait'>
-        {isMenuOpen && (
-          <MobileMenu
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-          >
-            <ul>
-              <li>
-                <Link to="/" onClick={toggleMenu}>
-                  Shop
-                </Link>
-              </li>
-              <li>
-                <Link to="/men" onClick={toggleMenu}>
-                  Men
-                </Link>
-              </li>
-              <li>
-                <Link to="/women" onClick={toggleMenu}>
-                  Women
-                </Link>
-              </li>
-              <li>
-                <Link to="/kids" onClick={toggleMenu}>
-                  Kids
-                </Link>
-              </li>
-              <li>
-                <Link to="/smartphones" onClick={toggleMenu}>
-                  SmartPhones
-                </Link>
-              </li>
-              <li>
-                <Link to="/gym" onClick={toggleMenu}>
-                  Gym wear
-                </Link>
-              </li>
-            </ul>
-          </MobileMenu>
-        )}
-      </AnimatePresence>
-    <ul>
-     
-     <li>
-     <StyledLink to="/">
-        Shop
-        <Line
-            transition={{ duration: 0.75 }}
-            initial={{ width: "0%" }}
-            animate={{ width: pathname === "/" ? "100%" : "0%" }}
-          />
-        </StyledLink>
-        </li>  
-        <li>
-     <StyledLink to="/men">
-     Men
-     <Line
-         transition={{ duration: 0.75 }}
-            initial={{ width: "0%" }}
-            animate={{ width: pathname === "/men" ? "100%" : "0%" }}
-          />     
-     </StyledLink>
-     </li> 
-     <li>
-     <StyledLink to="/women">Women</StyledLink> 
-     <Line
-            transition={{ duration: 0.75 }}
-            initial={{ width: "0%" }}
-            animate={{ width: pathname === "/women" ? "100%" : "0%" }}
-          />
-
-     </li>
-     <li>
-     <StyledLink to="/kids">Kids</StyledLink>
-     <Line
-            transition={{ duration: 0.75 }}
-            initial={{ width: "0%" }}
-            animate={{ width: pathname === "/kids" ? "100%" : "0%" }}
-          />
-     </li> 
-    </ul> 
-    <Cart>
+    <div className="w-full inset-x-0 top-0 z-50 sticky">
+    <nav className="w-full bg-gray-800 flex items-center justify-between p-6">
+    <div className="hidden md:flex flex-1">
+        <Link to="/" className="-m-1.5 p-1.5">
+        <p className="text-white text-xl">SHOPPERS PARADISE</p>
+        </Link>
+      </div>   
+      <div className="flex lg:hidden">
+         <CiMenuBurger className="h-6 w-6 cursor-pointer" onClick={() => setIsMenuOpen(true)} />
+      </div>
+      <ul className="hidden lg:flex items-center justify-center lg:gap-x-4 mr-14">
+        <NavLink to="/" text="Shop"/>
+        <NavLink to="/men" text="Men"/>
+        <NavLink to="/women" text="Women"/>
+        <NavLink to="/kids" text="Kids" />
+      </ul>
+      <div className="flex items-center gap-8 cart-items">
       <Link to="/dashboard">
-       <FaUser/>  
+       <FaUser className="text-white text-2xl" />  
        </Link> 
      <Link to="/cart">
-    <MdOutlineShoppingCart/>
+    <MdOutlineShoppingCart className="text-white text-2xl" />
     </Link>
-    <CartCounter>
+    <div className="w-5 h-5 flex justify-center items-center mt-[-35px] ml-[-55px] rounded bg-[#FF9900] text-white">
         {getTotalCartItems()}
-    </CartCounter>
-    </Cart>
-    </StyledNav>
+    </div>
+    </div>
+    </nav> 
+    {isMenuOpen && (
+    <div className="lg:hidden" role="dialog" aria-modal="true">
+      <div className="fixed inset-0 z-50"></div>
+      <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <div className="flex items-center justify-between" onClick={closeMenu}>
+            <MdClose className="h-6 w-6 cursor-pointer text-black" onClick={() => setIsMenuOpen(false)} />
+        </div>
+        <div className="mt-6 flow-root">
+          <div className="-my-6 divide-y divide-gray-500/10">
+            <div className="space-y-2 py-6" onClick={closeMenu}>
+              <Link to="/" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Home</Link>
+              <Link to="/workouts" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Workouts</Link>
+              <Link to="/community" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Community</Link>
+              <Link to="/nutrition" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Nutrition</Link>
+              <Link to="/about" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">About</Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    )}
+    </div>
 
   )
-}
+};
 
-const StyledNav = styled.div`
-  min-height: 10vh;
-  display: flex;
-  margin: auto;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1rem;
-  position: sticky;
-  top: 0;
-  z-index: 70;
-  background: linear-gradient(35deg, #89BEC5, #fff);
-  box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.12);
+const NavLink = ({ to, text }) => {
+  const { pathname } = useLocation();
   
- a {
-    text-decoration: none;
- }
-ul {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    list-style: none;   
-    margin: 0;
-    padding: 0;
-    
-} 
-li {
-  padding-left: 1rem;
- position: relative;   
-}
-@media (max-width: 768px) {
-  justify-content: space-between;
-  ul {
-    display: none;
-    z-index: 68;
-  }
-}
-`
-const MobileMenu = styled(motion.div)`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 40%;
-  height: 100%;
-  background: white;
-cursor: pointer;
-z-index: -1;
-
-  ul {
-    display: flex;
-    flex-direction: column;
-     gap: 1rem;
-    list-style: none;
-    padding-top: 5rem;
-     li {
-      padding: 1rem;
-    }
-
-    a {
-      text-decoration: none;
-      color: black;
-      font-size: 1.2rem;
-    }
-  }
-`;
-
-const Line = styled(motion.div)`
-  height: 0.3rem;
-  background: #23d997;
-  width: 0%;
-  position: absolute;
-  bottom: -80%;
-  left: 50%;
-  transform: translateX(-50%);
-  @media (max-width: 768px) {
-    left: 0%;
-    transform: translateX(0%);
-  }
-`;
-const NavLogo = styled.div`
-display: flex;
-align-items: center;
-gap: 10px;   
-p {
-   font-size: 20px;
-   color: #171717;
-   font-weight: 600;
-   font-family: "Montserrat", "Helvetica";
-   @media (max-width: 768px) {
-    display: none;
-   }
-
-} 
-svg {
-    font-size: 19px;
-    color: black;
-    cursor: pointer;
-    display: none;
-    @media(max-width: 768px) {
-      display: initial;
-}
-}
-
-`
-
-const Cart = styled.div`
-display: flex;
-align-items: center; 
-gap: 20px;
-
-svg {
-    font-size: 30px;
-    color: black;
-    display: initial;
-}
-`
-const CartCounter = styled.div`
-    width: 22px;
-    height: 22px;
-    display: flex;
-    justify-items: center;
-    align-items: center;
-    margin-top: -35px;
-    margin-left: -55px;
-    border-radius: 11px;
-    font-size: 14px;
-    background: #FF9900;
-    color: white;
-`
-const StyledLink = styled(Link)`
- text-decoration: none;
-color: black;
-`
-
-
-
+  return (
+    <li className="relative px-10">
+      <Link to={to} className="text-white hover:text-gray-300">
+        {text}
+        <motion.div
+          className="h-1 bg-[#0ef] w-0 absolute bottom-[-80%] left-1/2 transform -translate-x-1/2 transition-all duration-750"
+          transition={{ duration: 0.75 }}
+          initial={{ width: "0%" }}
+          animate={{ width: pathname === to ? "50%" : "0%" }}
+        ></motion.div>
+      </Link>
+    </li>
+  );
+};
 
 
 

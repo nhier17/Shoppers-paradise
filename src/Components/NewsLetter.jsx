@@ -1,80 +1,27 @@
 import React from 'react';
-import styled from "styled-components";
 
 const NewsLetter = () => {
   return (
-    <Container>
-        <h1>Get Exclusive Offers on your Email</h1>
-        <p>Subscribe to our newsletter and stay updated</p>
-        <form>
-            <input type="email" placeholder="Enter your email" />
-            <button type="submit">Subscribe</button>
-        </form>
-    </Container>
-  )
-}
-const Container = styled.div`
-   width: 65%;
-   height: 40vh; 
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   margin:  auto;
-   padding: 0px 140px;
-   margin-bottom: 2rem;
-   background: linear-gradient(180deg, #fde1ff 0%, #e1ffea22 60%);
-   gap: 10px;
-   h1 {
-    color: #090909;
-    font-size: 22px;
-    font-weight: 600;
-   }
-   p {
-    color: #090909;
-    font-size: 20px;
-    
-   }
-   form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    width: 730px;
-    height: 70px;
-    input {
-     color: #616161;
-     background: linear-gradient(35deg, #e9e4e4,#7e7979);
-     border: none;
-     padding: 1rem 3rem;
-     font-size: 16px;
-     border-radius: 8px;
-     outline: none;
-    }
-    button {
-     width: 180px;
-     height: 50px;
-     background: #FF9900;
-     font-size: 16px;
-     border-radius: 10px;
-     padding: 1rem;
-     cursor: pointer;
-     color: white;
-    }
-     }
-  @media (max-width: 768px) {
-   padding: 0px 20px;
-   padding-left: 1rem;
-   
-   width: 90%;
-     }
-     form {
-     padding-left: 1rem;
-      display: block;
-      width: 100%;
-     }
-     
+    <div className="container mx-auto px-4 py-8 bg-gradient-to-b from-purple-100 to-green-100">
+    <div className="w-full h-full flex flex-col items-center justify-center  gap-2">
+      <h1 className="text-gray-900 text-2xl font-semibold">Get Exclusive Offers on your Email</h1>
+      <p className="text-gray-900 text-xl">Subscribe to our newsletter and stay updated</p>
+      <form className="flex  items-center gap-5 w-full max-w-4xl h-14">
+        <input
+          type="email"
+          placeholder="Enter your email"
+          className="text-gray-700 bg-gradient-to-r from-gray-200 to-gray-500 border-none py-4 px-12 text-base rounded-md outline-none"
+        />
+        <button
+          type="submit"
+          className="w-36 h-12 bg-yellow-500 text-white text-base rounded-lg py-4 cursor-pointer"
+        >
+          Subscribe
+        </button>
+      </form>
+    </div>
+    </div>
+  );
+};
 
-`
-
-export default NewsLetter
+export default NewsLetter;
