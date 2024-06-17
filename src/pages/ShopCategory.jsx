@@ -40,7 +40,7 @@ const ShopCategory = ({ image, category }) => {
             </div>
             {loading ? (
                 <div className="flex justify-center items-center h-64">
-                    <Bars height="80" width="80" color="#4fa94d" ariaLabel="bars-loading" visible={true} />
+                    <Bars height="50" width="50" color="#4fa94d" ariaLabel="bars-loading" visible={true} />
                 </div>
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">

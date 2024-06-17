@@ -29,7 +29,7 @@ const NavBar = () =>{
         </Link>
       </div>   
       <div className="flex lg:hidden">
-         <CiMenuBurger className="h-6 w-6 cursor-pointer" onClick={() => setIsMenuOpen(true)} />
+         <CiMenuBurger className="h-6 w-6 cursor-pointer text-gray-200" onClick={() => setIsMenuOpen(true)} />
       </div>
       <ul className="hidden lg:flex items-center justify-center lg:gap-x-4 mr-14">
         <NavLink to="/" text="Shop"/>
@@ -39,10 +39,10 @@ const NavBar = () =>{
       </ul>
       <div className="flex items-center gap-8 cart-items">
       <Link to="/dashboard">
-       <FaUser className="text-white text-2xl" />  
+       <FaUser className="text-gray-200 text-2xl" />  
        </Link> 
      <Link to="/cart">
-    <MdOutlineShoppingCart className="text-white text-2xl" />
+    <MdOutlineShoppingCart className="text-gray-200 text-2xl" />
     </Link>
     <div className="w-5 h-5 flex justify-center items-center mt-[-35px] ml-[-55px] rounded bg-[#FF9900] text-white">
         {getTotalCartItems()}
@@ -59,11 +59,10 @@ const NavBar = () =>{
         <div className="mt-6 flow-root">
           <div className="-my-6 divide-y divide-gray-500/10">
             <div className="space-y-2 py-6" onClick={closeMenu}>
-              <Link to="/" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Home</Link>
-              <Link to="/workouts" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Workouts</Link>
-              <Link to="/community" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Community</Link>
-              <Link to="/nutrition" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Nutrition</Link>
-              <Link to="/about" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">About</Link>
+              <Link to="/" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Shop</Link>
+              <Link to="/men" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Men</Link>
+              <Link to="/women" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Women</Link>
+              <Link to="/kids" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Kids</Link>
             </div>
           </div>
         </div>
